@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'], // Define 'Roboto' como a fonte padrão para 'sans'
+        roboto: ['Roboto', 'sans-serif'],              // Define Roboto
+        jakarta: ['Plus Jakarta Sans', 'sans-serif'],  // Define Plus Jakarta Sans
       },
       fontSize: {
         'xs': '0.75rem',  // 12px
