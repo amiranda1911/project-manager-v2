@@ -1,36 +1,13 @@
-import LatestActivity from './LatestActivity/LatestActivity';
+import LastesActivityList from './LastesActivityList';
 
 const LastesActivitySection = () => {
   return (
     <>
-      <h2 className="font-medium text-2xl">Latest activity</h2>
-      <p className="opacity-50 text-[15px]">John Doe’s last interactions</p>
-
-      <div className="my-16 max-h-[545px] h-[545px] ">
-        <ul className="flex gap-8 flex-col max-h-[656]">
-          <li className="flex flex-row gap-[6px] items-center ">
-            <LatestActivity />
-          </li>
-          <li className="flex flex-row gap-[6px] items-center ">
-            <LatestActivity />
-          </li>
-          <li className="flex flex-row gap-[6px] items-center ">
-            <LatestActivity />
-          </li>
-          <li className="flex flex-row gap-[6px] items-center ">
-            <LatestActivity />
-          </li>
-          <li className="flex flex-row gap-[6px] items-center ">
-            <LatestActivity />
-          </li>
-          <li className="flex flex-row gap-[6px] items-center ">
-            <LatestActivity />
-          </li>
-          <li className="flex flex-row gap-[6px] items-center ">
-            <LatestActivity />
-          </li>
-        </ul>
-      </div>
+      <h2 className="font-medium text-2xl lg:text-[2rem]">Latest activity</h2>
+      <p className="opacity-50 text-[0.9375rem] lg:text-[1rem]">
+        John Doe’s last interactions
+      </p>
+      <LastesActivityList />
     </>
   );
 };
