@@ -11,7 +11,6 @@ export default {
         jakarta: ['Plus Jakarta Sans', 'sans-serif'],  // Define Plus Jakarta Sans
       },
       fontSize: {
-        fontSize: {
           '1': '0.26375rem',    // 4.22px
           '2': '0.308125rem',    // 4.93px
           '3': '0.351875rem',     // 5.63px
@@ -36,7 +35,6 @@ export default {
           '22': '2.5rem',         // 40px
           '23': '5.375rem',       // 86px
         },
-      },
     },
   },
   plugins: [],
