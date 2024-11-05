@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.todo-column .column-header{
+    @apply bg-violet-light
+}
+
+.todo-column .column-header-tasks-count {
+    @apply bg-violet-dark
+}
+
+.todo-column .column-header-desc {
+    @apply text-violet-dark
+}
+
+.inprogress-column .column-header{
+    @apply bg-orange-light
+}
+
+.inprogress-column .column-header-tasks-count {
+    @apply bg-orange-dark 
+}
+
+.inprogress-column .column-header-desc {
+    @apply text-orange-dark
+}
+
+.done-column .column-header{
+    @apply bg-green-light
+}
+
+.done-column .column-header-tasks-count {
+    @apply bg-green-dark 
+}
+
+.done-column .column-header-desc {
+    @apply text-green-dark
+}
