@@ -1,5 +1,5 @@
 import UserFace from '../UserFace';
-import ProfileDate from '../ProfileDate';
+import ProfileDate from '../ProfileData';
 
 const LeftSide = () => {
   return (

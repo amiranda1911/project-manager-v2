@@ -2,7 +2,7 @@ const WeeklyReport = () => {
   return (
     <div>
       <h2 className="font-medium text-2xl">Weekly report</h2>
-      <p className="opacity-50 text-[15px]">Tasks estimate</p>
+      <p className="opacity-50 text-[0.9375rem]">Tasks estimate</p>
       <div className="flex flex-col mt-9">
         <div className="flex flex-row gap-14">
           <h2 className="font-medium text-base">Total tasks assigned</h2>

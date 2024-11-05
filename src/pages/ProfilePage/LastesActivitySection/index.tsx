@@ -1,4 +1,4 @@
-import LatestActivity from '../LatestActivity/LatestActivity';
+import LatestActivity from './LatestActivity/LatestActivity';
 
 const LastesActivitySection = () => {
   return (
@@ -7,7 +7,7 @@ const LastesActivitySection = () => {
       <p className="opacity-50 text-[15px]">John Doe’s last interactions</p>
 
       <div className="my-16 max-h-[545px] h-[545px] ">
-        <ul className="flex gap-8 flex-col">
+        <ul className="flex gap-8 flex-col max-h-[656]">
           <li className="flex flex-row gap-[6px] items-center ">
             <LatestActivity />
           </li>

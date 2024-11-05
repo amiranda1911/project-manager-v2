@@ -4,8 +4,7 @@ import WeeklyReport from '../WeeklyReport';
 const RightSide = () => {
   return (
     <div>
-      {/* Latest activity div  */}
-      <div className="md:flex md:flex-col md:pt-32  md:pl-4 md:border-l-2 max-h-[1100px]">
+      <div className="md:flex md:flex-col md:pt-32  md:pl-4 md:border-l-2 max-h-[68.75rem]">
         <LastesActivitySection />
         <WeeklyReport />
       </div>
