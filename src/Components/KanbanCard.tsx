@@ -1,5 +1,6 @@
 import { AiFillMessage } from "react-icons/ai"
 import { FaCheckCircle } from "react-icons/fa"
+import ProgressBar from "./ProgressBar"
 
 
 interface KanbanCardProps{
@@ -39,7 +40,7 @@ const KanBanCard = ({priority} : KanbanCardProps) => {
 				<span>0%</span>
 			</div>
         
-
+			<ProgressBar progress={30}/>
 			<footer className="flex flex-row
 					h-[11px] 
 					overflow-hidden
