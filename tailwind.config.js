@@ -6,6 +6,20 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        violet: {
+          dark: '#4F46E5',    // violet dark
+          light: '#D3D0F8',   // violet light
+        },
+        orange: {
+          dark: '#F59E0B',    // orange dark
+          light: '#FCE6C2',   // orange light
+        },
+        green: {
+          dark: '#22C55E',    // green dark
+          light: '#C7F0D6',   // green light
+        }
+      },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],              // Define Roboto
         jakarta: ['Plus Jakarta Sans', 'sans-serif'],  // Define Plus Jakarta Sans
