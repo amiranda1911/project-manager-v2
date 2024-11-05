@@ -7,6 +7,7 @@ import SignUpPage from '../pages/SignUpPage/SignUpPage';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import Kanban from '../pages/Kanban/Kanban';
+import BlockedPage from '../pages/BlockedPage/BlockedPage';
 
 const Routers = () => {
   return (
@@ -20,6 +21,7 @@ const Routers = () => {
           <Route path="/kaban" element={<Kanban />} />
         </Route>
 
+        <Route path="/notauthorization" element={<BlockedPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

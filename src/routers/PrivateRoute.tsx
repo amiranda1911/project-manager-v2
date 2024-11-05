@@ -6,8 +6,7 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ isAuthenticated }) => {
-  // Se o usuário não estiver autenticado, redireciona para a página de login
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/notauthorization" />;
 };
 
 export default PrivateRoute;
