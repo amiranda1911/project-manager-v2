@@ -3,7 +3,7 @@ export const SettingsProfile = () => {
     const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`
 
   return (
-    <div className="p-5 sm:leading-8 sm:text-sm md:leading-9 md:text-base lg:p-24">
+    <div className="p-5 leading-9 text-sm md:leading-9 md:text-base lg:p-24">
         <div className="my-5">
             <div className="flex items-center mb-9 w-full">
                 <picture className="flex mr-4 md:mr-8">
@@ -20,12 +20,12 @@ export const SettingsProfile = () => {
             </div>
         </div>
         <hr className="my-5 lg:my-0"/>
-        <div className="flex flex-col  lg:flex-row">
+        <div className="flex flex-col  lg:flex-row lg:justify-between">
             <div className="w-1/4 min-w-96 mt-2">
                 <h2 className="text-2xl font-medium">Basic information</h2>
                 <p className="text-black-opacity-50">Update your name and e-mail in this section. Note: this information will be public to all your project colleagues and can be changed anytime.</p>
             </div>
-            <form action="" method="post" className="flex flex-col flex-wrap  mt-6 mb-10 leading-5 text-sm md:w-10/12 md:flex-row lg:mx-11">
+            <form action="" method="post" className="flex flex-col flex-wrap  mt-6 mb-10 leading-5 text-sm md:w-10/12 md:flex-row lg:mx-11 lg:w-3/6">
                 <div className="flex flex-col w-full md:w-1/2">
                     <label htmlFor="update-first-name" className="font-medium my-1.5">First name</label>
                     <input type="text" id="update-first-name" className="p-2 border border-gray-300 rounded-md md:mr-5" placeholder="New first name"/>
@@ -62,7 +62,7 @@ export const SettingsProfile = () => {
                 <h2 className="text-2xl font-medium">Communication</h2>
                 <p className="text-black-opacity-50">Update your e-mail communication preferences anytime. Choose to receive project notifications or disable them completely.</p>
             </div>
-            <div className="flex flex-wrap my-6 text-gray-850 text-12 lg:mx-11 lg:w-3/6">
+            <div className="flex flex-wrap my-6 text-gray-850 lg:mx-11 lg:w-3/6">
                 <div>
                     <label htmlFor="new-tasks" className="flex">
                         <input type="radio" id="new-tasks" name="notifications-update" className="mr-2" />
@@ -84,6 +84,30 @@ export const SettingsProfile = () => {
                         <p>Weekly reports</p>
                     </label>
                     <p>Receive a weekly e-mail with a basic report, including estimated time and most active members.</p>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div className="flex-col lg:flex-row flex lg:justify-between">
+            <div className="w-1/4 min-w-96">
+                <h2  className="text-2xl font-medium ">Social information</h2>
+                <p className="text-black-opacity-50">Update your e-mail communication preferences anytime. Choose to receive project notifications or disable them completely.</p>
+            </div>
+            <div className="w-3/6 my-6 lg:mx-10 lg:3/6">
+                <span>Twitter/X</span>
+                <div className="flex">
+                    <input type="text" placeholder="x.com/" className="w-52 h-12 border border-gray-300 rounded-md px-4"/>
+                    <input type="text" className="border border-gray-300 rounded-md px-4  ml-1.5 w-36 h-12"  />
+                </div>
+                <span>Instagram</span>
+                <div className="flex">
+                    <input type="text" placeholder="instagram.com/"  className="w-52 h-12 border border-gray-300 rounded-md px-4"/>
+                    <input type="text" className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12" />
+                </div>
+                <span>Linkedin</span>
+                <div className="flex">
+                    <input type="text" placeholder="linkedin.com/in/"  className="w-52 h-12 border border-gray-300 rounded-md px-4"/>
+                    <input type="text" className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"/>
                 </div>
             </div>
         </div>
