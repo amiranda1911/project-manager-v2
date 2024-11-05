@@ -1,4 +1,12 @@
-const KanBanCard = () => {
+import { AiFillMessage } from "react-icons/ai"
+import { FaCheckCircle } from "react-icons/fa"
+
+
+interface KanbanCardProps{
+	priority: string
+}
+
+const KanBanCard = ({priority} : KanbanCardProps) => {
   return (
     <div className="
         flex flex-col
@@ -9,10 +17,15 @@ const KanBanCard = () => {
 		rounded-[0.528125rem]
 		mx-auto my-2
 		">
-			<span className="font-jakarta 
-			text-1 md:text-6"
-			>
-				Mid
+			<span className={`
+				flex
+				font-jakarta 
+				text-1 md:text-6
+				px-[0.17625rem] py-[0.088125rem]
+				w-fit justify-start rounded-full
+				card-priority-${priority.toLowerCase()}
+			`}>
+				{priority}
 			</span>
 			<h2 className=" font-roboto font-bold 
 				text-3 md:text-10"
@@ -32,21 +45,19 @@ const KanBanCard = () => {
 					overflow-hidden
 			"
 			>
-				<div className="w-1/2">
-					<a className="w-[11px] h-[11px] 
-						bg-black 
-						overflow-hidden rounded-full"
-					>
-					t
-					</a>
+				<div className="w-1/2 relative flex">
+					{Array(5).map((_, index) => (
+            <img key={index} className="flex w-[11px] h-[11px] bg-black rounded-full"/>
+          ))}
+					
 				</div>
 				<div className="
 					w-1/2 
 					text-3 font-semibold font-roboto
 					flex justify-between"
 				>
-					<span>11</span>
-					<span>187</span>
+					<span className="flex items-center"><AiFillMessage color="#94A3B8" />11</span>
+					<span className="flex items-center"><FaCheckCircle color="#94A3B8" />187</span>
 				</div>
 			</footer>
     </div>
