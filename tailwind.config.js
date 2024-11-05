@@ -35,6 +35,22 @@ export default {
           '22': '2.5rem',         // 40px
           '23': '5.375rem',       // 86px
         },
+
+      colors: {
+        'black-opacity-50': 'rgba(0, 0, 0, 0.5)',
+        'gray-850': '#2B2F32'
+      }, 
+      height: {
+        '30': '119.89',
+        '46': '181px',
+      },
+      width: {
+        '29': '115.36px',
+        '45': '174.16px',
+      },
+      minWidth: {
+        '29': '115.36px',
+      }
     },
   },
   plugins: [],
