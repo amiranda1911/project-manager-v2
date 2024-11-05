@@ -8,6 +8,7 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import Kanban from '../pages/Kanban/Kanban';
 import BlockedPage from '../pages/BlockedPage/BlockedPage';
+import SettingsProfile from '../pages/SettingsProfile/SettingsProfile';
 
 const Routers = () => {
   return (
@@ -18,7 +19,8 @@ const Routers = () => {
         <Route path="/register" element={<SignUpPage />} />
         <Route element={<PrivateRoute isAuthenticated={true} />}>
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/kaban" element={<Kanban />} />
+          <Route path="/kanban" element={<Kanban />} />
+          <Route path="/setting" element={<SettingsProfile />} />
         </Route>
 
         <Route path="/notauthorization" element={<BlockedPage />} />
