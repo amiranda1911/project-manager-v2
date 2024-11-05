@@ -7,7 +7,7 @@ const ProfilePage = () => {
   return (
     <div>
       <div className="w-20">CABECA</div>
-      <main className="my-12 mx-4 mx-w-[22.6875rem] rounded-3xl bg-[#F6F6F6] opacity-90 py-14 px-8 lg:flex lg:flex-row lg:content-center lg:py-14 lg:px-24 ">
+      <main className="my-12 mx-4 mx-w-[22.6875rem] rounded-3xl bg-[#F6F6F6] opacity-90 py-14 px-8 lg:flex lg:flex-row lg:content-center lg:py-14 lg:px-24 2xl:justify-center ">
         <div className="lg:max-w-[38.75rem] lg:pr-6 lg:w-[31.25rem]">
           <UserFace />
           <ProfileData />
