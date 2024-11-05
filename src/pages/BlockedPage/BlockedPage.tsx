@@ -5,28 +5,30 @@ const BlockedPage = () => {
     <>
     <header className="h-[5rem] bg-blue-950"> </header>
 
-    <main className="grid grid-cols-1 md:grid-cols-2 md:w-[43.75rem] h-screen items-center justify-center bg-white">
+    <main className="flex flex-col h-screen items-center justify-center bg-white 
+            md:flex-row md:w-[43.75rem] md:mx-auto lg:w-[59.75rem]">
       
-      <div className="flex flex-col md:flex-row flex-grow justify-between">
+        <div className="flex flex-col h-full justify-center gap-y-[3.43rem] flex-grow md:flex-row md:w-[43.938rem] md:mx-auto">
           
-          <div className="flex items-center justify-center md:place-content-start">
-              <img 
-              src="src\assets\Lock403.svg" 
-              alt="403 Not Found" 
-              className="w-[12.68rem] h-[11.81rem]"
-              />
-          </div>
+            <div className="flex items-center justify-center md:place-content-start">
+                <img 
+                src="src\assets\Lock403.svg" 
+                alt="403 Not Found" 
+                className="w-[12.68rem] md:w-[20.912rem] lg:w-[28.438rem]"
+                />
+            </div>
                       
-          <div className="flex flex-col items-center justify-center  ">
-                <h1 className="font-roboto font-normal text-26">403</h1>
-                <p className="font-roboto font-normal text-black text-[1.125rem]">
-                Nothing to see here... yet! To see this content, you need to  
-                <span> 
-                    <a href="/" className="text-[#4f46e5] underline font-roboto font-bold text-15"> log in</a>
-                </span>
+            <div className="flex flex-col items-center text-center w-[14.375rem] mx-auto md:place-content-center md:w-[20.22rem]  ">
+                <h1 className="font-roboto font-normal text-26 md:text-[6rem] md:w-[20.22rem] md:text-left lg:w-[27.5rem]">403</h1>
+                <p className="font-roboto font-normal text-black text-[1.125rem] leading-[2] md:text-19 md:text-left lg:w-[27.5rem]">
+                    Nothing to see here... yet! To see this content, you need to 
+                    <span> 
+                        <a href="/LoginPage" className="text-[#4f46e5] underline font-roboto font-bold text-15"> log in</a>
+                    </span>
                 </p>                      
-          </div>
-      </div>
+            </div>
+            
+        </div>
     </main>
 
     <footer className="h-[12.875rem] bg-blue-900"> </footer>
