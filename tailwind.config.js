@@ -18,7 +18,20 @@ export default {
         green: {
           dark: '#22C55E',    // green dark
           light: '#C7F0D6',   // green light
-        }
+        },
+        gray: {
+          '850': '#2B2F32'
+        },
+        black: {
+          'opacity-50': 'rgba(0, 0, 0, 0.5)'
+        },
+        purple: {
+          '850': '#331436'
+        },
+        blue: {
+          '450': '#60A5FA',
+          '550': '#5570F1'
+        },
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],              // Define Roboto
@@ -45,13 +58,24 @@ export default {
         '18': '1.25rem',      // 20px
         '19': '1.5rem',       // 24px
         '20': '1.5625rem',    // 25px
-        '21': '1.661875rem',   // 26.59px
+        '21': '1.661875rem',  // 26.59px
         '22': '1.75rem',      // 28px
         '23': '2rem',         // 32px
         '24': '2.1875rem',    // 35px
         '25': '2.5rem',       // 40px
         '26': '5.375rem'      // 86px
       },
+      height: {
+        '30': '7.492rem',
+        '46': '11.3125rem',
+      },
+      width: {
+        '29': '7.22375rem',
+        '45': '10.886rem',
+      },
+      minWidth: {
+        '29': '7.22375rem',
+      }      
     },
   },
   plugins: [],
