@@ -39,3 +39,15 @@
 .done-column .column-header-desc {
     @apply text-green-dark
 }
+
+.card-priority-mid{
+    @apply bg-orange-light text-orange-dark
+}
+
+.card-priority-low{
+    @apply bg-violet-light text-violet-dark
+}
+
+.card-priority-high{
+    @apply bg-red-700 text-white
+}
