@@ -1,5 +1,26 @@
+//import { UploadImage } from "../../Components/UploadImage";
+import { useState } from "react";
+
 const SettingsProfile = () => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
+  const [file, setFile] = useState('')
+
+  const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const selectedFile = e.target.files?.[0];
+      if (selectedFile) {
+        setFile(URL.createObjectURL(selectedFile));
+      }
+  }
+  const dropImage = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    const selectedFile = e.dataTransfer.files[0];
+    
+  if (selectedFile) {
+    setFile(URL.createObjectURL(selectedFile));
+  
+    }
+  } 
+
 
   return (
     <div className="p-5 text-sm/9 md:text-base/9 lg:p-24">
@@ -88,8 +109,9 @@ const SettingsProfile = () => {
         </div>
         <div className="flex flex-col w-3/6 my-6 md:flex-row md:mx-11">
           <picture className="flex w-45 h-46 min-w-44 min-h-44 shadow-md rounded-full mr-8 items-center justify-center">
+            {/* Ajustar img de acordo com a foto do json depois fazer o upload e atualizar no json*/}
             <img
-              src={img}
+              src={file ? file : img}
               alt="Imagem de perfil"
               className="w-full h-full rounded-full shadow-md"
             />{' '}
@@ -97,7 +119,11 @@ const SettingsProfile = () => {
           </picture>
           <div>
             <p>Add new profile picture</p>
-            <input type="file" />
+            <input type="file" 
+              onChange={(e) => uploadImage(e)}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={(e) => dropImage(e)}
+             />
           </div>
         </div>
       </div>
