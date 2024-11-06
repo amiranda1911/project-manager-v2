@@ -68,6 +68,7 @@ export default {
       },
       height: {
         '30': '7.492rem',     // 119.872px
+        '38': '9.5rem',       // 152px
         '46': '11.3125rem',   // 181px
       },
       width: {
