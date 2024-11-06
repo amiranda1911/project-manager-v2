@@ -26,7 +26,7 @@ const SignUpPage = () => {
                 <section className="leading-[1.5] pb-[0.75rem]">
                     <h1 className="font-roboto font-bold text-center text-19 text-[#331436] pb-[1rem]">Sign up Information</h1>
                     <p className="font-roboto font-normal text-center text-14 text-[#331436]">Already have an account? 
-                        <span><a href="/LoginPage" className="text-[#4f46e5] underline font-roboto font-bold text-14"> Log in.</a></span>
+                        <span><a href="/login" className="text-[#4f46e5] underline font-roboto font-bold text-14"> Log in.</a></span>
                     </p>
                 </section>
 

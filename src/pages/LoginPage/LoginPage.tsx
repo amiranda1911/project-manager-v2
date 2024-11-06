@@ -17,7 +17,7 @@ const LoginPage = () => {
                     <h1 className="font-roboto font-bold text-center text-19 text-[#331436] pb-[1.5rem]">Login Information</h1>
                     <p className="font-roboto font-normal text-center text-15 text-[#331436]">Enter your credentials</p>
                     <p className="font-roboto font-normal text-center text-15 text-[#331436]">New here? Let´s take you to 
-                        <span><a href="/LoginPage" className="text-[#4f46e5] font-roboto font-bold text-15"> Sign up.</a></span>
+                        <span><a href="/login" className="text-[#4f46e5] font-roboto font-bold text-15"> Sign up.</a></span>
                     </p>
                 </section>
 
