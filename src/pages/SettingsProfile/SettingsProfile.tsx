@@ -114,12 +114,12 @@ const SettingsProfile = () => {
         </div>
         <div className="flex flex-wrap my-6 text-gray-850 lg:mx-11 lg:w-3/6">
           <div>
-            <label htmlFor="new-tasks" className="flex">
+            <label htmlFor="new-tasks" className="flex items-center">
               <input
                 type="radio"
-                id="new-tasks tasks-radio"
+                id="new-tasks"
                 name="notifications-update"
-                className="mr-2"
+                className="radio-input-tasks"
               />
               <p>New tasks</p>
             </label>
@@ -129,12 +129,12 @@ const SettingsProfile = () => {
             </p>
           </div>
           <div>
-            <label htmlFor="new-team-members" className="flex">
+            <label htmlFor="new-team-members" className="flex items-center">
               <input
                 type="radio"
-                id="new-team-members tasks-radio"
+                id="new-team-members"
                 name="notifications-update"
-                className="mr-2"
+                className="radio-input-tasks"
               />
               <p>New team members</p>
             </label>
@@ -145,12 +145,12 @@ const SettingsProfile = () => {
           </div>
 
           <div>
-            <label htmlFor="weekly-reports" className="flex">
+            <label htmlFor="weekly-reports" className="flex items-center">
               <input
                 type="radio"
-                id="weekly-reports tasks-radio"
+                id="weekly-reports"
                 name="notifications-update"
-                className="mr-2"
+                className="radio-input-tasks"
               />
               <p>Weekly reports</p>
             </label>
