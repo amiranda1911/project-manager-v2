@@ -34,6 +34,7 @@ export default {
         },
         'primary-color-dark': '#1E293B'
       },
+<<<<<<< Updated upstream
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],              // Define Roboto
         jakarta: ['Plus Jakarta Sans', 'sans-serif'],  // Define Plus Jakarta Sans
@@ -79,6 +80,24 @@ export default {
       minWidth: {
         '29': '7.22375rem',   // 115.580px 
       }      
+=======
+      colors: {
+        white2: '#rgba(255, 252, 252, 0.92)',            
+        darkBlue: '#160A60',         // Azul Escuro
+        black50: 'rgba(0, 0, 0, 0.5)', // Preto com 50% de opacidade
+        darkGray: '#1E293B',         // Cinza Escuro
+        darkPurple: 'rgba(35, 8, 28, 0.7)', // Roxo Escuro com 70% de opacidade
+        lightGray: 'rgba(217, 217, 217, 0.5)', // Cinza Claro com 50% de opacidade
+        black55: 'rgba(0, 0, 0, 0.55)', // Preto com 55% de opacidade
+        black10: 'rgba(0, 0, 0, 0.1)', // Preto com 10% de opacidade
+        bluishGray: '#2B3A50',       // Cinza Azulado
+        mutedBlue: '#94A3B8',        // Azul Suave
+        blueproject: '#92BBFF',
+        customPurple: 'rgba(35, 8, 28, 0.7)',
+        themanagercolor: '#FCF4B6',
+        bgTools: '#5C5A79',
+      },
+>>>>>>> Stashed changes
     },
   },
   plugins: [],
