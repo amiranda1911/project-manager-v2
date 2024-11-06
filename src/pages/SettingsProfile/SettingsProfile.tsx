@@ -1,10 +1,8 @@
-import './SettingsProfile.css'
-
 const SettingsProfile = () => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
 
   return (
-    <div className="p-5 leading-9 text-sm md:leading-9 md:text-base lg:p-24">
+    <div className="p-5 text-sm/9 md:text-base/9 lg:p-24">
       <div className="my-5">
         <div className="flex items-center mb-9 w-full">
           <picture className="flex mr-4 md:mr-8">
@@ -114,12 +112,12 @@ const SettingsProfile = () => {
         </div>
         <div className="flex flex-wrap my-6 text-gray-850 lg:mx-11 lg:w-3/6">
           <div>
-            <label htmlFor="new-tasks" className="flex">
+            <label htmlFor="new-tasks" className="flex items-center">
               <input
                 type="radio"
-                id="new-tasks tasks-radio"
+                id="new-tasks"
                 name="notifications-update"
-                className="mr-2"
+                className="radio-input-tasks"
               />
               <p>New tasks</p>
             </label>
@@ -129,12 +127,12 @@ const SettingsProfile = () => {
             </p>
           </div>
           <div>
-            <label htmlFor="new-team-members" className="flex">
+            <label htmlFor="new-team-members" className="flex items-center">
               <input
                 type="radio"
-                id="new-team-members tasks-radio"
+                id="new-team-members"
                 name="notifications-update"
-                className="mr-2"
+                className="radio-input-tasks"
               />
               <p>New team members</p>
             </label>
@@ -145,12 +143,12 @@ const SettingsProfile = () => {
           </div>
 
           <div>
-            <label htmlFor="weekly-reports" className="flex">
+            <label htmlFor="weekly-reports" className="flex items-center">
               <input
                 type="radio"
-                id="weekly-reports tasks-radio"
+                id="weekly-reports"
                 name="notifications-update"
-                className="mr-2"
+                className="radio-input-tasks"
               />
               <p>Weekly reports</p>
             </label>
