@@ -209,7 +209,7 @@ const SettingsProfile = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center lg:mt-20">
+      <div className="flex justify-center items-center mt-8 lg:mt-20">
         <button className="w-90 md:w-100 bg-primary-color-dark text-white rounded-lg h-12 ">Update information</button>
       </div>
       <div className="text-center my-4">
