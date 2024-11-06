@@ -8,7 +8,7 @@ const LoginPage = () => {
         <div className="lg:flex" >
 
             {/* Background image */}
-            <div className="relative bg-cover bg-center h-screen lg:w-[39.125rem]" style={{ backgroundImage: `url('LoginImg.svg')` }}>
+            <div className="relative bg-cover bg-center h-screen lg:w-[39.125rem] lg:h-auto lg:order-2" style={{ backgroundImage: `url('LoginImg.svg')` }}>
             </div>
 
             {/* Translucent background */}
@@ -22,7 +22,7 @@ const LoginPage = () => {
 
             {/*All the info in white space */}
             <div className="flex items-center justify-center w-[22.063rem] h-[39rem] absolute inset-0 m-auto 
-            md:w-[41rem] md:h-[39rem] lg:w-auto lg:static "> 
+            md:w-[41rem] md:h-[39rem] lg:w-auto lg:static lg:order-1"> 
 
                 <div>
                     <section className="leading-[1.5] pb-[1.5rem]">
