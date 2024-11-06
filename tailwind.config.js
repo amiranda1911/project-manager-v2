@@ -32,6 +32,7 @@ export default {
           '450': '#60A5FA',
           '550': '#5570F1'
         },
+        'primary-color-dark': '#1E293B'
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],              // Define Roboto
@@ -66,15 +67,17 @@ export default {
         '26': '5.375rem'      // 86px
       },
       height: {
-        '30': '7.492rem',
-        '46': '11.3125rem',
+        '30': '7.492rem',     // 119.872px
+        '46': '11.3125rem',   // 181px
       },
       width: {
-        '29': '7.22375rem',
-        '45': '10.886rem',
+        '29': '7.22375rem',   // 115.580px
+        '45': '10.886rem',    // 174.176px,
+        '90': '22.0625rem',      // 353px
+        '100': '25.625rem'    // 410px
       },
       minWidth: {
-        '29': '7.22375rem',
+        '29': '7.22375rem',   // 115.580px 
       }      
     },
   },
