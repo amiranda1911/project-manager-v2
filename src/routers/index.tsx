@@ -17,7 +17,7 @@ const Routers = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<SignUpPage />} />
-        <Route element={<PrivateRoute isAuthenticated={true} />}>
+        <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/kanban" element={<Kanban />} />
           <Route path="/setting" element={<SettingsProfile />} />
