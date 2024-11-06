@@ -78,7 +78,14 @@ export default {
       },
       minWidth: {
         '29': '7.22375rem',   // 115.580px 
-      }      
+      }, 
+      screens: {
+        'sm': '640px',  // Telas pequenas
+        'md': '768px',  // Telas médias
+        'lg': '1024px', // Telas grandes
+        'xl': '1280px', // Telas extra grandes
+        '2xl': '1536px' // Telas muito grandes
+      },
     },
   },
   plugins: [],
