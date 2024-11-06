@@ -34,6 +34,7 @@ export default {
         },
         'primary-color-dark': '#1E293B'
       },
+<<<<<<< Updated upstream
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],              // Define Roboto
         jakarta: ['Plus Jakarta Sans', 'sans-serif'],  // Define Plus Jakarta Sans
