@@ -7,7 +7,7 @@ interface MainHeaderProps {
 
 const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
   return (
-    <header className="bg-darkGray text-white py-4 px-8 flex items-center justify-between">
+    <header className="bg-primary-color-dark text-white py-4 px-8 flex items-center justify-between">
       {/* Esquerda: Logo e Texto */}
       <div className="flex items-center">
         <img src={logo} alt="Logo" className="h-8 mr-3" />
