@@ -26,13 +26,18 @@ export default {
           'opacity-50': 'rgba(0, 0, 0, 0.5)'
         },
         purple: {
-          '850': '#331436'
+          '850': '#331436',
+          'purpleabyss': '#160A60',
+          'lavander': '#5C5A79'
         },
         blue: {
           '450': '#60A5FA',
-          '550': '#5570F1'
+          '550': '#5570F1',
+          'lightBlue': '#92BBFF',
         },
-        'primary-color-dark': '#1E293B'
+        'primary-color-dark': '#1E293B',
+        'primary-dark': 'rgba(35, 8, 28, 0.7)',
+        'primary-yellow': '#FCF4B6'
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],              // Define Roboto
