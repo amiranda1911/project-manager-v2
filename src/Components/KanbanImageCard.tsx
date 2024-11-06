@@ -1,24 +1,25 @@
 import { AiFillMessage } from "react-icons/ai"
 import { FaCheckCircle } from "react-icons/fa"
 import ProgressBar from "./ProgressBar"
-
+import cardimage from '../../public/Frame.png'
 
 interface KanbanCardProps{
 	priority: string
 }
 
-const KanBanCard = ({priority} : KanbanCardProps) => {
+const KanBanImageCard = ({priority} : KanbanCardProps) => {
   return (
     <div className="
         flex flex-col box-border justify-between
-		w-[6.116rem] h-[4.004rem] m-0 p-[0.95rem]
-		md:w-[11.5rem] md:h-[7.53rem]
-		lg:w-[17.38rem] lg:h-[11.38rem]
+		w-[6.116rem] min-h-[4.004rem] m-0 p-[0.45rem] lg:p-[0.95rem]
+		md:w-[11.5rem] md:min-h-[7.53rem]
+		lg:w-[17.38rem] lg:min-h-[11.38rem]
 		bg-white
 		rounded-[0.528125rem]
 		mx-auto my-2
 		
 		">
+			<img src={cardimage} className="mb-[0.45rem] lg:mb-4"/>
 			<span className={`
 				flex
 				font-jakarta 
@@ -66,4 +67,4 @@ const KanBanCard = ({priority} : KanbanCardProps) => {
   )
 }
 
-export default KanBanCard
+export default KanBanImageCard
