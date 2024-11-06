@@ -13,7 +13,7 @@ const SignUpPage = () => {
 
   return (
     <>
-    <main className="bg-cover bg-center h-screen" style={{ backgroundImage: `url('public/SignUpImg.svg')`}}>
+    <main className="bg-cover bg-center h-screen" style={{ backgroundImage: `url('SignUpImg.svg')`}}>
     
         {/*Translucent background */}
         <div className="absolute inset-0 bg-white opacity-70">
