@@ -4,22 +4,34 @@ import { FcGoogle } from "react-icons/fc";
 const LoginPage = () => {
   return (
     <>
-    <div className="bg-cover bg-center h-screen" style={{ backgroundImage: `url('public/LoginImg.svg')`}}>
-        
-        {/*Translucent background */}
-        <div className="absolute inset-0 bg-white opacity-70">
-        </div>
-        
-        <div className="flex items-center justify-center w-[22.063rem] h-[39rem] bg-white absolute inset-0 m-auto rounded-[1.875rem] md:hidden"> {/*White Square */}
-            <div className="relative z-10">
+    <main>
+        <div className="lg:flex" >
 
-                <section className="leading-[1.5] pb-[1.5rem]">
-                    <h1 className="font-roboto font-bold text-center text-19 text-[#331436] pb-[1.5rem]">Login Information</h1>
-                    <p className="font-roboto font-normal text-center text-15 text-[#331436]">Enter your credentials</p>
-                    <p className="font-roboto font-normal text-center text-15 text-[#331436]">New here? Let´s take you to 
-                        <span><a href="/LoginPage" className="text-[#4f46e5] font-roboto font-bold text-15"> Sign up.</a></span>
-                    </p>
-                </section>
+            {/* Background image */}
+            <div className="relative bg-cover bg-center h-screen lg:w-[39.125rem] lg:h-auto lg:order-2" style={{ backgroundImage: `url('LoginImg.svg')` }}>
+            </div>
+
+            {/* Translucent background */}
+            <div className="absolute inset-0 bg-white opacity-70 lg:hidden">
+            </div> 
+            
+            {/*White Square */}    
+            <div className="flex items-center justify-center w-[22.063rem] h-[39rem] bg-white absolute inset-0 m-auto rounded-[1.875rem] 
+            md:w-[41rem] md:h-[39rem] lg:hidden">            
+            </div>   
+
+            {/*All the info in white space */}
+            <div className="flex items-center justify-center w-[22.063rem] h-[39rem] absolute inset-0 m-auto 
+            md:w-[41rem] md:h-[39rem] lg:w-auto lg:static lg:order-1"> 
+
+                <div>
+                    <section className="leading-[1.5] pb-[1.5rem]">
+                        <h1 className="font-roboto font-bold text-center text-19 text-[#331436] pb-[1.5rem] md:text-left md:text-25">Login Information</h1>
+                        <p className="font-roboto font-normal text-center text-15 text-[#331436] md:text-left md:text-16">Enter your credentials</p>
+                        <p className="font-roboto font-normal text-center text-15 text-[#331436] md:text-left md:text-16">New here? Let´s take you to 
+                            <span><a href="/login" className="text-[#4f46e5] font-roboto font-bold text-15 md:text-16 cursor-pointer"> sign up.</a></span>
+                        </p>
+                    </section>
 
                 <section className="flex flex-col">
                     <form className="flex flex-col gap-[1.5rem]">  {/*onSubmit={handleSubmit} */}                        
@@ -49,7 +61,7 @@ const LoginPage = () => {
             </div>
         </div>    
     </div>
-    
+    </main>
     </>
   )
 }

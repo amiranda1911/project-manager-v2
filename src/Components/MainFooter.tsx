@@ -4,7 +4,7 @@ import { faFacebookF, faInstagram, faLinkedinIn } from '@fortawesome/free-brands
 
 const Footer = () => {
   return (
-    <footer className="bg-darkGray text-white py-6">
+    <footer className="bg-primary-color-dark  text-white py-6">
       <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-between space-y-4 md:space-y-0">
         
         {/* Ícones de Rede Social */}
