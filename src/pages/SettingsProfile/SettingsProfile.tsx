@@ -1,29 +1,10 @@
-//import { UploadImage } from "../../Components/UploadImage";
-import { useState } from "react";
+import { UploadImage } from "../../Components/UploadImage";
 
 const SettingsProfile = () => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
-  const [file, setFile] = useState('')
-
-  const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const selectedFile = e.target.files?.[0];
-      if (selectedFile) {
-        setFile(URL.createObjectURL(selectedFile));
-      }
-  }
-  const dropImage = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault()
-    const selectedFile = e.dataTransfer.files[0];
-    
-  if (selectedFile) {
-    setFile(URL.createObjectURL(selectedFile));
-  
-    }
-  } 
-
 
   return (
-    <div className="p-5 text-sm/9 md:text-base/9 lg:p-24">
+    <div className="p-5 text-sm/9 md:text-base/9 lg:p-24 font-roboto">
       <div className="my-5">
         <div className="flex items-center mb-9 w-full">
           <picture className="flex mr-4 md:mr-8">
@@ -31,7 +12,7 @@ const SettingsProfile = () => {
               src={img}
               alt="Imagem de perfil"
               className="w-29 h-30 min-w-29 rounded-full shadow-md md:w-45 md:h-46"
-            />{' '}
+            />{" "}
             {/*shadow arrumar*/}
           </picture>
           <div>
@@ -64,7 +45,10 @@ const SettingsProfile = () => {
           className="flex flex-col flex-wrap  mt-6 mb-10 leading-5 text-sm md:w-10/12 md:flex-row lg:mx-11 lg:w-3/6"
         >
           <div className="flex flex-col w-full md:w-1/2">
-            <label htmlFor="update-first-name" className="font-medium my-1.5 text-purple-850">
+            <label
+              htmlFor="update-first-name"
+              className="font-medium my-1.5 text-purple-850"
+            >
               First name
             </label>
             <input
@@ -75,7 +59,10 @@ const SettingsProfile = () => {
             />
           </div>
           <div className="flex flex-col w-full md:w-1/2">
-            <label htmlFor="update-last-name" className="font-medium my-1.5 text-purple-850">
+            <label
+              htmlFor="update-last-name"
+              className="font-medium my-1.5 text-purple-850"
+            >
               Last name
             </label>
             <input
@@ -86,7 +73,10 @@ const SettingsProfile = () => {
             />
           </div>
           <div className="flex flex-col w-full mt-3.5">
-            <label htmlFor="update-email" className="font-medium my-1.5 text-purple-850">
+            <label
+              htmlFor="update-email"
+              className="font-medium my-1.5 text-purple-850"
+            >
               E-mail
             </label>
             <input
@@ -98,7 +88,7 @@ const SettingsProfile = () => {
           </div>
         </form>
       </div>
-      <hr className="my-4 lg:my-0"/>
+      <hr className="my-4 lg:my-0" />
       <div className="flex flex-col justify-between lg:flex-row">
         <div className="w-1/4 min-w-96">
           <h2 className="text-2xl font-medium">Profile picture</h2>
@@ -107,27 +97,9 @@ const SettingsProfile = () => {
             JPEG.
           </p>
         </div>
-        <div className="flex flex-col w-3/6 my-6 md:flex-row md:mx-11">
-          <picture className="flex w-45 h-46 min-w-44 min-h-44 shadow-md rounded-full mr-8 items-center justify-center">
-            {/* Ajustar img de acordo com a foto do json depois fazer o upload e atualizar no json*/}
-            <img
-              src={file ? file : img}
-              alt="Imagem de perfil"
-              className="w-full h-full rounded-full shadow-md"
-            />{' '}
-            {/*shadow arrumar*/}
-          </picture>
-          <div>
-            <p>Add new profile picture</p>
-            <input type="file" 
-              onChange={(e) => uploadImage(e)}
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => dropImage(e)}
-             />
-          </div>
-        </div>
+        <UploadImage />
       </div>
-      <hr className="my-4 lg:my-0"/>
+      <hr className="my-4 lg:my-0" />
       <div className="flex flex-col justify-between lg:flex-row">
         <div className="w-1/4 min-w-96">
           <h2 className="text-2xl font-medium">Communication</h2>
@@ -234,10 +206,18 @@ const SettingsProfile = () => {
         </div>
       </div>
       <div className="flex justify-center items-center mt-8 lg:mt-20">
-        <button className="w-90 md:w-100 bg-primary-color-dark text-white rounded-lg h-12 ">Update information</button>
+        <button className="w-90 md:w-100 bg-primary-color-dark text-white rounded-lg h-12 ">
+          Update information
+        </button>
       </div>
       <div className="text-center my-4">
-        <p className="text-sm ">Never mind, take me <a href="/" className="text-indigo-600 underline">back to my project.</a></p> {/* add link para pagina */}
+        <p className="text-sm ">
+          Never mind, take me
+          <a href="/" className="text-indigo-600 underline">
+            back to my project.
+          </a>
+        </p>
+        {/* add link para pagina */}
       </div>
     </div>
   );
