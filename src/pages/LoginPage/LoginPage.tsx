@@ -1,6 +1,6 @@
 import { FaFacebook } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-//lg:max-w-[39.125rem] [39.125rem] <div className=" z-10 md:items-start md:w-[32.5rem]">
+
 const LoginPage = () => {
   return (
     <>
@@ -29,7 +29,7 @@ const LoginPage = () => {
                         <h1 className="font-roboto font-bold text-center text-19 text-[#331436] pb-[1.5rem] md:text-left md:text-25">Login Information</h1>
                         <p className="font-roboto font-normal text-center text-15 text-[#331436] md:text-left md:text-16">Enter your credentials</p>
                         <p className="font-roboto font-normal text-center text-15 text-[#331436] md:text-left md:text-16">New here? Let´s take you to 
-                            <span><a href="/login" className="text-[#4f46e5] font-roboto font-bold text-15 cursor-pointer"> sign up.</a></span>
+                            <span><a href="/login" className="text-[#4f46e5] font-roboto font-bold text-15 md:text-16 cursor-pointer"> sign up.</a></span>
                         </p>
                     </section>
 
