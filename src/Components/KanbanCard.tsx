@@ -12,7 +12,8 @@ const KanBanCard = ({priority} : KanbanCardProps) => {
     <div className="
         flex flex-col
 		w-[6.116rem] h-[4.004rem] m-0 p-[0.26375rem]
-		md:w-[11.500625rem] md:h-[7.530625rem]
+		md:w-[11.5rem] md:h-[7.53rem]
+		lg:w-[17.38rem] lg:h-[11.38rem]
 		justify-between
 		bg-white
 		rounded-[0.528125rem]
