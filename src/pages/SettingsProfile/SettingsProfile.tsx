@@ -1,3 +1,5 @@
+import './SettingsProfile.css'
+
 const SettingsProfile = () => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
 
@@ -27,7 +29,7 @@ const SettingsProfile = () => {
           </p>
         </div>
       </div>
-      <hr className="my-5 lg:my-0" />
+      <hr className="my-4 lg:my-0" />
       <div className="flex flex-col  lg:flex-row lg:justify-between">
         <div className="w-1/4 min-w-96 mt-2">
           <h2 className="text-2xl font-medium">Basic information</h2>
@@ -43,7 +45,7 @@ const SettingsProfile = () => {
           className="flex flex-col flex-wrap  mt-6 mb-10 leading-5 text-sm md:w-10/12 md:flex-row lg:mx-11 lg:w-3/6"
         >
           <div className="flex flex-col w-full md:w-1/2">
-            <label htmlFor="update-first-name" className="font-medium my-1.5">
+            <label htmlFor="update-first-name" className="font-medium my-1.5 text-purple-850">
               First name
             </label>
             <input
@@ -54,7 +56,7 @@ const SettingsProfile = () => {
             />
           </div>
           <div className="flex flex-col w-full md:w-1/2">
-            <label htmlFor="update-last-name" className="font-medium my-1.5">
+            <label htmlFor="update-last-name" className="font-medium my-1.5 text-purple-850">
               Last name
             </label>
             <input
@@ -65,7 +67,7 @@ const SettingsProfile = () => {
             />
           </div>
           <div className="flex flex-col w-full mt-3.5">
-            <label htmlFor="update-email" className="font-medium my-1.5">
+            <label htmlFor="update-email" className="font-medium my-1.5 text-purple-850">
               E-mail
             </label>
             <input
@@ -77,7 +79,7 @@ const SettingsProfile = () => {
           </div>
         </form>
       </div>
-      <hr />
+      <hr className="my-4 lg:my-0"/>
       <div className="flex flex-col justify-between lg:flex-row">
         <div className="w-1/4 min-w-96">
           <h2 className="text-2xl font-medium">Profile picture</h2>
@@ -101,7 +103,7 @@ const SettingsProfile = () => {
           </div>
         </div>
       </div>
-      <hr />
+      <hr className="my-4 lg:my-0"/>
       <div className="flex flex-col justify-between lg:flex-row">
         <div className="w-1/4 min-w-96">
           <h2 className="text-2xl font-medium">Communication</h2>
@@ -115,7 +117,7 @@ const SettingsProfile = () => {
             <label htmlFor="new-tasks" className="flex">
               <input
                 type="radio"
-                id="new-tasks"
+                id="new-tasks tasks-radio"
                 name="notifications-update"
                 className="mr-2"
               />
@@ -130,7 +132,7 @@ const SettingsProfile = () => {
             <label htmlFor="new-team-members" className="flex">
               <input
                 type="radio"
-                id="new-team-members"
+                id="new-team-members tasks-radio"
                 name="notifications-update"
                 className="mr-2"
               />
@@ -146,7 +148,7 @@ const SettingsProfile = () => {
             <label htmlFor="weekly-reports" className="flex">
               <input
                 type="radio"
-                id="weekly-reports"
+                id="weekly-reports tasks-radio"
                 name="notifications-update"
                 className="mr-2"
               />
@@ -159,7 +161,7 @@ const SettingsProfile = () => {
           </div>
         </div>
       </div>
-      <hr />
+      <hr className="my-4 lg:my-0" />
       <div className="flex-col lg:flex-row flex lg:justify-between">
         <div className="w-1/4 min-w-96">
           <h2 className="text-2xl font-medium ">Social information</h2>
@@ -206,6 +208,12 @@ const SettingsProfile = () => {
             />
           </div>
         </div>
+      </div>
+      <div className="flex justify-center items-center mt-8 lg:mt-20">
+        <button className="w-90 md:w-100 bg-primary-color-dark text-white rounded-lg h-12 ">Update information</button>
+      </div>
+      <div className="text-center my-4">
+        <p className="text-sm ">Never mind, take me <a href="/" className="text-indigo-600 underline">back to my project.</a></p> {/* add link para pagina */}
       </div>
     </div>
   );
