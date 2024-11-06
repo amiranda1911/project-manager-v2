@@ -6,21 +6,28 @@ interface KanbanColumnProps{
 const KanbanColumn = ({type} : KanbanColumnProps) => {
   return (
     <div className={`
-			m-1 
+			flex flex-col
+			m-1 md:m-3
 			w-[6.881875rem] h-[12.29rem]
-			overflow-hidden
-			bg-slate-800
-			rounded-[0.66rem]
+			md:w-[12.82rem] md:h-[23.13rem]
+			lg:w-[19.38rem] lg:h-[34.56rem]
+			bg-[#1E293B]/10
+			md:rounded-[0.86rem]
+			lg:rounded-[1.45rem]
 			${type.replace(/\s+/g, '').toLowerCase()}-column
 			`}>
 				<header className="
 					column-header
 					flex
+					items-center
 					content-between
 					w-full h-4
+					md:h-[1.86rem]
+					lg:h-[2.81rem]
 					rounded-full
+					p-2
+					box-border
 					">
-						
 						<div className="
 							column-header-info
 							flex font-roboto 
@@ -28,23 +35,32 @@ const KanbanColumn = ({type} : KanbanColumnProps) => {
 							text-3 
 						">
 							<div className="
+								flex items-center justify-center
 								column-header-tasks-count
 								rounded-[27.145rem]
-								text-2 text-white font-semibold
-								px-[4.22px] py-[2.11px] m-[2px] box-border"
-							>
+								text-white font-roboto font-semibold
+								text-2 md:text-7 lg:text-14
+								px-[4.22px] py-[2.11px] m-[2px] 
+								box-border
+								md:w-[1.68rem] md:h-[1.37rem]
+								lg:w-[2.5rem] lg:h-[2rem]
+							">
 									25
 								</div>
 								<p className="
 										column-header-desc
 										flex items-center
-										text-3
+										text-3 md:text-10 lg:text-16
 										font-roboto font-bold
 								">{type}</p>	
 						</div>
 
 				</header>
-				<div className=" w-full max-h-full  overflow-y-scroll pb-4">
+				<div className=" w-full max-h-full 
+						overflow-hidden overflow-y-scroll 
+						p-0
+						lg:h-full"
+						style={{scrollbarWidth : "none"}}>
 					<KanBanCard priority={"Low"}/>
 					<KanBanCard priority={"Mid"}/>
 					<KanBanCard priority={"High"}/>
