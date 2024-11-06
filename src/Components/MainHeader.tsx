@@ -1,0 +1,41 @@
+import React from 'react';
+import logo from '../img/logo 1.png';
+
+interface MainHeaderProps {
+  pageType: 'page1' | 'page2' | 'page3';
+}
+
+const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
+  return (
+    <header className="bg-darkGray text-white py-4 px-8 flex items-center justify-between">
+      {/* Esquerda: Logo e Texto */}
+      <div className="flex items-center">
+        <img src={logo} alt="Logo" className="h-8 mr-3" />
+        <span className="text-xl font-semibold">Project Manager</span>
+      </div>
+
+      {/* Conteúdo direito baseado na página */}
+      {pageType === 'page1' && (
+        <button className=" w-[240px] border border-white text-white px-4 py-2 rounded-[30px] hover:bg-gray-700">
+          Login
+        </button>
+      )}
+      
+      {pageType === 'page3' && (
+        <nav className="flex items-center space-x-4">
+          <a href="#" className="hover:text-gray-300">Home</a>
+          <a href="#" className="hover:text-gray-300">About</a>
+          <a href="#" className="hover:text-gray-300">Settings</a>
+          <a href="#" className="hover:text-gray-300">Profile</a>
+          <input
+            type="text"
+            placeholder="Search..."
+            className="px-3 py-1 rounded bg-gray-700 text-white focus:outline-none"
+          />
+        </nav>
+      )}
+    </header>
+  );
+};
+
+export default MainHeader;
