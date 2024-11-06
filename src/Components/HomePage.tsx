@@ -63,7 +63,7 @@ const HomePage = () => {
         alt="imagem notebook"
         className='w-64 h-40 object-cover rounded mb-4'
       />
-      <h3>Manage Projects</h3>
+      <h3>Manage Project</h3>
       <p>20+ projects</p>
     </li>
 
