@@ -21,7 +21,7 @@ const LoginPage = () => {
                     </p>
                 </section>
 
-                <section className=" flex flex-col">
+                <section className="flex flex-col">
                     <form className="flex flex-col gap-[1.5rem]">  {/*onSubmit={handleSubmit} */}                        
                         <div className="flex flex-col w-[20.563rem] h-[3.75rem]">
                             <label htmlFor="email" className="font-roboto font-medium text-left text-14 text-[#331436]">Last Name</label>                  
