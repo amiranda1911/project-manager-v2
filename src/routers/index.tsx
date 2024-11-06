@@ -10,8 +10,6 @@ import Kanban from '../pages/Kanban/Kanban';
 import BlockedPage from '../pages/BlockedPage/BlockedPage';
 import SettingsProfile from '../pages/SettingsProfile/SettingsProfile';
 
-
-
 const Routers = () => {
   return (
     <BrowserRouter>
