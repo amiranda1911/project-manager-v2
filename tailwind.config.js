@@ -23,7 +23,8 @@ export default {
           '850': '#2B2F32'
         },
         black: {
-          'opacity-50': 'rgba(0, 0, 0, 0.5)'
+          'opacity-50': 'rgba(0, 0, 0, 0.5)',
+          'black': '#000000'
         },
         purple: {
           '850': '#331436',
@@ -73,6 +74,7 @@ export default {
       },
       height: {
         '30': '7.492rem',     // 119.872px
+        '38': '9.5rem',       // 152px
         '46': '11.3125rem',   // 181px
       },
       width: {
