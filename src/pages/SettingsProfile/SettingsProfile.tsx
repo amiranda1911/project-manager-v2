@@ -2,6 +2,7 @@ import { EnableNotifications } from "../../Components/EnableNotifications";
 import MainFooter from "../../Components/MainFooter";
 import MainHeader from "../../Components/MainHeader";
 import { UpdateInfos } from "../../Components/UpdateInfos";
+import { UpdateSocialnformation } from "../../Components/UpdateSocialnformation";
 import { UploadImage } from "../../Components/UploadImage";
 
 const SettingsProfile = () => {
@@ -81,44 +82,7 @@ const SettingsProfile = () => {
               receive project notifications or disable them completely.
             </p>
           </div>
-          <div className="w-3/6 my-6 lg:mx-10 lg:3/6">
-            <span>Twitter/X</span>
-            <div className="flex">
-              <input
-                type="text"
-                placeholder="x.com/"
-                className="w-52 h-12 border border-gray-300 rounded-md px-4"
-              />
-              <input
-                type="text"
-                className="border border-gray-300 rounded-md px-4  ml-1.5 w-36 h-12"
-              />
-            </div>
-            <span>Instagram</span>
-            <div className="flex">
-              <input
-                type="text"
-                placeholder="instagram.com/"
-                className="w-52 h-12 border border-gray-300 rounded-md px-4"
-              />
-              <input
-                type="text"
-                className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
-              />
-            </div>
-            <span>Linkedin</span>
-            <div className="flex">
-              <input
-                type="text"
-                placeholder="linkedin.com/in/"
-                className="w-52 h-12 border border-gray-300 rounded-md px-4"
-              />
-              <input
-                type="text"
-                className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
-              />
-            </div>
-          </div>
+          <UpdateSocialnformation />
         </div>
         <div className="flex justify-center items-center mt-8 lg:mt-20">
           <button className="w-90 md:w-100 bg-primary-color-dark text-white rounded-lg h-12 ">
