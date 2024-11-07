@@ -1,6 +1,6 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+//import React from 'react';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faFacebookF, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
         
         {/* Ícones de Rede Social */}
         <div className="flex space-x-4">
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+          {/*<div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
             <FontAwesomeIcon icon={faFacebookF} className="text-black" />
           </div>
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
@@ -17,7 +17,7 @@ const Footer = () => {
           </div>
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
             <FontAwesomeIcon icon={faLinkedinIn} className="text-black" />
-          </div>
+          </div>*/}
         </div>
 
         {/* Texto de Direitos e Links */}
