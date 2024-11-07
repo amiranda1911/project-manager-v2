@@ -14,7 +14,9 @@ const FormLogin = () => {
             <input type="paswword" id="Password" placeholder="Enter your password" className="font-roboto font-normal text-14 text-[#00000080] p-[0.75rem]
             w-[20.563rem] h-[2.25rem] border border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080] md:w-[32.5rem]"/>
         </div>
+        <div className="mt-[2.938rem] mb-[2.5rem] md:mt-[2rem] md:mb-[1.938rem]">
         <FormButtons buttonText="Login" />
+        </div>
     </form> 
     </>
   )
