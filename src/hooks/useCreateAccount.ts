@@ -3,18 +3,21 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './useAuth';
 
+import { baseUrl } from '../constants';
+
 interface CreateAccountData {
   first_name: string;
   last_name: string;
   email: string;
   job_position: string;
   password: string;
+  avatar: string;
 }
 
 export const useCreateAccount = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { setAuthorization } = useAuth();
+  const { setToken } = useAuth();
   const navigate = useNavigate();
 
   const createAccount = async (data: CreateAccountData) => {
@@ -31,11 +34,11 @@ export const useCreateAccount = () => {
         social_media: { twitter: '', instagram: '', linkedin: '' },
       };
 
-      const response = await axios.post('http://localhost:3000/users', newUser);
+      const response = await axios.post(`${baseUrl}/users`, newUser);
 
       if (response.status === 201) {
         const token = response.data.id; // Exemplo: usando o ID como token
-        setAuthorization(token); // Armazena o token no localStorage
+        setToken(token); // Armazena o token no localStorage
         navigate('/kanban'); // Redireciona para a página Kanban
       }
     } catch (err) {

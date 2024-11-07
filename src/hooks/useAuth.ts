@@ -1,23 +1,15 @@
 import { useState, useEffect } from 'react';
 
-const setLocalStorage = (key: string, value: string) => {
-  localStorage.setItem(key, JSON.stringify(value));
-};
-
-const getLocalStorage = (key: string): string | null => {
-  const item = localStorage.getItem(key);
-  return item ? JSON.parse(item) : null;
-};
-
 export const useAuth = () => {
   const [isAuthenticated] = useState(false);
 
-  const setAuthorization = (token: string) => {
-    setLocalStorage('token', token);
+  const setToken = (token: string) => {
+    localStorage.setItem('token', JSON.stringify(token));
   };
 
   const verifyIsAuthenticated = () => {
-    const token = getLocalStorage('token');
+    const item = localStorage.getItem('token');
+    const token = item ? JSON.parse(item) : null;
     return !!token;
   };
 
@@ -27,7 +19,7 @@ export const useAuth = () => {
 
   return {
     isAuthenticated,
-    setAuthorization,
+    setToken,
     verifyIsAuthenticated,
   };
 };
