@@ -9,14 +9,13 @@ const MainFooter = () => {
         {/* Ícones de Rede Social */}
         <div className="flex space-x-4 md:flex-row md:space-x-8">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-
-            <FontAwesomeIcon icon={faFacebookF} className="text-black-black" />
+            <FaFacebookF  className="text-[#000]"/>
           </div>
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FontAwesomeIcon icon={faInstagram} className="text-black-black" />
+            <FaInstagram className="text-[#000]"/>
           </div>
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FontAwesomeIcon icon={faLinkedinIn} className="text-black-black" />
+            <FaLinkedinIn className="text-[#000]"/>
 
           </div>
         </div>
