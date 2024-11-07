@@ -1,22 +1,21 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 
-const Footer = () => {
+const MainFooter = () => {
   return (
-    <footer className="bg-primary-color-dark  text-white py-6">
-      <div className="container mx-auto flex flex-col items-center md:flex-row md:justify-between space-y-4 md:space-y-0">
+    <footer className="  bg-primary-color-dark  text-white py-6">
+      <div className="container mx-auto flex flex-col h-[100px] items-center md:flex-row md:justify-between space-y-4 md:space-y-0">
         
         {/* Ícones de Rede Social */}
         <div className="flex space-x-4">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FontAwesomeIcon icon={faFacebookF} className="text-black" />
+            <FaFacebookF  className="text-[#000]"/>
           </div>
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FontAwesomeIcon icon={faInstagram} className="text-black" />
+            <FaInstagram className="text-[#000]"/>
+
           </div>
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FontAwesomeIcon icon={faLinkedinIn} className="text-black" />
+            <FaLinkedinIn className="text-[#000]"/>
           </div>
         </div>
 
@@ -34,4 +33,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default MainFooter;
