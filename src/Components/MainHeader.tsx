@@ -10,13 +10,13 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
     <header className="bg-primary-color-dark text-white py-4 px-8 flex items-center justify-between">
       {/* Esquerda: Logo e Texto */}
       <div className="flex items-center">
-        <img src={logo} alt="Logo" className="h-8 mr-3" />
-        <span className="text-xl font-semibold">Project Manager</span>
+        <img src={logo} alt="Logo" className="h-10 w-10 md:h-[50px] md:w-[50px] mr-3 "  />
+        <span className="font-roboto text-14 md:text-17 ">Project Manager</span>
       </div>
 
       {/* Conteúdo direito baseado na página */}
       {pageType === 'page1' && (
-        <button className=" w-[240px] border border-white text-white px-4 py-2 rounded-[30px] hover:bg-gray-700">
+        <button className="w-[105px] h-[36] lg:w-[240px] border border-white text-white px-4 py-2 rounded-[30px] font-roboto text-15 md:text-16 md:[24px]md:w-40 hover:bg-gray-700 ">
           Login
         </button>
       )}
