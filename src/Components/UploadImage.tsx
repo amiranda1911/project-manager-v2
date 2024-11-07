@@ -28,23 +28,25 @@ export const UploadImage = () => {
   };
   return (
     <div className="flex flex-col  my-6 md:w-3/6 md:flex-row md:mx-11">
-      <picture className="flex w-45 h-46 min-w-44 min-h-44 shadow-md rounded-full mr-8 items-center justify-center">
+      <picture className="flex min-w-44 min-h-44rounded-full mr-8 md:items-center md:justify-center ">
         {/* Ajustar img de acordo com a foto do json depois fazer o upload e atualizar no json*/}
         <img
           src={file ? file : img}
           alt="Imagem de perfil"
-          className="w-full h-full rounded-full shadow-md object-cover"
+          className="rounded-full shadow-md object-cover w-45 h-46"
         />
         {/*shadow arrumar*/}
       </picture>
-      <div className="">
+      <div className=" w-100">
         <p className="font-medium text-purple-850">Add new profile picture</p>
 
         { fileName ? 
-            <div className="border border-blue-450 rounded-md p-1.5 flex items-center my-2 bg-blue-100 ">
-                <FaPaperclip className="text-gray-400"/>
+            <div className="border border-blue-450 rounded-md p-1.5 flex items-center justify-between my-2 bg-blue-100 ">
+              <span className="flex items-center">
+                <FaPaperclip className="text-gray-400 h-[1.125rem] w-[1.125rem]"/>
                 <p className="mx-3">{fileName}</p>
-                <RiDeleteBin5Line />
+              </span>
+              <RiDeleteBin5Line className="text-slate-900 h-[1.125rem] w-[1.125rem]" />
             </div> : null}
 
         <div
