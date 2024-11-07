@@ -1,6 +1,8 @@
+import { EnableNotifications } from "../../Components/EnableNotifications";
 import MainFooter from "../../Components/MainFooter";
 import MainHeader from "../../Components/MainHeader";
 import { UpdateInfos } from "../../Components/UpdateInfos";
+import { UpdateSocialnformation } from "../../Components/UpdateSocialnformation";
 import { UploadImage } from "../../Components/UploadImage";
 
 const SettingsProfile = () => {
@@ -69,54 +71,7 @@ const SettingsProfile = () => {
               receive project notifications or disable them completely.
             </p>
           </div>
-          <div className="flex flex-wrap my-6 text-gray-850 lg:mx-11 lg:w-3/6">
-            <div>
-              <label htmlFor="new-tasks" className="flex items-center">
-                <input
-                  type="radio"
-                  id="new-tasks"
-                  name="notifications-update"
-                  className="radio-input-tasks"
-                />
-                <p>New tasks</p>
-              </label>
-              <p>
-                Receive an e-mail alert each time a new task is assigned to me
-                in a project.
-              </p>
-            </div>
-            <div>
-              <label htmlFor="new-team-members" className="flex items-center">
-                <input
-                  type="radio"
-                  id="new-team-members"
-                  name="notifications-update"
-                  className="radio-input-tasks"
-                />
-                <p>New team members</p>
-              </label>
-              <p>
-                Receive an e-mail alert each time a team members enters in a
-                project I’m assigned to.
-              </p>
-            </div>
-
-            <div>
-              <label htmlFor="weekly-reports" className="flex items-center">
-                <input
-                  type="radio"
-                  id="weekly-reports"
-                  name="notifications-update"
-                  className="radio-input-tasks"
-                />
-                <p>Weekly reports</p>
-              </label>
-              <p>
-                Receive a weekly e-mail with a basic report, including estimated
-                time and most active members.
-              </p>
-            </div>
-          </div>
+          <EnableNotifications />
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex-col lg:flex-row flex lg:justify-between">
@@ -127,44 +82,7 @@ const SettingsProfile = () => {
               receive project notifications or disable them completely.
             </p>
           </div>
-          <div className="w-3/6 my-6 lg:mx-10 lg:3/6">
-            <span>Twitter/X</span>
-            <div className="flex">
-              <input
-                type="text"
-                placeholder="x.com/"
-                className="w-52 h-12 border border-gray-300 rounded-md px-4"
-              />
-              <input
-                type="text"
-                className="border border-gray-300 rounded-md px-4  ml-1.5 w-36 h-12"
-              />
-            </div>
-            <span>Instagram</span>
-            <div className="flex">
-              <input
-                type="text"
-                placeholder="instagram.com/"
-                className="w-52 h-12 border border-gray-300 rounded-md px-4"
-              />
-              <input
-                type="text"
-                className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
-              />
-            </div>
-            <span>Linkedin</span>
-            <div className="flex">
-              <input
-                type="text"
-                placeholder="linkedin.com/in/"
-                className="w-52 h-12 border border-gray-300 rounded-md px-4"
-              />
-              <input
-                type="text"
-                className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
-              />
-            </div>
-          </div>
+          <UpdateSocialnformation />
         </div>
         <div className="flex justify-center items-center mt-8 lg:mt-20">
           <button className="w-90 md:w-100 bg-primary-color-dark text-white rounded-lg h-12 ">
