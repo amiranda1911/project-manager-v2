@@ -12,10 +12,10 @@ const HomePage = () => {
     <div>
       <MainHeader pageType="page1" />
       <main>
-      <section className="flex flex-col lg:flex-row lg:items-center bg-[url('https://images.unsplash.com/photo-1546984575-757f4f7c13cf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center h-[700px] lg:h-[644px]">
+      <section className=" bg-[url('https://images.unsplash.com/photo-1546984575-757f4f7c13cf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center h-[700px] lg:h-[644px]">
   {/* Div com o título, parágrafo e botão à esquerda */}
-  <div className="lg:flex lg:items-center lg:h-screen lg:mx-auto font-roboto">
-    <div className="bg-black-opacity-50 text-center p-10 rounded-[30px] mx-4 mb-7 mt-14 md:mx-10 md:text-left lg:mb-[296px]">
+  <div className="lg:flex lg:items-center justify-center lg:m-auto  font-roboto">
+    <div className="bg-black-opacity-50 text-center p-10 rounded-[30px] mx-4 mb-7 mt-14 md:mx-10 md:text-left lg:w-[656px] lg:h-[285px] ">
       <h1 className="mb-4 whitespace-nowrap font-bold text-19 w-full md:text-25">
         <span className="text-white mr-2">Welcome to</span>
         <span className="text-blue-lightBlue">Project Manager</span>
@@ -27,9 +27,11 @@ const HomePage = () => {
         Get Started
       </button>
     </div>
-    <img src={retrato} alt="Retrato" className="hidden lg:block lg:absolute" />
+
+    <img src={retrato} alt="Retrato" className="hidden lg:block absolute top-6  bg-cover " />
+
     {/* Div com as estatísticas à direita */}
-    <div className="flex flex-col md:flex-row md:justify-around md:items-center items-center lg:items-end lg:w-1/2 space-y-4 lg:space-y-5 lg:pl-10 lg:order-2 font-roboto  ">
+    <div className="flex flex-col md:flex-row md:justify-around md:items-center items-center lg:flex-col  lg:w-1/2 space-y-5 lg:space-y-5 lg:ml-0    font-roboto   ">
       <div className="bg-primary-dark text-white rounded-[15px] w-[179px] h-[80px] shadow-md p-4">
         <h2>2000+</h2>
         <h2>Satisfied clients</h2>
