@@ -3,7 +3,7 @@ import { useState } from "react";
 export const UpdateSocialnformation = () => {
 
 const [socialMedia, setSocialMedia] = useState({
-    values: {
+    socialMedia: {
         x: 'sabrina',
         instagram: 'souza',
         linkedin: 'nada'
@@ -15,8 +15,8 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   
     setSocialMedia({
       ...socialMedia,
-      values: {
-        ...socialMedia.values,
+      socialMedia: {
+        ...socialMedia.socialMedia,
         [name]: value,
       },
     });
