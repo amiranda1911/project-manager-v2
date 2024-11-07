@@ -23,7 +23,8 @@ export default {
           '850': '#2B2F32'
         },
         black: {
-          'opacity-50': 'rgba(0, 0, 0, 0.5)'
+          'opacity-50': 'rgba(0, 0, 0, 0.5)',
+          'black': '#000000'
         },
         purple: {
           '850': '#331436',
