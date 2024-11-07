@@ -2,7 +2,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 
 const MainFooter = () => {
   return (
-    <footer className="  bg-primary-color-dark  text-white py-6">
+    <footer className="    bg-primary-color-dark  text-white py-6">
       <div className="container mx-auto flex flex-col h-[100px] items-center md:flex-row md:justify-between space-y-4 md:space-y-0">
         
         {/* Ícones de Rede Social */}

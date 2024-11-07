@@ -1,9 +1,16 @@
 import { FaFacebook } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
+import MainHeader from "../../Components/MainHeader";
+import MainFooter from "../../Components/MainFooter";
 
 const LoginPage = () => {
   return (
     <>
+
+    <header>
+        <MainHeader pageType='page2' />
+    </header>
+
     <main>
         <div className="lg:flex" >
 
@@ -47,21 +54,26 @@ const LoginPage = () => {
                         </div>
                     </form>
 
-                    <button type="submit" className="w-[20.563rem] h-[2.25rem] bg-[#1e293b] rounded-md text-white font-roboto font-medium font-15 mt-[2.938rem] mb-[2.5rem]" > 
+                    <button type="submit" className="w-[20.563rem] h-[2.25rem] bg-[#1e293b] rounded-md text-white font-roboto font-medium font-15 mt-[2.938rem] mb-[2.5rem]
+                    cursor-pointer hover:shadow-lg hover:brightness-150 transition duration-200
+                    md:w-[31.75rem] md:h-[3rem] md:text-16 md:mt-[2rem] md:mb-[1.938rem]" > 
                         Login 
                     </button>
 
                     <h3 className="font-roboto font-normal text-center text-14 text-[#331436] mb-[0.563rem]">or sign up with...</h3>
                     
                     <div className="flex flex-row items-center justify-center gap-[0.813rem]">
-                        <a href="/" className="flex items-center justify-center border rounded-full border-[#3333334D] w-[6.875rem] h-[3.5rem] text-[#0C82EE] text-23" > <FaFacebook /> </a>
-                        <a href="/" className="flex items-center justify-center border rounded-full border-[#3333334D] w-[6.875rem] h-[3.5rem] text-23"> <FcGoogle /> </a>
+                        <a href="/" className="flex items-center justify-center border rounded-full border-[#3333334D] w-[6.875rem] h-[3.5rem] text-[#0C82EE] text-23 cursor-pointer hover:shadow-lg hover:brightness-125" > <FaFacebook /> </a>
+                        <a href="/" className="flex items-center justify-center border rounded-full border-[#3333334D] w-[6.875rem] h-[3.5rem] text-23 cursor-pointer hover:shadow-lg hover:brightness-125"> <FcGoogle /> </a>
                     </div>
                 </section>    
             </div>
         </div>    
     </div>
     </main>
+    <footer>
+        <MainFooter />
+    </footer>
     </>
   )
 }
