@@ -29,22 +29,27 @@ The following endpoints are available for managing users:
 
 ```json
 {
-      "id": "e30a",
-      "first_name": "adson",
-      "last_name": "Nunes",
-      "email": "adson.tanajura@gmail.com",
-      "job_position": "dawd",
-      "password": "dawda",
-      "username": "@adsonNunes",
-      "creation_date": "2024-11-06T22:57:56.081Z",
-      "role": "dawd",
-      "avatar": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
-      "social_media": {
-        "twitter": "",
-        "instagram": "",
-        "linkedin": ""
-      }
-    },
+  "id": "0768",
+  "firstName": "adawd",
+  "lastName": "wadawdaw",
+  "email": "adson.tanajura@gmail.com",
+  "jobPosition": "dawdawdwa",
+  "password": "adwdaw",
+  "userName": "@adawdwadawdaw",
+  "creationDate": "2024-11-08T18:54:42.364Z",
+  "role": "dawdawdwa",
+  "avatar": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+  "socialMedia": {
+    "twitter": "",
+    "instagram": "",
+    "linkedin": ""
+  },
+  "notifications": {
+    "newTasks": false,
+    "newMembers": false,
+    "weeklyReports": false
+  }
+}
 ```
 
 ### Tasks
