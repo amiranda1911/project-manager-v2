@@ -6,12 +6,12 @@ import { useAuth } from './useAuth';
 import { baseUrl } from '../constants';
 
 interface CreateAccountData {
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  job_position: string;
+  jobPosition: string;
   password: string;
-  avatar: string;
+  avatar?: string;
 }
 
 export const useCreateAccount = () => {
@@ -27,11 +27,16 @@ export const useCreateAccount = () => {
     try {
       const newUser = {
         ...data,
-        username: `@${data.first_name}${data.last_name}`,
-        creation_date: new Date().toISOString(),
-        role: data.job_position,
+        userName: `@${data.firstName}${data.lastName}`,
+        creationDate: new Date().toISOString(),
+        role: data.jobPosition,
         avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
-        social_media: { twitter: '', instagram: '', linkedin: '' },
+        socialMedia: { twitter: '', instagram: '', linkedin: '' },
+        notifications: {
+          newTasks: false,
+          newMembers: false,
+          weeklyReports: false,
+        },
       };
 
       const response = await axios.post(`${baseUrl}/users`, newUser);

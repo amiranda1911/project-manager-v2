@@ -7,6 +7,10 @@ export const useAuth = () => {
     localStorage.setItem('token', JSON.stringify(token));
   };
 
+  const getToken = () => {
+    return localStorage.getItem('token');
+  };
+
   const verifyIsAuthenticated = () => {
     const item = localStorage.getItem('token');
     const token = item ? JSON.parse(item) : null;
@@ -20,6 +24,7 @@ export const useAuth = () => {
   return {
     isAuthenticated,
     setToken,
+    getToken,
     verifyIsAuthenticated,
   };
 };
