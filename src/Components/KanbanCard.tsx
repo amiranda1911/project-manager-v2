@@ -1,13 +1,15 @@
 import { AiFillMessage } from "react-icons/ai"
 import { FaCheckCircle } from "react-icons/fa"
 import ProgressBar from "./ProgressBar"
+import { Priority } from "../utils/EnumPriority"
+import { Task } from "../utils/Task"
 
 
 interface KanbanCardProps{
-	priority: string
+	task: Task
 }
 
-const KanBanCard = ({priority} : KanbanCardProps) => {
+const KanBanCard = ({task} : KanbanCardProps) => {
   return (
     <div className="
         flex flex-col box-border justify-between
@@ -26,23 +28,23 @@ const KanBanCard = ({priority} : KanbanCardProps) => {
 				px-[0.17625rem] py-[0.088125rem]
 				w-fit justify-start rounded-[1rem]
 				lg:p-2
-				card-priority-${priority.toLowerCase()}
+				card-priority-${Priority[task.priority].toLowerCase()}
 			`}>
-				{priority}
+				{Priority[task.priority]}
 			</span>
 			<h2 className=" font-roboto font-bold 
 				text-3 md:text-10 lg:text-16"
 			>
-				Task 3</h2>
+				{task.title}</h2>
 			<div className=" w-full font-jakarta	
 					text-2 md:text-7 lg:text-14
 			 		flex flex-row	justify-between "
 			>
 				<span>Progress</span>
-				<span>0%</span>
+				<span>{task.progress}%</span>
 			</div>
         
-			<ProgressBar progress={30}/>
+			<ProgressBar progress={task.progress}/>
 			<footer className="flex flex-row
 					lg:h-[2rem] 
 					overflow-hidden
@@ -58,8 +60,8 @@ const KanBanCard = ({priority} : KanbanCardProps) => {
 					text-3 lg:text-16 font-semibold font-roboto
 					flex justify-between
 					">
-					<span className="flex items-center"><AiFillMessage color="#94A3B8" />11</span>
-					<span className="flex items-center"><FaCheckCircle color="#94A3B8" />187</span>
+					<span className="flex items-center"><AiFillMessage color="#94A3B8" />{task.commentsCount}</span>
+					<span className="flex items-center"><FaCheckCircle color="#94A3B8" />{task.completedTasksCount}</span>
 				</div>
 			</footer>
     </div>
