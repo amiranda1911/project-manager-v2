@@ -2,10 +2,11 @@ import FormButtons from "./FormButtons"
 import React, { useState, useEffect } from 'react';
 import { UserInfo } from "../types/FormTypes"
 
-const validEmail = /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;  
-const validPassword = /(?=(.*[0-9]))(?=.*[!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/ ;
 const validName = /^[a-zA-Z]{2,}$/;
+//lastName tem a mesma validação de name
+const validEmail = /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 const validProfession = /^[a-zA-Z]{5,}$/;
+const validPassword = /(?=(.*[0-9]))(?=.*[!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/ ;
 
 const FormSignUp: React.FC = () => {
  
@@ -38,7 +39,7 @@ const FormSignUp: React.FC = () => {
         let passwordErr = '';
 
         if (!validName.test(userInfo.name)) nameErr = 'Name must be at least 2 characters.';
-        if (!validName.test(userInfo.lastName)) lastNameErr = 'Last name must be at least 2 characters.';
+        if (!validName.test(userInfo.lastName)) lastNameErr = 'Last name must be at least 2 characters.'; //lastName tem a mesma validação do name
         if (!validEmail.test(userInfo.email)) emailErr = 'Please enter a valid email address.';
         if (!validProfession.test(userInfo.profession)) professionErr = 'Profession must be at least 5 characters.';
         if (!validPassword.test(userInfo.password)) passwordErr = 'Password is too weak.';
@@ -65,10 +66,10 @@ const FormSignUp: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validate(userInfo)) {
-        alert('Formulário enviado!');
+        alert('Formulário enviado!');    //mudar alert para mensagem em tela
        // clearForm();
         } else {
-        alert('Corrija os erros antes de enviar.');
+        alert('Corrija os erros antes de enviar.');   //mudar alert par amensagem em tela
         }
     };
 
@@ -162,6 +163,5 @@ const FormSignUp: React.FC = () => {
     </>
   )
 }
-
 
 export default FormSignUp
