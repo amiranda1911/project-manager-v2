@@ -1,25 +1,46 @@
-import { useState } from "react"
+interface UpdateInfosSettingsProps {
+  updateInfosSettings: (section: string | null, key: string, value: string | number | boolean) => void;
+}
 
-export const UpdateInfos = () => {
-    const [name, setName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [email, setEmail] = useState('')
+export const UpdateInfos = ({updateInfosSettings}: UpdateInfosSettingsProps) => {
 
-
-    const emaisIsValid = () => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email)
+  const emailIsValid = (value: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+  };
+  const nameIsValid = (value: string) => {
+    return value.length > 2;
+  };
+  const lastNameIsValid = (value: string) => {
+    return value.length > 2;
+  };
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    switch (name) {
+      case "firstName":
+        if (!nameIsValid(value)) {
+          console.log("Please, enter a name with more than 2 characters.");
+        } else {
+          updateInfosSettings(null, name, value);
+        }
+        break;
+      case "lastName":
+        if (!lastNameIsValid(value)) {
+          console.log("Please, enter a last name with more than 2 characters.");
+        } else {
+          updateInfosSettings(null, name, value);
+        }
+        break;
+      case "email":
+        if (!emailIsValid(value)) {
+          console.log("Enter a valid email!");
+        } else {
+          updateInfosSettings(null, name, value);
+        }
+        break;
     }
-
-    if(name.length <= 2 ) {
-        console.log('Please, enter a name with more than 2 characters.' )
-    } else if(lastName.length <= 2) {
-        console.log('Please, enter a last name with more than 2 characters.' )
-    } else if (!emaisIsValid()) {
-        console.log("Enter a valid email!")
-    } else {
-        console.log('foi')
-    }
+  };
 
   return (
     <form
@@ -37,10 +58,11 @@ export const UpdateInfos = () => {
             <input
               type="text"
               id="update-first-name"
+              name="firstName"
               className="p-2 border border-gray-300 rounded-md md:mr-5"
               placeholder="New first name"
               //pegar valor digitado pelo usuario
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="flex flex-col w-full md:w-1/2">
@@ -56,7 +78,8 @@ export const UpdateInfos = () => {
               className="p-2 border border-gray-300 rounded-md"
               placeholder="New last name"
               //pegar valor digitado pelo usuario
-              onChange={(e) => setLastName(e.target.value)}
+              name="lastName"
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="flex flex-col w-full mt-3.5">
@@ -71,10 +94,12 @@ export const UpdateInfos = () => {
               id="update-email"
               className="p-2 border border-gray-300 rounded-md"
               placeholder="New e-mail"
+              name="email"
               //pegar valor digitado pelo usuario
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => handleChange(e)}
             />
           </div>
         </form>
-  )
-}
+    )
+  }
+
