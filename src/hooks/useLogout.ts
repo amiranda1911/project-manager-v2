@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const useRemoveToken = () => {
+const useLogout = () => {
   const navigate = useNavigate();
 
   const removeToken = useCallback(() => {
@@ -12,4 +12,4 @@ const useRemoveToken = () => {
   return removeToken;
 };
 
-export default useRemoveToken;
+export default useLogout;
