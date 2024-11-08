@@ -1,4 +1,30 @@
+import { useState } from "react"
+
 export const EnableNotifications = () => {
+    const [options, setOptions] = useState({
+        //valores reais serao pegos do json serve
+        notifications: {
+            newTasks: false,
+            newMembers: false,
+            weeklyReports: false
+        }
+    })
+    
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, checked} = e.target
+
+        setOptions((prevState) => ({
+            ...prevState,
+            values: {
+              ...prevState.notifications,
+              [name]: checked,
+            },
+          }));
+
+      };
+    
+console.log(options)
+
   return (
     <div className="flex flex-wrap my-6 text-gray-850 lg:mx-11 lg:w-3/6">
             <div>
@@ -6,8 +32,10 @@ export const EnableNotifications = () => {
                 <input
                   type="checkbox"
                   id="new-tasks"
-                  name="new-tasks"
+                  name="newTasks"
                   className="radio-input-tasks"
+                  checked={options.notifications.newTasks}
+                  onChange={(e) => handleCheckboxChange(e)}
                 />
                 <p>New tasks</p>
               </label>
@@ -21,8 +49,10 @@ export const EnableNotifications = () => {
                 <input
                   type="checkbox"
                   id="new-team-members"
-                  name="new-team-members"
+                  name="newMembers"
                   className="radio-input-tasks"
+                  checked={options.notifications.newMembers}
+                  onChange={(e) => handleCheckboxChange(e)}
                 />
                 <p>New team members</p>
               </label>
@@ -37,8 +67,10 @@ export const EnableNotifications = () => {
                 <input
                   type="checkbox"
                   id="weekly-reports"
-                  name="weekly-reports"
+                  name="weeklyReports"
                   className="radio-input-tasks"
+                  checked={options.notifications.weeklyReports}
+                  onChange={(e) => handleCheckboxChange(e)}
                 />
                 <p>Weekly reports</p>
               </label>

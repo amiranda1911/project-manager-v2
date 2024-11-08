@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import FixedMetrics from '../../Components/FixedMetrics'
 import KanbanColumn from '../../Components/KanbanColumn'
-import MainHeader from '../../Components/MainHeader'
 import kanbanCanvasBgImage from '/public/kanban-bg.png' 
 import { BsPinFill } from 'react-icons/bs'
+import CreationModal from '../../Components/CreationModal'
 const Kanban = () => {
   const [showFixedMetric, setShowFixedMetric] = useState<boolean>(false)
-
+  const [showCreationModal, setShowCreationModal] = useState<boolean>(false)
   return (
     <>
     <div className={`flex flex-grow box-border w-full relative`}>
+      {showCreationModal && <CreationModal closeDispatch={setShowCreationModal}/>}
       <div className={`
         m-4 w-full
         rounded-[1.875rem]
