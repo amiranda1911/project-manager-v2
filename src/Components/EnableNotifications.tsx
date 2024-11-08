@@ -1,6 +1,10 @@
 import { useState } from "react"
 
-export const EnableNotifications = () => {
+interface UpdateInfosSettingsProps {
+  updateInfosSettings: (section: string | null, key: string, value: string | number | boolean) => void;
+}
+
+export const EnableNotifications = ({updateInfosSettings}: UpdateInfosSettingsProps) => {
     const [options, setOptions] = useState({
         //valores reais serao pegos do json serve
         notifications: {
@@ -21,10 +25,9 @@ export const EnableNotifications = () => {
             },
           }));
 
-      };
-    
-console.log(options)
+          updateInfosSettings("notifications", name, checked)
 
+      };
   return (
     <div className="flex flex-wrap my-6 text-gray-850 lg:mx-11 lg:w-3/6">
             <div>

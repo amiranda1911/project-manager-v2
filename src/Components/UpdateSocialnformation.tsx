@@ -1,6 +1,9 @@
 import { useState } from "react";
+interface UpdateInfosSettingsProps {
+  updateInfosSettings: (section: string | null, key: string, value: string | number | boolean) => void;
+}
 
-export const UpdateSocialnformation = () => {
+export const UpdateSocialnformation = ({updateInfosSettings}: UpdateInfosSettingsProps ) => {
 
 const [socialMedia, setSocialMedia] = useState({
     socialMedia: {
@@ -20,9 +23,8 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         [name]: value,
       },
     });
+    updateInfosSettings('socialMedia', name, value)
   };
-
-console.log(socialMedia)
 
   return (
     <div className="w-3/6 my-6 lg:mx-10 lg:3/6">
@@ -36,7 +38,7 @@ console.log(socialMedia)
         />
         <input
           type="text"
-          name="x"
+          name="twitter"
           className="border border-gray-300 rounded-md px-4  ml-1.5 w-36 h-12"
           onChange={(e) => handleInputChange(e)}
         />
@@ -60,7 +62,6 @@ console.log(socialMedia)
       <div className="flex">
         <input
           type="text"
-          name="linkedin"
           placeholder="linkedin.com/in/"
           className="w-52 h-12 border border-gray-300 rounded-md px-4"
           disabled={true}
@@ -68,6 +69,7 @@ console.log(socialMedia)
         />
         <input
           type="text"
+          name="linkedin"
           className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
           onChange={(e) => handleInputChange(e)}
         />
