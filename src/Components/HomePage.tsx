@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import retrato from '../img/RETRAT_1-removebg 1.png';
 import frame1 from '../img/frame.png';
 import frame2 from '../img/frame2.png';
@@ -6,8 +6,44 @@ import frame3 from '../img/frame3.png';
 import frame4 from '../img/frame4.png';
 import MainHeader from './MainHeader';
 import MainFooter from './MainFooter';
+import Modal from './Modal';
 
 const HomePage = () => {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // Função para validar e-mail
+  const validateEmail = (email: string) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  };
+
+  // Função para validar nome
+  const validateName = (name: string) => {
+    const regex = /^[A-Za-z\s]+$/;
+    return name.length >= 2 && regex.test(name);
+  };
+
+  // Função para lidar com o envio do formulário
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setEmailError('');
+    setNameError('');
+
+    if (!email || !name) {
+      if (!email) setEmailError('Email is required');
+      if (!name) setNameError('Name is required');
+    } else if (!validateEmail(email)) {
+      setEmailError('Invalid email address');
+    } else if (!validateName(name)) {
+      setNameError('Name must be at least 2 characters and contain no numbers');
+    } else {
+      setModalOpen(true);
+    }
+  };
   return (
     <div>
       <MainHeader pageType="page1" />
@@ -23,15 +59,15 @@ const HomePage = () => {
       <p className="mb-4 text-white text-14 md:text-16 md:text-justify leading-loose lg:leading-[24px]  ">
         Get your projects and ideas in order, all in one place! Sign up now and <br/> discover a smarter way to manage your work with efficiency and <br/> teamwork.
       </p>
-      <button className="border border-white rounded-[30px] px-10 py-1 text-white md:self-start md:w-[240px] md:h-[48px]">
+      <a href="/register"><button  className="border border-white rounded-[30px] px-10 py-1 text-white md:self-start md:w-[240px] md:h-[48px]">
         Get Started
-      </button>
+      </button></a>
     </div>
 
     <img src={retrato} alt="Retrato" className="hidden lg:block absolute top-6  bg-cover " />
 
     {/* Div com as estatísticas à direita */}
-    <div className="flex flex-col md:flex-row md:justify-around md:items-center items-center lg:flex-col  lg:w-32 space-y-5 lg:mt-14    font-roboto ">
+    <div className="flex flex-col md:flex-row md:justify-around md:items-center items-center lg:flex-col  lg:w-28 space-y-5 lg:mt-14    font-roboto ">
       <div className="bg-primary-dark text-white rounded-[15px] w-[179px] h-[80px] shadow-md p-4">
         <h2>2000+</h2>
         <h2>Satisfied clients</h2>
@@ -125,26 +161,50 @@ const HomePage = () => {
           </div>
         </section> 
 
-        <section className="flex flex-col lg:flex-row lg:justify-center   items-center bg-white2 text-purple-purpleabyss   font-roboto p-8 lg:p-16">
+        <section className="flex flex-col lg:flex-row lg:justify-center items-center bg-white2 text-purple-purpleabyss font-roboto p-8 lg:p-16">
           <div className="text-center m-14 lg:translate-x-[-155px] lg:text-left">
-            <h1 className="w-full  text-20 font-bold mb-6 md:text-25">Subscribe to Updates</h1>
+            <h1 className="w-full text-20 font-bold mb-6 md:text-25">Subscribe to Updates</h1>
             <p className='text-14 md:text-16'>Stay informed with our latest updates</p>
           </div>
-          <form className="w-96 h-80 p-4 bg-white rounded-lg shadow-md flex flex-col justify-between items-center lg:items-start">
+          <form
+            onSubmit={handleSubmit}
+            className="w-96 h-80 p-4 bg-white rounded-lg shadow-md flex flex-col justify-between items-center lg:items-start"
+          >
             <div className="w-full mb-4 lg:w-[520px]">
               <label htmlFor="email" className="block text-14 md:text-16 font-bold mb-2">Email</label>
-              <input type="email" id="email" placeholder="Enter your email" className="p-2 w-full rounded-md border-2 border-black-opacity-50" />
-              <p className="mb-4 text-black-opacity-50 ">We promise not to spam</p>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                className={`p-2 w-full rounded-md border-2 ${emailError ? 'border-red-500' : 'border-black-opacity-50'}`}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
+              <p className="mb-4 text-black-opacity-50">We promise not to spam</p>
             </div>
             <div className="w-full mb-4 lg:w-[520px]">
               <label htmlFor="name" className="block text-14 md:text-16 font-bold mb-2">Name</label>
-              <input type="text" id="name" placeholder="Enter your name" className="p-2 w-full rounded-md border-2 border-black-opacity-50" />
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                className={`p-2 w-full rounded-md border-2 ${nameError ? 'border-red-500' : 'border-black-opacity-50'}`}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              {nameError && <p className="text-red-500 text-sm">{nameError}</p>}
             </div>
-            <button className="h-9 w-[142px] p-2 bg-primary-color-dark text-white rounded-md text-15 md:text-16">Subscribe</button>
+            <button type="submit" className="h-9 w-[142px] p-2 bg-primary-color-dark text-white rounded-md text-15 md:text-16">
+              Subscribe
+            </button>
           </form>
         </section>
+        
+        {/* Modal que será exibido após inscrição */}
+        <Modal isOpen={modalOpen} closeModal={() => setModalOpen(false)} />
       </main>
-     <MainFooter/> 
+      <MainFooter />
     </div>
   );
 };
