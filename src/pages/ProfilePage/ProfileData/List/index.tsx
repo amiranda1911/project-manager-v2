@@ -1,4 +1,5 @@
 import ProfileDataListItem from './Item';
+import useFormattedDate from '../../../../hooks/useFormatDate';
 
 interface ProfileDataListProps {
   email: string;
@@ -36,7 +37,10 @@ const ProfileDataList = ({
         <h2 className="font-medium text-2xl">Details</h2>
         <ul className="flex flex-col gap-2">
           <ProfileDataListItem label="User ID" input={id} />
-          <ProfileDataListItem label="Creation date" input={creationDate} />
+          <ProfileDataListItem
+            label="Creation date"
+            input={useFormattedDate(creationDate)}
+          />
           <ProfileDataListItem label="Title" input={jobPosition} />
         </ul>
       </div>
