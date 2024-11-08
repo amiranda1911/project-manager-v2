@@ -11,7 +11,7 @@ interface CreateAccountData {
   email: string;
   job_position: string;
   password: string;
-  avatar: string;
+  avatar?: string;
 }
 
 export const useCreateAccount = () => {
