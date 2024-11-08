@@ -3,7 +3,7 @@ import { useState } from "react"
 export const EnableNotifications = () => {
     const [options, setOptions] = useState({
         //valores reais serao pegos do json serve
-        values: {
+        notifications: {
             newTasks: false,
             newMembers: false,
             weeklyReports: false
@@ -16,7 +16,7 @@ export const EnableNotifications = () => {
         setOptions((prevState) => ({
             ...prevState,
             values: {
-              ...prevState.values,
+              ...prevState.notifications,
               [name]: checked,
             },
           }));
@@ -34,7 +34,7 @@ console.log(options)
                   id="new-tasks"
                   name="newTasks"
                   className="radio-input-tasks"
-                  checked={options.values.newTasks}
+                  checked={options.notifications.newTasks}
                   onChange={(e) => handleCheckboxChange(e)}
                 />
                 <p>New tasks</p>
@@ -51,7 +51,7 @@ console.log(options)
                   id="new-team-members"
                   name="newMembers"
                   className="radio-input-tasks"
-                  checked={options.values.newMembers}
+                  checked={options.notifications.newMembers}
                   onChange={(e) => handleCheckboxChange(e)}
                 />
                 <p>New team members</p>
@@ -69,7 +69,7 @@ console.log(options)
                   id="weekly-reports"
                   name="weeklyReports"
                   className="radio-input-tasks"
-                  checked={options.values.weeklyReports}
+                  checked={options.notifications.weeklyReports}
                   onChange={(e) => handleCheckboxChange(e)}
                 />
                 <p>Weekly reports</p>
