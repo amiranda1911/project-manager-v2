@@ -1,21 +1,24 @@
 import { useState } from "react";
+
+// Definindo as chaves possíveis de social media
+type SocialMediaKey = "twitter" | "instagram" | "linkedin";
+
 interface UpdateInfosSettingsProps {
-  updateInfosSettings: (section: string | null, key: string, value: string | number | boolean) => void;
+  updateInfosSettings: (section: "socialMedia" | null, key: SocialMediaKey, value: string) => void;
 }
 
-export const UpdateSocialnformation = ({updateInfosSettings}: UpdateInfosSettingsProps ) => {
-
-const [socialMedia, setSocialMedia] = useState({
+ const UpdateSocialInformation = ({ updateInfosSettings }: UpdateInfosSettingsProps) => {
+  const [socialMedia, setSocialMedia] = useState({
     socialMedia: {
-        x: 'sabrina',
-        instagram: 'souza',
-        linkedin: 'nada'
-    }
-})
+      x: "sabrina",
+      instagram: "souza",
+      linkedin: "nada",
+    },
+  });
 
-const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-  
+
     setSocialMedia({
       ...socialMedia,
       socialMedia: {
@@ -23,11 +26,13 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         [name]: value,
       },
     });
-    updateInfosSettings('socialMedia', name, value)
+
+    // Garantindo que a chave name seja uma das chaves do tipo SocialMediaKey
+    updateInfosSettings("socialMedia", name as SocialMediaKey, value);
   };
 
   return (
-    <div className="w-3/6 my-6 lg:mx-10 lg:3/6">
+    <div className="w-3/6 my-6 lg:mx-10 lg:w-3/6">
       <span>Twitter/X</span>
       <div className="flex">
         <input
@@ -38,8 +43,8 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         />
         <input
           type="text"
-          name="twitter"
-          className="border border-gray-300 rounded-md px-4  ml-1.5 w-36 h-12"
+          name="x"
+          className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
           onChange={(e) => handleInputChange(e)}
         />
       </div>
@@ -65,7 +70,6 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           placeholder="linkedin.com/in/"
           className="w-52 h-12 border border-gray-300 rounded-md px-4"
           disabled={true}
-          
         />
         <input
           type="text"
@@ -77,3 +81,5 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     </div>
   );
 };
+
+export default UpdateSocialInformation
