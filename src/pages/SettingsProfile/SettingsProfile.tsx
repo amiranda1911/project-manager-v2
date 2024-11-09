@@ -31,14 +31,10 @@ const SettingsProfile = () => {
   type Section = "notifications" | "socialMedia"; // Tipo restrito para seções
   type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"]; // Tipo restrito para chaves dentro de 'notifications' ou 'socialMedia'
 
-const updateInfosSettings = (
-  section: Section | null,
-  key: Key,
-  value: string | number | boolean
-): void => {
+const updateInfosSettings = ( section: Section | null, key: Key, value: string | number | boolean): void => {
   setData((prevState) => {
     if (!prevState) {
-      return null; // Se o estado for null, retorna null
+      return null;
     }
 
     if (section === "notifications") {
@@ -54,13 +50,13 @@ const updateInfosSettings = (
         ...prevState,
         socialMedia: {
           ...prevState.socialMedia,
-          [key]: value, // TypeScript reconhece 'key' como uma chave válida de 'socialMedia'
+          [key]: value,
         },
       };
     } else {
       return {
         ...prevState,
-        [key]: value, // Se não for uma seção específica, atualiza o valor diretamente na chave
+        [key]: value,
       };
     }
   });
