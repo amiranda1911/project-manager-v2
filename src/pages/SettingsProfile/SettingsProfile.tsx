@@ -150,7 +150,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
               receive project notifications or disable them completely.
             </p>
           </div>
-          <UpdateSocialnformation updateInfosSettings={updateInfosSettings} />
+          {data && <UpdateSocialnformation updateInfosSettings={updateInfosSettings} data={data.socialMedia} />}
         </div>
         <div className="flex justify-center items-center mt-8 lg:mt-20">
           <button
