@@ -69,6 +69,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
     try {
       const response = await axios.patch("http://localhost:3000/users/0768", data);
       console.log("Dados atualizados com sucesso:", response.data);
+      window.location.reload(); //remover
     } catch (error) {
       console.error("Erro ao atualizar dados:", error);
     }
