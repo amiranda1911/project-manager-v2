@@ -9,7 +9,6 @@ export const UploadImage = () => {
 
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-
   const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
 
@@ -63,6 +62,7 @@ export const UploadImage = () => {
             accept="image/*"
             hidden
             id="file-input"
+            name="avatar"
             onChange={(e) => uploadImage(e)}
           />
           

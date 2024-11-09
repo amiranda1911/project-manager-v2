@@ -1,12 +1,77 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import { EnableNotifications } from "../../Components/EnableNotifications";
 import MainFooter from "../../Components/MainFooter";
 import MainHeader from "../../Components/MainHeader";
-import { UpdateInfos } from "../../Components/UpdateInfos";
-import { UpdateSocialnformation } from "../../Components/UpdateSocialnformation";
+import  UpdateSocialnformation  from "../../Components/UpdateSocialnformation";
 import { UploadImage } from "../../Components/UploadImage";
+import { UpdateInfos } from "../../Components/UpdateInfos";
+
+import { UserData } from "./type";
 
 const SettingsProfile = () => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
+  
+  const [data, setData] = useState<UserData | null>(null);
+  
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/users/002");
+        setData(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  type Section = "notifications" | "socialMedia"; // Tipo restrito para seções
+  type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"]; // Tipo restrito para chaves dentro de 'notifications' ou 'socialMedia'
+
+const updateInfosSettings = ( section: Section | null, key: Key, value: string | number | boolean): void => {
+  setData((prevState) => {
+    if (!prevState) {
+      return null;
+    }
+
+    if (section === "notifications") {
+      return {
+        ...prevState,
+        notifications: {
+          ...prevState.notifications,
+          [key]: value, // TypeScript reconhece 'key' como uma chave válida de 'notifications'
+        },
+      };
+    } else if (section === "socialMedia") {
+      return {
+        ...prevState,
+        socialMedia: {
+          ...prevState.socialMedia,
+          [key]: value,
+        },
+      };
+    } else {
+      return {
+        ...prevState,
+        [key]: value,
+      };
+    }
+  });
+};
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.put("http://localhost:3000/users/002", {data});
+      console.log("Dados atualizados com sucesso:", response.data);
+    } catch (error) {
+      console.error("Erro ao atualizar dados:", error);
+    }
+  };
+
+  console.log(data);
 
   return (
     <div className=" text-sm/9 md:text-base/9  font-roboto">
@@ -48,7 +113,7 @@ const SettingsProfile = () => {
             </p>
           </div>
           {/*Update name, last name, email*/}
-          <UpdateInfos />
+          <UpdateInfos updateInfosSettings={updateInfosSettings} />
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex flex-col justify-between lg:flex-row">
@@ -71,7 +136,7 @@ const SettingsProfile = () => {
               receive project notifications or disable them completely.
             </p>
           </div>
-          <EnableNotifications />
+          <EnableNotifications updateInfosSettings={updateInfosSettings} />
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex-col lg:flex-row flex lg:justify-between">
@@ -82,16 +147,22 @@ const SettingsProfile = () => {
               receive project notifications or disable them completely.
             </p>
           </div>
-          <UpdateSocialnformation />
+          <UpdateSocialnformation updateInfosSettings={updateInfosSettings} />
         </div>
         <div className="flex justify-center items-center mt-8 lg:mt-20">
-          <button className="w-90 md:w-100 bg-primary-color-dark text-white rounded-lg h-12 ">
+          <button
+            className="w-90 md:w-100 bg-primary-color-dark text-white rounded-lg h-12 "
+            onClick={handleSubmit}
+          >
             Update information
           </button>
         </div>
         <div className="text-center my-4">
           <p className="text-sm ">
-            Never mind, take me <a href="/kanban" className="text-indigo-600 underline">back to my project.</a>
+            Never mind, take me{" "}
+            <a href="/kanban" className="text-indigo-600 underline">
+              back to my project.
+            </a>
           </p>
         </div>
       </main>
