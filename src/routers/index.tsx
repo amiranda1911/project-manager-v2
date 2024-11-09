@@ -9,6 +9,7 @@ import PageNotFound from '../pages/PageNotFound/PageNotFound';
 import Kanban from '../pages/Kanban/Kanban';
 import BlockedPage from '../pages/BlockedPage/BlockedPage';
 import SettingsProfile from '../pages/SettingsProfile/SettingsProfile';
+import CreateAccountForm from '../pages/Test';
 
 const Routers = () => {
   return (
@@ -17,6 +18,7 @@ const Routers = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<SignUpPage />} />
+        <Route path="/test" element={<CreateAccountForm />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/kanban" element={<Kanban />} />

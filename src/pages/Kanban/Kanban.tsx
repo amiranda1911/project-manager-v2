@@ -1,12 +1,45 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import FixedMetrics from '../../Components/FixedMetrics'
 import KanbanColumn from '../../Components/KanbanColumn'
 import kanbanCanvasBgImage from '/public/kanban-bg.png' 
 import { BsPinFill } from 'react-icons/bs'
 import CreationModal from '../../Components/CreationModal'
+import axios from 'axios'
+import { Task } from '../../utils/Task'
+import { Status } from '../../utils/EnumStatus'
 const Kanban = () => {
+  
   const [showFixedMetric, setShowFixedMetric] = useState<boolean>(false)
   const [showCreationModal, setShowCreationModal] = useState<boolean>(false)
+  const [tasks, setTasks] = useState<Task[]>([])
+
+  const [inProgressTasks, setInprogressTasks] = useState<Task[]>([])
+  const [todoTasks, setTodoTasks] = useState<Task[]>([])
+  const [doneTasks, setDoneTasks] = useState<Task[]>([])
+
+  useEffect(() => {
+    const fetchData = async () =>{
+      try{
+        const response = await axios.get('http://localhost:3000/tasks')
+        setTasks(response.data); 
+        console.log()
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+   fetchData()
+  },[])
+
+  useEffect(() => {
+    const updateData = () => {
+      setDoneTasks(tasks.filter(task => task.status == Status.Done ))
+      setInprogressTasks(tasks.filter(task => task.status == Status.InProgress ))
+      setTodoTasks(tasks.filter(task => task.status == Status.ToDo ))
+    } 
+    updateData()
+  },[tasks])
+  
   return (
     <>
     <div className={`flex flex-grow box-border w-full relative`}>
@@ -21,9 +54,10 @@ const Kanban = () => {
       `}
         style={{ backgroundImage: `url(${kanbanCanvasBgImage})` }}
       >
-        <KanbanColumn type='To do'/>
-        <KanbanColumn type='In progress'/>
-        <KanbanColumn type='Done'/>
+        <KanbanColumn tasks={todoTasks} type='To do'/>
+        <KanbanColumn tasks={inProgressTasks} type='In progress'/>
+        <KanbanColumn tasks={doneTasks} type='Done'/>
+        
       </div>
 
       <div className={`
