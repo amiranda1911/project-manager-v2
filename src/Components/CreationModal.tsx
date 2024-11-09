@@ -1,11 +1,47 @@
 import { IoIosClose } from "react-icons/io"
 import { Uploader } from "./Uploader"
+import { useState } from "react";
+import { Status } from "../utils/EnumStatus";
+import { Priority } from "../utils/EnumPriority";
+import { Task } from "../utils/Task";
 
 interface CreationModalProps {
 	closeDispatch: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CreationModal = ({closeDispatch}: CreationModalProps) => {
+const CreationModal = ({closeDispatch}: CreationModalProps) => {	
+	const now = new Date()
+	const [title, setTitle] = useState<string>("")
+	const [status, setStatus] = useState<Status>(Status.ToDo)
+	const [description, setDescription] = useState<string>("")
+	const [startDate, setStartDate] = useState<string>(`${now.getFullYear()}-${now.getMonth()}-${now.getDay()}`)
+	console.log(startDate)
+	const [startTime, setStartTime] = useState<string>("")
+	const [endDate, setEndDate] = useState<string>("")
+	const [endTime, setEndTime] = useState<string>("")
+	const [priority, setPriority] = useState<Priority>(Priority.Low)
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		const task:Task = {
+			id: 1,
+			owner_id: 1,
+			priority: priority,
+			status: status,
+			title: title,
+			members: [1,2,3],
+			commentsCount: Math.floor(Math.random() * (999 - 10 + 1)) + 10,
+			completedTasksCount: Math.floor(Math.random() * (999 - 10 + 1)) + 10,
+			progress: Math.floor(Math.random() * (100 - 1 + 1)) + 1,
+			start_datetime: new Date(`${startDate}T${startTime}`).getTime(),
+			end_datetime: new Date(`${endDate}T${endTime}`).getTime(),
+			estimated_time: 3,
+			created_by:  Date.now()
+		}
+
+		console.log(task)
+	}
+
   return (
     <>
     {/* back transparent screen */}
@@ -25,10 +61,10 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 					<button onClick={() => closeDispatch(false)}><IoIosClose className="text-23 text-[#BD2323]" /></button>
 				</header>
 				
-				<form className="flex flex-col">
+				<form className="flex flex-col" onSubmit={handleSubmit}>
 					<div className="form-section">
 						<label className="form-label">Title</label>
-						<input type="text" className="form-input" placeholder="Enter the title of the task"></input>
+						<input type="text" className="form-input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter the title of the task"></input>
 					</div>
 
 					<div className="form-section">
@@ -36,39 +72,39 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 						<div className="flex flex-row">
 							<div className="form-radio">
 								<label>To do</label>
-								<input type="radio" className="radio-violet" name="status" />
+								<input type="radio" onChange={() => setStatus(Status.ToDo)} className="radio-violet" name="status" />
 							</div>
 
 							<div className="form-radio">
 								<label>In progress</label>
-								<input type="radio" className="radio-orange" name="status" />
+								<input type="radio" onChange={() => setStatus(Status.InProgress)} className="radio-orange" name="status" />
 							</div>
 
 							<div className="form-radio">
 								<label>Done</label>
-								<input type="radio" className="radio-green" name="status" />
+								<input type="radio" onChange={() => setStatus(Status.Done)} className="radio-green" name="status" />
 							</div>
 						</div>
 					</div>
 					
 					<div className="form-section">
 						<label className="form-label" htmlFor="">Description</label>
-						<textarea className="form-input" placeholder="Enter a description"></textarea>
+						<textarea className="form-input" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Enter a description"></textarea>
 					</div>
 
 					<div className="form-section">
 						<label htmlFor="" className="form-label">Start Date</label>
 						<div className="flex flex-row">
-							<input type="date" className="form-input" /> 
-							<input type="time" className="form-input" />
+							<input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="form-input" /> 
+							<input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} className="form-input" />
 						</div>
 					</div>
 
 					<div className="form-section">
 						<label htmlFor="" className="form-label">End Date</label>
 						<div className="flex flex-row">
-							<input type="date" className="form-input" /> 
-							<input type="time" className="form-input" />
+							<input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="form-input" /> 
+							<input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} className="form-input" />
 						</div>
 					</div>
 
@@ -88,17 +124,17 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 						<div className="flex flex-row">
 							<div className="form-radio">
 								<label>Low</label>
-								<input type="radio" className="radio-violet" name="status" />
+								<input type="radio" onChange={() => setPriority(Priority.Low)} className="radio-violet" name="status" />
 							</div>
 
 							<div className="form-radio">
 								<label>Mid</label>
-								<input type="radio" className="radio-orange" name="status" />
+								<input type="radio" onChange={() => setPriority(Priority.Mid)} className="radio-orange" name="status" />
 							</div>
 
 							<div className="form-radio">
 								<label>High</label>
-								<input type="radio" className="radio-green" name="status" />
+								<input type="radio" onChange={() => setPriority(Priority.High)} className="radio-green" name="status" />
 							</div>
 						</div>
 					</div>

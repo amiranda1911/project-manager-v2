@@ -12,8 +12,8 @@ export interface Task {
     commentsCount: number,
     completedTasksCount: number,
     progress: number,
-    start_datetime: string,
-    end_datetime: string,
+    start_datetime: number,
+    end_datetime: number,
     estimated_time: number,
     created_by: number
   }
