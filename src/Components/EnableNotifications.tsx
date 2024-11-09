@@ -2,16 +2,15 @@ import { useState } from "react";
 
 interface UpdateInfosSettingsProps {
   updateInfosSettings: (section: "notifications" | null, key: "newTasks" | "newMembers" | "weeklyReports", value: boolean) => void;
+  data: {
+    newTasks: boolean;
+    newMembers: boolean;
+    weeklyReports: boolean;
+  };
 }
 
-export const EnableNotifications = ({ updateInfosSettings }: UpdateInfosSettingsProps) => {
-  const [options, setOptions] = useState({
-    notifications: {
-      newTasks: false,
-      newMembers: false,
-      weeklyReports: false,
-    },
-  });
+export const EnableNotifications = ({ updateInfosSettings, data }: UpdateInfosSettingsProps) => {
+  const [options, setOptions] = useState(data);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
@@ -19,10 +18,7 @@ export const EnableNotifications = ({ updateInfosSettings }: UpdateInfosSettings
     // Atualizando o estado local
     setOptions((prevState) => ({
       ...prevState,
-      notifications: {
-        ...prevState.notifications,
-        [name]: checked, // TypeScript entende que 'name' está entre as chaves válidas
-      },
+      [name]: checked,
     }));
 
     // Atualizando as configurações
@@ -38,8 +34,8 @@ export const EnableNotifications = ({ updateInfosSettings }: UpdateInfosSettings
             id="new-tasks"
             name="newTasks"
             className="radio-input-tasks"
-            checked={options.notifications.newTasks}
             onChange={handleCheckboxChange}
+            checked={options.newTasks}
           />
           <p>New tasks</p>
         </label>
@@ -54,7 +50,7 @@ export const EnableNotifications = ({ updateInfosSettings }: UpdateInfosSettings
             id="new-team-members"
             name="newMembers"
             className="radio-input-tasks"
-            checked={options.notifications.newMembers}
+            checked={options.newMembers}
             onChange={handleCheckboxChange}
           />
           <p>New team members</p>
@@ -71,7 +67,7 @@ export const EnableNotifications = ({ updateInfosSettings }: UpdateInfosSettings
             id="weekly-reports"
             name="weeklyReports"
             className="radio-input-tasks"
-            checked={options.notifications.weeklyReports}
+            checked={options.weeklyReports}
             onChange={handleCheckboxChange}
           />
           <p>Weekly reports</p>

@@ -14,12 +14,15 @@ const SettingsProfile = () => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
   
   const [data, setData] = useState<UserData | null>(null);
+  const [dataFixed, setFixedData] = useState<UserData | null>(null);
+
   
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/users/002");
+        const response = await axios.get("http://localhost:3000/users/0768" );
         setData(response.data);
+        setFixedData(response.data)
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
       }
@@ -64,14 +67,13 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.put("http://localhost:3000/users/002", {data});
+      const response = await axios.patch("http://localhost:3000/users/0768", data);
       console.log("Dados atualizados com sucesso:", response.data);
     } catch (error) {
       console.error("Erro ao atualizar dados:", error);
     }
   };
 
-  console.log(data);
 
   return (
     <div className=" text-sm/9 md:text-base/9  font-roboto">
@@ -82,16 +84,16 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
           <div className="flex items-center mb-9 w-full">
             <picture className="flex mr-4 md:mr-8">
               <img
-                src={img}
+                src={data?.avatar || img}
                 alt="Imagem de perfil"
                 className="w-29 h-30 min-w-29 rounded-full shadow-md md:w-45 md:h-46"
               />{" "}
               {/*shadow arrumar*/}
             </picture>
             <div>
-              <h1 className="text-21 font-medium md:text-5xl">John Doe</h1>
+              <h1 className="text-21 font-medium md:text-5xl">{dataFixed?.firstName}</h1>
               <p className="text-xl opacity-70 md:text-19">
-                john.doe@example.com
+              {dataFixed?.email}
               </p>
             </div>
           </div>
@@ -125,7 +127,8 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
             </p>
           </div>
           {/* Upload image profile*/}
-          <UploadImage />
+         {data && <UploadImage data={data.avatar} />}
+
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex flex-col justify-between lg:flex-row">
@@ -136,7 +139,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
               receive project notifications or disable them completely.
             </p>
           </div>
-          <EnableNotifications updateInfosSettings={updateInfosSettings} />
+          {data && <EnableNotifications updateInfosSettings={updateInfosSettings} data={data?.notifications} />}
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex-col lg:flex-row flex lg:justify-between">
@@ -147,7 +150,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
               receive project notifications or disable them completely.
             </p>
           </div>
-          <UpdateSocialnformation updateInfosSettings={updateInfosSettings} />
+          {data && <UpdateSocialnformation updateInfosSettings={updateInfosSettings} data={data.socialMedia} />}
         </div>
         <div className="flex justify-center items-center mt-8 lg:mt-20">
           <button

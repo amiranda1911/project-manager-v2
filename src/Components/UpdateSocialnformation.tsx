@@ -5,26 +5,22 @@ type SocialMediaKey = "twitter" | "instagram" | "linkedin";
 
 interface UpdateInfosSettingsProps {
   updateInfosSettings: (section: "socialMedia" | null, key: SocialMediaKey, value: string) => void;
+  data: {
+    twitter: string;
+    instagram: string;
+    linkedin: string;
+  }
 }
 
- const UpdateSocialInformation = ({ updateInfosSettings }: UpdateInfosSettingsProps) => {
-  const [socialMedia, setSocialMedia] = useState({
-    socialMedia: {
-      x: "sabrina",
-      instagram: "souza",
-      linkedin: "nada",
-    },
-  });
+ const UpdateSocialInformation = ({ updateInfosSettings, data }: UpdateInfosSettingsProps) => {
+  const [socialMedia, setSocialMedia] = useState(data);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     setSocialMedia({
       ...socialMedia,
-      socialMedia: {
-        ...socialMedia.socialMedia,
         [name]: value,
-      },
     });
 
     // Garantindo que a chave name seja uma das chaves do tipo SocialMediaKey
@@ -43,8 +39,9 @@ interface UpdateInfosSettingsProps {
         />
         <input
           type="text"
-          name="x"
+          name="twitter"
           className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
+          placeholder={socialMedia.twitter}
           onChange={(e) => handleInputChange(e)}
         />
       </div>
@@ -60,6 +57,7 @@ interface UpdateInfosSettingsProps {
           type="text"
           name="instagram"
           className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
+          placeholder={socialMedia.instagram}
           onChange={(e) => handleInputChange(e)}
         />
       </div>
@@ -75,6 +73,7 @@ interface UpdateInfosSettingsProps {
           type="text"
           name="linkedin"
           className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
+          placeholder={socialMedia.linkedin}
           onChange={(e) => handleInputChange(e)}
         />
       </div>
