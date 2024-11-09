@@ -8,9 +8,11 @@ import axios from 'axios'
 import { Task } from '../../utils/Task'
 import { Status } from '../../utils/EnumStatus'
 const Kanban = () => {
+
+  const [update, setUpdate] = useState<boolean>(true)
   
   const [showFixedMetric, setShowFixedMetric] = useState<boolean>(false)
-  const [showCreationModal, setShowCreationModal] = useState<boolean>(false)
+  const [showCreationModal, setShowCreationModal] = useState<boolean>(true)
   const [tasks, setTasks] = useState<Task[]>([])
 
   const [inProgressTasks, setInprogressTasks] = useState<Task[]>([])
@@ -29,7 +31,8 @@ const Kanban = () => {
     }
 
    fetchData()
-  },[])
+   setUpdate(true)
+  },[update])
 
   useEffect(() => {
     const updateData = () => {
@@ -39,11 +42,16 @@ const Kanban = () => {
     } 
     updateData()
   },[tasks])
+
+  const handleCloseCreationModal = () => {
+    setShowCreationModal(false)
+    setUpdate(false)
+  }
   
   return (
     <>
     <div className={`flex flex-grow box-border w-full relative`}>
-      {showCreationModal && <CreationModal closeDispatch={setShowCreationModal}/>}
+      {showCreationModal && <CreationModal closeDispatch={handleCloseCreationModal}/>}
       <div className={`
         m-4 w-full
         rounded-[1.875rem]

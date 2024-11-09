@@ -3,13 +3,16 @@ import { Uploader } from "./Uploader"
 import { useState } from "react";
 import { Status } from "../utils/EnumStatus";
 import { Priority } from "../utils/EnumPriority";
-import { Task } from "../utils/Task";
+import { useCreateTask } from "../hooks/useCreateTask";
+import { useAuth } from "../hooks/useAuth";
 
 interface CreationModalProps {
 	closeDispatch: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CreationModal = ({closeDispatch}: CreationModalProps) => {	
+	const {createTask} = useCreateTask()
+	const {getToken} = useAuth()
 	const now = new Date()
 	const [title, setTitle] = useState<string>("")
 	const [status, setStatus] = useState<Status>(Status.ToDo)
@@ -23,9 +26,8 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		const task:Task = {
-			id: 1,
-			owner_id: 1,
+		const task = {
+			owner_id: getToken(),
 			priority: priority,
 			status: status,
 			title: title,
@@ -39,7 +41,8 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 			created_by:  Date.now()
 		}
 
-		console.log(task)
+		createTask(task)
+		closeDispatch(false)
 	}
 
   return (

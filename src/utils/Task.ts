@@ -1,6 +1,5 @@
 import { Priority } from "./EnumPriority";
 import { Status } from "./EnumStatus";
-import { User } from "./User";
 
 export interface Task {
     id: number,
