@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaPaperclip } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { FiUpload } from "react-icons/fi";
 
 
 export const UploadImage = () => {
@@ -37,12 +38,13 @@ export const UploadImage = () => {
         />
         {/*shadow arrumar*/}
       </picture>
-      <div className=" w-100">
+      <div className="sm:w-full md:w-100">
         <p className="font-medium text-purple-850">Add new profile picture</p>
 
         { fileName ? 
             <div className="border border-blue-450 rounded-md p-1.5 flex items-center justify-between my-2 bg-blue-100 ">
               <span className="flex items-center">
+              
                 <FaPaperclip className="text-gray-400 h-[1.125rem] w-[1.125rem]"/>
                 <p className="mx-3">{fileName}</p>
               </span>
@@ -51,7 +53,7 @@ export const UploadImage = () => {
 
         <div
           className="border border-blue-450 border-dashed rounded-md h-38 text-center
-                      text-base text-gray-600 flex flex-col justify-center w-100"
+                      text-base text-gray-600 flex items-center flex-col justify-center w-full sm:w-100"
           onDragOver={(e) => e.preventDefault()}
           onDrop={(e) => dropImage(e)}
           onClick={() => document.getElementById("file-input")?.click()}
@@ -63,6 +65,8 @@ export const UploadImage = () => {
             id="file-input"
             onChange={(e) => uploadImage(e)}
           />
+          
+          <FiUpload className="h-6 w-6 text-gray-500"/>
           <p className="my-5">
             Drop here to attach or{" "}
             <span className="text-violet-dark">upload</span>

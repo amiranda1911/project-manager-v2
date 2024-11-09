@@ -12,7 +12,7 @@ const SettingsProfile = () => {
     <div className=" text-sm/9 md:text-base/9  font-roboto">
       {/* HEADER*/}
       <MainHeader pageType={"page3"} />
-      <main className="p-5  lg:p-24">
+      <main className="pt-20 pb-5 px-5  lg:p-24">
         <div className="my-5">
           <div className="flex items-center mb-9 w-full">
             <picture className="flex mr-4 md:mr-8">
@@ -39,7 +39,7 @@ const SettingsProfile = () => {
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex flex-col  lg:flex-row lg:justify-between">
-          <div className="w-1/4 min-w-96 mt-2">
+          <div className="w-full min-w-90 lg:w-1/4 lg:min-w-96 mt-2">
             <h2 className="text-2xl font-medium">Basic information</h2>
             <p className="text-black-opacity-50">
               Update your name and e-mail in this section. Note: this
@@ -52,7 +52,7 @@ const SettingsProfile = () => {
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex flex-col justify-between lg:flex-row">
-          <div className="w-1/4 min-w-96">
+          <div className="w-full min-w-90 lg:w-1/4 lg:min-w-96">
             <h2 className="text-2xl font-medium">Profile picture</h2>
             <p className="text-black-opacity-50">
               Update your profile picture. Supported files are JPG, PNG, WebP
@@ -64,7 +64,7 @@ const SettingsProfile = () => {
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex flex-col justify-between lg:flex-row">
-          <div className="w-1/4 min-w-96">
+          <div className="w-full min-w-90 lg:w-1/4 lg:min-w-96">
             <h2 className="text-2xl font-medium">Communication</h2>
             <p className="text-black-opacity-50">
               Update your e-mail communication preferences anytime. Choose to
@@ -75,7 +75,7 @@ const SettingsProfile = () => {
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex-col lg:flex-row flex lg:justify-between">
-          <div className="w-1/4 min-w-96">
+          <div className="w-full min-w-90 lg:w-1/4 lg:min-w-96">
             <h2 className="text-2xl font-medium ">Social information</h2>
             <p className="text-black-opacity-50">
               Update your e-mail communication preferences anytime. Choose to
