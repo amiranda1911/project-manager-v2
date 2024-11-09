@@ -4,10 +4,10 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { FiUpload } from "react-icons/fi";
 
 
-export const UploadImage = () => {
+export const UploadImage = ({ data }:  { data: string }) => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
 
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(data);
   const [fileName, setFileName] = useState("");
   const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
