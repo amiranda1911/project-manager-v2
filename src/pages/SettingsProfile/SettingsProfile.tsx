@@ -7,6 +7,9 @@ import MainHeader from "../../Components/MainHeader";
 import  UpdateSocialnformation  from "../../Components/UpdateSocialnformation";
 import { UploadImage } from "../../Components/UploadImage";
 import { UpdateInfos } from "../../Components/UpdateInfos";
+import { useAuth } from "../../hooks/useAuth";
+import {  baseUrl } from "../../constants"
+
 
 import { UserData } from "./type";
 
@@ -16,12 +19,13 @@ const SettingsProfile = () => {
   const [data, setData] = useState<UserData | null>(null);
   const [dataFixed, setFixedData] = useState<UserData | null>(null);
   const [isSumbit, setIsSubmit] = useState(false)
-
+  const { getToken } = useAuth();
+  const userId = getToken();
   
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/users/0768" );
+        const response = await axios.get(`${baseUrl}/users/${userId}` );
         setData(response.data);
         setFixedData(response.data)
       } catch (error) {
@@ -30,7 +34,7 @@ const SettingsProfile = () => {
     };
 
     fetchUserData();
-  }, [isSumbit]);
+  }, [isSumbit, userId]);
 
   type Section = "notifications" | "socialMedia";
   type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"] | "avatar"; // Tipo restrito para chaves dentro de 'notifications' ou 'socialMedia'
@@ -68,7 +72,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.patch("http://localhost:3000/users/0768", data);
+      const response = await axios.patch(`${baseUrl}/users/${userId}`, data);
       console.log("Dados atualizados com sucesso:", response.data);
       setIsSubmit(!isSumbit)
     } catch (error) {
