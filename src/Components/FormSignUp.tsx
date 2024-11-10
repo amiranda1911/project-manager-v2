@@ -196,7 +196,7 @@ const FormSignUp: React.FC = () => {
             </p>  
         )}
 
-        <div className=" mt-[1.413rem] mb-[1.313rem] md:mt-[2rem] md:mb-[1.938rem]">
+        <div className="mx-auto mt-[0.2rem] mb-[1.4rem] md:mt-[0.5rem] md:mb-[2rem]">
         <FormButtons buttonText={loading ? 'Creating...' : 'Create Account'} loading={loading}/>
         </div>
         {error && <p>{error}</p>}
