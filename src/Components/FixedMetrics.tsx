@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { User } from '../utils/User';
 import axios from 'axios';
 import { baseUrl } from '../constants';
+import TimeConverter from './TimeConverter';
 
 interface FixedMetricsProps {
   closeDispatch: React.Dispatch<React.SetStateAction<boolean>>
@@ -90,7 +91,7 @@ const FixedMetrics = ({closeDispatch, owners, totalDone, totalTodo, totalinProgr
                         rounded-[0.78rem]
                         p-1 my-2'>
                         <h3 className='text-12 font-roboto font-bold'>Total time estimated</h3>
-                        <time className='text-21 flex justify-center font-roboto font-bold'>00:00</time>
+                        <time className='text-21 flex justify-center font-roboto font-bold'><TimeConverter seconds={totaltime}/></time>
                     </div>
                     
                 </div>
