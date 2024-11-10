@@ -10,15 +10,17 @@ type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"] | "av
 
 interface UpdateInfosSettingsProps {
   updateInfosSettings: (section: Section | null, key: Key, value: string | number | boolean) => void;
-  data: string
+  data: string;
+  isSumbit: boolean
 }
 
-export const UploadImage = ({ updateInfosSettings, data }: UpdateInfosSettingsProps) => {
+export const UploadImage = ({ updateInfosSettings, data, isSumbit }: UpdateInfosSettingsProps) => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
 
   const [file, setFile] = useState<string>(data);
   const [fileName, setFileName] = useState<string>('');
   const [isUploading, setIsUploading] = useState<boolean>(false);
+  const [clear] = useState(data)
 
   const uploadToCloudinary = useCallback(async (selectedFile: File) => {
     setIsUploading(true);
@@ -42,6 +44,13 @@ export const UploadImage = ({ updateInfosSettings, data }: UpdateInfosSettingsPr
       setIsUploading(false);
     }
   }, [updateInfosSettings]);
+
+  const clearImg = () => {
+    setFile(clear)
+    setFileName('')
+    console.log(data)
+
+  }
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -70,16 +79,17 @@ export const UploadImage = ({ updateInfosSettings, data }: UpdateInfosSettingsPr
       <div className="sm:w-full md:w-100">
         <p className="font-medium text-purple-850">Add new profile picture</p>
 
-        {fileName ? (
+        {!isSumbit ? fileName ? (
           <div className="border border-blue-450 rounded-md p-1.5 flex items-center justify-between my-2 bg-blue-100 ">
             <span className="flex items-center">
               <FaPaperclip className="text-gray-400 h-[1.125rem] w-[1.125rem]" />
               <p className="mx-3">{fileName}</p>
             </span>
-            <RiDeleteBin5Line className="text-slate-900 h-[1.125rem] w-[1.125rem]" />
+            <RiDeleteBin5Line className="text-slate-900 h-[1.125rem] w-[1.125rem]" onClick={() => clearImg()} />
           </div>
-        ) : null}
-
+        ) : null
+        : null} 
+        
         <div
           className="border border-blue-450 border-dashed rounded-md h-38 text-center text-base text-gray-600 flex items-center flex-col justify-center w-full sm:w-100"
           onDragOver={(e) => e.preventDefault()}

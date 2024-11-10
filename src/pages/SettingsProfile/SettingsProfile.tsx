@@ -15,6 +15,7 @@ const SettingsProfile = () => {
 
   const [data, setData] = useState<UserData | null>(null);
   const [dataFixed, setFixedData] = useState<UserData | null>(null);
+  const [isSumbit, setIsSubmit] = useState(false)
 
   
   useEffect(() => {
@@ -29,7 +30,7 @@ const SettingsProfile = () => {
     };
 
     fetchUserData();
-  }, []);
+  }, [isSumbit]);
 
   type Section = "notifications" | "socialMedia";
   type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"] | "avatar"; // Tipo restrito para chaves dentro de 'notifications' ou 'socialMedia'
@@ -69,7 +70,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
     try {
       const response = await axios.patch("http://localhost:3000/users/0768", data);
       console.log("Dados atualizados com sucesso:", response.data);
-      window.location.reload(); //remover
+      setIsSubmit(!isSumbit)
     } catch (error) {
       console.error("Erro ao atualizar dados:", error);
     }
@@ -128,7 +129,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
             </p>
           </div>
           {/* Upload image profile*/}
-         {data && <UploadImage updateInfosSettings={updateInfosSettings} data={data?.avatar}/>}
+         {data && <UploadImage updateInfosSettings={updateInfosSettings} data={data?.avatar} isSumbit={isSumbit}/>}
 
         </div>
         <hr className="my-4 lg:my-0" />
