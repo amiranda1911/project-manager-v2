@@ -127,17 +127,17 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 						<div className="flex flex-row">
 							<div className="form-radio">
 								<label>Low</label>
-								<input type="radio" onChange={() => setPriority(Priority.Low)} className="radio-violet" name="status" />
+								<input type="radio" onChange={() => setPriority(Priority.Low)} className="radio-violet" name="priority" />
 							</div>
 
 							<div className="form-radio">
 								<label>Mid</label>
-								<input type="radio" onChange={() => setPriority(Priority.Mid)} className="radio-orange" name="status" />
+								<input type="radio" onChange={() => setPriority(Priority.Mid)} className="radio-orange" name="priority" />
 							</div>
 
 							<div className="form-radio">
 								<label>High</label>
-								<input type="radio" onChange={() => setPriority(Priority.High)} className="radio-green" name="status" />
+								<input type="radio" onChange={() => setPriority(Priority.High)} className="radio-green" name="priority" />
 							</div>
 						</div>
 					</div>
