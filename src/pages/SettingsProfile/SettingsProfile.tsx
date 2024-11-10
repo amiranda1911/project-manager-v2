@@ -7,20 +7,25 @@ import MainHeader from "../../Components/MainHeader";
 import  UpdateSocialnformation  from "../../Components/UpdateSocialnformation";
 import { UploadImage } from "../../Components/UploadImage";
 import { UpdateInfos } from "../../Components/UpdateInfos";
+import { useAuth } from "../../hooks/useAuth";
+import {  baseUrl } from "../../constants"
+
 
 import { UserData } from "./type";
 
 const SettingsProfile = () => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
-  
+
   const [data, setData] = useState<UserData | null>(null);
   const [dataFixed, setFixedData] = useState<UserData | null>(null);
-
+  const [isSumbit, setIsSubmit] = useState(false)
+  const { getToken } = useAuth();
+  const userId = getToken();
   
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/users/0768" );
+        const response = await axios.get(`${baseUrl}/users/${userId}` );
         setData(response.data);
         setFixedData(response.data)
       } catch (error) {
@@ -29,10 +34,10 @@ const SettingsProfile = () => {
     };
 
     fetchUserData();
-  }, []);
+  }, [isSumbit, userId]);
 
-  type Section = "notifications" | "socialMedia"; // Tipo restrito para seções
-  type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"]; // Tipo restrito para chaves dentro de 'notifications' ou 'socialMedia'
+  type Section = "notifications" | "socialMedia";
+  type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"] | "avatar"; // Tipo restrito para chaves dentro de 'notifications' ou 'socialMedia'
 
 const updateInfosSettings = ( section: Section | null, key: Key, value: string | number | boolean): void => {
   setData((prevState) => {
@@ -67,8 +72,9 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.patch("http://localhost:3000/users/0768", data);
+      const response = await axios.patch(`${baseUrl}/users/${userId}`, data);
       console.log("Dados atualizados com sucesso:", response.data);
+      setIsSubmit(!isSumbit)
     } catch (error) {
       console.error("Erro ao atualizar dados:", error);
     }
@@ -84,7 +90,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
           <div className="flex items-center mb-9 w-full">
             <picture className="flex mr-4 md:mr-8">
               <img
-                src={data?.avatar || img}
+                src={dataFixed?.avatar || img}
                 alt="Imagem de perfil"
                 className="w-29 h-30 min-w-29 rounded-full shadow-md md:w-45 md:h-46"
               />{" "}
@@ -127,7 +133,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
             </p>
           </div>
           {/* Upload image profile*/}
-         {data && <UploadImage data={data.avatar} />}
+         {data && <UploadImage updateInfosSettings={updateInfosSettings} data={data?.avatar} isSumbit={isSumbit}/>}
 
         </div>
         <hr className="my-4 lg:my-0" />
