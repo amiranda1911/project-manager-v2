@@ -22,7 +22,7 @@ const Routers = () => {
         <Route path="/test" element={<CreateAccountForm />} />
         <Route path="/test/login" element={<LoginTest />} />
         <Route element={<PrivateRoute />}>
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="/kanban" element={<Kanban />} />
           <Route path="/setting" element={<SettingsProfile />} />
         </Route>
