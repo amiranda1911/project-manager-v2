@@ -161,7 +161,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
         </div>
         <div className="flex justify-center items-center mt-8 lg:mt-20">
           <button
-            className="w-90 md:w-100 bg-primary-color-dark text-white rounded-lg h-12 "
+            className="hover-btns w-90 md:w-100 h-12 "
             onClick={handleSubmit}
           >
             Update information
@@ -170,7 +170,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
         <div className="text-center my-4">
           <p className="text-sm ">
             Never mind, take me{" "}
-            <Link to="/kanban" className="text-indigo-600 underline">
+            <Link to="/kanban" className="text-indigo-600 underline hover:text-blue-hoverloguin">
               back to my project.
             </Link>
           </p>

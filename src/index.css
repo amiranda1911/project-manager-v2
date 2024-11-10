@@ -107,3 +107,9 @@
 /*----------- SignUp Page ------------*/
 
 /* style for error messages */
+
+/*----------- Hover ------------*/
+
+.hover-btns {
+  @apply  bg-primary-color-dark text-white rounded-lg hover:bg-hoversubscribe cursor-pointer
+}
