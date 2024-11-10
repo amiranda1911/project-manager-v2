@@ -12,7 +12,7 @@ const LoginTest = () => {
     // Passando os valores diretamente para a função validateCredentials
     validateCredentials({
       email: localEmail.toLowerCase().replace(/\s+/g, ''),
-      password: localPassword.toLowerCase().replace(/\s+/g, ''),
+      password: localPassword,
     });
   };
 
