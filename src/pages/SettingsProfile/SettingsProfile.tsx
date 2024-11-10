@@ -18,7 +18,7 @@ const SettingsProfile = () => {
 
   const [data, setData] = useState<UserData | null>(null);
   const [dataFixed, setFixedData] = useState<UserData | null>(null);
-  const [isSumbit, setIsSubmit] = useState(false)
+  const [isSubmit, setIsSubmit] = useState(false)
   const { getToken } = useAuth();
   const userId = getToken();
   
@@ -34,7 +34,7 @@ const SettingsProfile = () => {
     };
 
     fetchUserData();
-  }, [isSumbit, userId]);
+  }, [isSubmit, userId]);
 
   type Section = "notifications" | "socialMedia";
   type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"] | "avatar"; // Tipo restrito para chaves dentro de 'notifications' ou 'socialMedia'
@@ -74,7 +74,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
     try {
       const response = await axios.patch(`${baseUrl}/users/${userId}`, data);
       console.log("Dados atualizados com sucesso:", response.data);
-      setIsSubmit(!isSumbit)
+      setIsSubmit(!isSubmit)
     } catch (error) {
       console.error("Erro ao atualizar dados:", error);
     }
@@ -121,7 +121,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
             </p>
           </div>
           {/*Update name, last name, email*/}
-          <UpdateInfos updateInfosSettings={updateInfosSettings} />
+          <UpdateInfos updateInfosSettings={updateInfosSettings} isSubmit={isSubmit}/>
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex flex-col justify-between lg:flex-row">
@@ -133,7 +133,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
             </p>
           </div>
           {/* Upload image profile*/}
-         {data && <UploadImage updateInfosSettings={updateInfosSettings} data={data?.avatar} isSumbit={isSumbit}/>}
+         {data && <UploadImage updateInfosSettings={updateInfosSettings} data={data?.avatar} isSubmit={isSubmit}/>}
 
         </div>
         <hr className="my-4 lg:my-0" />

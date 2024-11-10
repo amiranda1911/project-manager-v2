@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { UserData } from "../pages/SettingsProfile/type";
 
 // Definindo tipos no mesmo arquivo
@@ -6,36 +7,53 @@ type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"]; // T
 
 interface UpdateInfosSettingsProps {
   updateInfosSettings: (section: Section | null, key: Key, value: string | number | boolean) => void;
+  isSubmit: boolean
 }
 
-export const UpdateInfos = ({ updateInfosSettings }: UpdateInfosSettingsProps) => {
-  const emailIsValid = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  const nameIsValid = (value: string) => value.length > 2;
-  const lastNameIsValid = (value: string) => value.length > 2;
+export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettingsProps) => {
+  const [name, setName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
 
+  const emailIsValid = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+  const nameIsValid = (value: string, name: string) => {
+    console.log(value.length <= 2)
+      if( value.length <= 2) {
+        console.log(`Please, enter a ${name} with more than 2 characters.`)
+        return false
+      } else if ( !/^[A-Za-z]+$/.test(value)) {
+        console.log(`Please, enter a ${name} that contains only letters.`)
+        return false
+      }else {
+        return true
+      }
+  };
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    console.log(value)
 
     // Verificar se a chave 'name' é um valor válido para 'Key'
     if (["firstName", "lastName", "email"].includes(name)) {
       const key: Key = name as Key; // Afirmamos que 'name' será um valor válido para 'Key'
 
       switch (name) {
-        case "firstName":
-          if (!nameIsValid(value)) {
-            console.log("Please, enter a name with more than 2 characters.");
-          } else {
-            updateInfosSettings(null, key, value); // Passando 'key' do tipo 'Key'
-          }
+        case "firstName":     
+          setName(value)
+
+          if (nameIsValid(value, "name")) {
+            updateInfosSettings(null, key, value)
+          } 
           break;
         case "lastName":
-          if (!lastNameIsValid(value)) {
-            console.log("Please, enter a last name with more than 2 characters.");
-          } else {
-            updateInfosSettings(null, key, value); // Passando 'key' do tipo 'Key'
+          setLastName(value)
+          if (nameIsValid(value, "last name")) {
+            updateInfosSettings(null, key, value);
           }
           break;
         case "email":
+          setEmail(value)
           if (!emailIsValid(value)) {
             console.log("Enter a valid email!");
           } else {
@@ -45,6 +63,14 @@ export const UpdateInfos = ({ updateInfosSettings }: UpdateInfosSettingsProps) =
       }
     }
   };
+
+  useEffect(() => {
+    if (isSubmit) {
+      setName('');
+      setLastName('')
+      setEmail('')
+    }
+  }, [isSubmit]);
 
   return (
     <form className="flex flex-col flex-wrap mt-6 mb-10 leading-5 text-sm md:w-10/12 md:flex-row lg:mx-11 lg:w-3/6">
@@ -58,6 +84,7 @@ export const UpdateInfos = ({ updateInfosSettings }: UpdateInfosSettingsProps) =
           name="firstName"
           className="p-2 border border-gray-300 rounded-md md:mr-5"
           placeholder="New first name"
+          value={name}
           onChange={handleChange}
         />
       </div>
@@ -71,6 +98,7 @@ export const UpdateInfos = ({ updateInfosSettings }: UpdateInfosSettingsProps) =
           name="lastName"
           className="p-2 border border-gray-300 rounded-md"
           placeholder="New last name"
+          value={lastName}
           onChange={handleChange}
         />
       </div>
@@ -84,6 +112,7 @@ export const UpdateInfos = ({ updateInfosSettings }: UpdateInfosSettingsProps) =
           name="email"
           className="p-2 border border-gray-300 rounded-md"
           placeholder="New e-mail"
+          value={email}
           onChange={handleChange}
         />
       </div>
