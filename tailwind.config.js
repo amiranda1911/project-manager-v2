@@ -35,10 +35,15 @@ export default {
           '450': '#60A5FA',
           '550': '#5570F1',
           'lightBlue': '#92BBFF',
+          'hoverloguin': '#268FE4'
         },
         'primary-color-dark': '#1E293B',
         'primary-dark': 'rgba(35, 8, 28, 0.7)',
-        'primary-yellow': '#FCF4B6'
+        'primary-yellow': '#FCF4B6',
+        colorLinkedin: '#0A66C2',
+        colorFacebook: '#0866FF',
+        hoversubscribe: '#3B5174'
+        
       },
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],              // Define Roboto

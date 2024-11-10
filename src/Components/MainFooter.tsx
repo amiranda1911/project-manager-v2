@@ -2,30 +2,30 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 
 const MainFooter = () => {
   return (
-
-    <footer className="bg-primary-color-dark  text-white py-6">
-      <div className="container mx-auto flex flex-col items-center md:flex-col md:justify-between space-y-4 md:space-y-0">
+    <footer className="bg-primary-color-dark text-white py-6">
+      <div className="container mx-auto flex flex-col md: items-center lg:flex-row lg:justify-around 
+       space-y-4 lg:space-y-0">
         
         {/* Ícones de Rede Social */}
-        <div className="flex space-x-4 md:flex-row md:space-x-8">
+        <div className="flex space-x-4 lg:space-x-8 cursor-pointer lg:order-1">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FaFacebookF  className="text-[#000]"/>
+            <FaFacebookF className="text-[#000] hover:text-colorFacebook" />
           </div>
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FaInstagram className="text-[#000]"/>
+            <FaInstagram className="text-[#000]" />
           </div>
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FaLinkedinIn className="text-[#000]"/>
-
+            <FaLinkedinIn className="text-[#000] hover:text-colorLinkedin" />
           </div>
         </div>
 
         {/* Texto de Direitos e Links */}
-        <div className="text-center md:text-left  ">
+        <div className="text-center lg:text-left lg:order-2">
           <p>© 2024 Project Manager. All rights reserved.</p>
         </div>
 
-        <div className="grid place-items-center h-full gap-4 lg:space-x-6 text-sm  md:inline-flex">
+        {/* Links de Políticas */}
+        <div className="flex flex-col md:flex-row items-center  justify-center gap-4 lg:gap-20 text-14 lg:order-3 lg:space-x-8">
           <a href="#" className="hover:underline">Privacy Policy</a>
           <a href="#" className="hover:underline">Terms of Service</a>
         </div>
@@ -35,4 +35,3 @@ const MainFooter = () => {
 };
 
 export default MainFooter;
-

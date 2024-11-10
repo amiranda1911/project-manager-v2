@@ -16,7 +16,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
 
       {/* Conteúdo direito baseado na página */}
       {pageType === 'page1' && (
-        <button className="w-[105px] h-[36] lg:w-[240px] border border-white text-white px-4 py-2 rounded-[30px] font-roboto text-15 md:text-16 md:[24px]md:w-40 hover:bg-gray-700 ">
+        <button className="w-[105px] h-[36] lg:w-[240px] border border-white text-white px-4 py-2 rounded-[30px] font-roboto text-15 md:text-16 md:[24px]md:w-40 cursor-pointer  hover:border-blue-hoverloguin ">
           Login
         </button>
       )}
