@@ -22,6 +22,7 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 	const [endDate, setEndDate] = useState<string>(`${now.getFullYear()}-${now.getMonth()}-${String(now.getDay() + 1).padStart(2, '0')}`)
 	const [endTime, setEndTime] = useState<string>("00:00")
 	const [priority, setPriority] = useState<Priority>(Priority.Low)
+	const [image, setImage] = useState<string>('')
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
@@ -40,7 +41,8 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 			progress: Math.floor(Math.random() * (100 - 1 + 1)) + 1,
 			start_datetime: new Date(`${startDate}T${startTime}`).getTime(),
 			end_datetime: new Date(`${endDate}T${endTime}`).getTime(),
-			estimated_time: 3
+			estimated_time: 3,
+			image: image
 		}
 		
 		createTask(task)
@@ -116,7 +118,7 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 					
 					<div className="form-section">
 						<label htmlFor="" className="form-label">Task cover</label>
-						<Uploader/>
+						<Uploader setImage={setImage}/>
 					</div>
 
 					<div className="form-section">
