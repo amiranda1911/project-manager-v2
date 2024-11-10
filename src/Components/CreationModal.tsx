@@ -41,8 +41,7 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 			progress: Math.floor(Math.random() * (100 - 1 + 1)) + 1,
 			start_datetime: new Date(`${startDate}T${startTime}`).getTime(),
 			end_datetime: new Date(`${endDate}T${endTime}`).getTime(),
-			estimated_time: 3,
-			created_by:  Date.now()
+			estimated_time: 3
 		}
 		
 		createTask(task)

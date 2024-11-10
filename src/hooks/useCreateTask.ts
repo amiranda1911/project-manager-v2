@@ -16,7 +16,6 @@ interface TaskProps {
 	start_datetime: number,
 	end_datetime: number,
 	estimated_time: number,
-	created_by: number
 }
 
 export const useCreateTask = () => {
