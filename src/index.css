@@ -100,3 +100,7 @@
 .green-button {
     @apply bg-green-dark text-white p-1 rounded-[0.58rem]
 }
+
+/*----------- SignUp Page ------------*/
+
+/* style for error messages */

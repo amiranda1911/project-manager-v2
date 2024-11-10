@@ -1,6 +1,6 @@
 import FormButtons from "./FormButtons"
 import React, { useState, useEffect } from 'react';
-import { UserLogin } from "../types/FormTypes"
+import { UserLogin } from "../interface/FormTypes"
 
 const validEmail = /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 const validPassword = /(?=(.*[0-9]))(?=.*[!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/ ;
