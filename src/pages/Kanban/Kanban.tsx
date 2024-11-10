@@ -10,6 +10,7 @@ import { Task } from '../../utils/Task' // Definição do tipo de tarefa
 import { Status } from '../../utils/EnumStatus' // Enumeração para os status das tarefas
 import MainFooter from '../../Components/MainFooter'
 import MainHeader from '../../Components/MainHeader'
+import logo from '../../img/logo 1.png';
 
 // Componente principal do Kanban
 const Kanban = () => {
@@ -75,18 +76,35 @@ const Kanban = () => {
         {/* Container principal do Kanban */}
         <div className={`
           m-4 w-full
-
           rounded-[1.875rem]
-          items-center
           justify-center
-          flex flex-grow flex-row
+          flex flex-grow flex-col
           ${showFixedMetric  ? 'lg:w-3/4' : '' }
         `}
           style={{ backgroundImage: `url(${kanbanCanvasBgImage})` }} // Define a imagem de fundo
         >
-          <KanbanColumn handleNewCard={setShowCreationModal} tasks={todoTasks} type='To do' /> {/* Coluna de tarefas a serem feitas */}
-          <KanbanColumn handleNewCard={setShowCreationModal} tasks={inProgressTasks} type='In progress' /> {/* Coluna de tarefas em progresso */}
-          <KanbanColumn handleNewCard={setShowCreationModal} tasks={doneTasks} type='Done' /> {/* Coluna de tarefas concluídas */}
+          <div className='
+            justify-center
+            flex flex-grow flex-row
+            items-center
+          '>
+            <KanbanColumn handleNewCard={setShowCreationModal} tasks={todoTasks} type='To do' /> {/* Coluna de tarefas a serem feitas */}
+            <KanbanColumn handleNewCard={setShowCreationModal} tasks={inProgressTasks} type='In progress' /> {/* Coluna de tarefas em progresso */}
+            <KanbanColumn handleNewCard={setShowCreationModal} tasks={doneTasks} type='Done' /> {/* Coluna de tarefas concluídas */}
+          </div>
+          
+          <div className='bg-black-opacity-50 rounded-[0.9rem] p-3  lg:hidden'>
+            <header className='flex items-center'>
+              <img src={logo} alt="Logo" className="h-8 w-8 md:h-[50px] md:w-[50px] mr-3 " />
+              <h2 className='text-white text-16 font-medium font-roboto'>Trabalhar no aplicativo</h2>
+            </header>
+            <p className='text-14 font-roboto font-regular text-white py-2'>Adicione ideias, notas e faça um plano de organização de onde estiver.</p>
+            <div className='flex flex-row justify-between'>
+              <button className='bg-white rounded-full px-5 py-2 text-14 font-medium font-roboto'>Agora não</button>
+              <button className='bg-violet-dark text-white rounded-full px-4 py-2 text-43 font-medium font-roboto'>Usar o aplicativo</button>
+            </div>
+          </div>
+
         </div>
 
         {/* Container para métricas fixas, visível somente se showFixedMetric for verdadeiro */}
