@@ -1,0 +1,64 @@
+/* tailwind.config.css */
+@layer utilities {
+  @keyframes spin1 {
+    0%,
+    25% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-12px, -12px) scale(0.75);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+  @keyframes spin2 {
+    0%,
+    25% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(12px, -12px) scale(0.75);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+  @keyframes spin3 {
+    0%,
+    25% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(12px, 12px) scale(0.75);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+  @keyframes spin4 {
+    0%,
+    25% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-12px, 12px) scale(0.75);
+    }
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+  }
+
+  .animate-spin1 {
+    animation: spin1 1s linear infinite;
+  }
+  .animate-spin2 {
+    animation: spin2 1s linear infinite;
+  }
+  .animate-spin3 {
+    animation: spin3 1s linear infinite;
+  }
+  .animate-spin4 {
+    animation: spin4 1s linear infinite;
+  }
+}

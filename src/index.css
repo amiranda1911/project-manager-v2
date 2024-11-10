@@ -2,103 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
+/*----------- LoadingSpinnerStyles------------*/
+
+@import './Components/LoadingSpinner/custom-utilities.css';
 
 /*----------- Kanban page styles ------------*/
 
-.todo-column .column-header{
-    @apply bg-violet-light
+.todo-column .column-header {
+  @apply bg-violet-light;
 }
 
 .todo-column .column-header-tasks-count {
-    @apply bg-violet-dark
+  @apply bg-violet-dark;
 }
 
 .todo-column .column-header-desc {
-    @apply text-violet-dark
+  @apply text-violet-dark;
 }
 
-.inprogress-column .column-header{
-    @apply bg-orange-light
+.inprogress-column .column-header {
+  @apply bg-orange-light;
 }
 
 .inprogress-column .column-header-tasks-count {
-    @apply bg-orange-dark 
+  @apply bg-orange-dark;
 }
 
 .inprogress-column .column-header-desc {
-    @apply text-orange-dark
+  @apply text-orange-dark;
 }
 
-.done-column .column-header{
-    @apply bg-green-light
+.done-column .column-header {
+  @apply bg-green-light;
 }
 
 .done-column .column-header-tasks-count {
-    @apply bg-green-dark 
+  @apply bg-green-dark;
 }
 
 .done-column .column-header-desc {
-    @apply text-green-dark
+  @apply text-green-dark;
 }
 
-.card-priority-mid{
-    @apply bg-orange-light text-orange-dark
+.card-priority-mid {
+  @apply bg-orange-light text-orange-dark;
 }
 
-.card-priority-low{
-    @apply bg-violet-light text-violet-dark
+.card-priority-low {
+  @apply bg-violet-light text-violet-dark;
 }
 
-.card-priority-high{
-    @apply bg-red-700 text-white
+.card-priority-high {
+  @apply bg-red-700 text-white;
 }
 
 /*----------- Settings page ------------*/
 
 /*  - style for input(type: radio) */
 .radio-input-tasks {
-    @apply mr-2 appearance-none border border-gray-400 checked:bg-blue-550 w-5 h-5 rounded-md
+  @apply mr-2 appearance-none border border-gray-400 checked:bg-blue-550 w-5 h-5 rounded-md;
 }
 
 /*----------- Form styles ------------*/
-.form-header{
-    @apply text-17 font-roboto font-semibold text-[#160A60]
+.form-header {
+  @apply text-17 font-roboto font-semibold text-[#160A60];
 }
 
 .form-label {
-    @apply font-roboto font-medium text-left text-14 text-[#331436]
+  @apply font-roboto font-medium text-left text-14 text-[#331436];
 }
 
 .form-input {
-    @apply font-roboto p-2 border border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080]
+  @apply font-roboto p-2 border border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080];
 }
 
-.form-section{
-    @apply font-roboto flex flex-col my-2
+.form-section {
+  @apply font-roboto flex flex-col my-2;
 }
 
 .form-radio {
-    @apply font-roboto flex flex-row-reverse mr-4 
+  @apply font-roboto flex flex-row-reverse mr-4;
 }
 
 .form-radio input {
-    @apply m-auto mr-1 w-4  h-4 rounded-[5px] appearance-none border-solid border-2
+  @apply m-auto mr-1 w-4  h-4 rounded-[5px] appearance-none border-solid border-2;
 }
 
-.radio-violet:checked{
-    @apply bg-violet-dark
+.radio-violet:checked {
+  @apply bg-violet-dark;
 }
 
-.radio-orange:checked{
-    @apply bg-orange-dark
+.radio-orange:checked {
+  @apply bg-orange-dark;
 }
 
-.radio-green:checked{
-    @apply bg-green-dark
+.radio-green:checked {
+  @apply bg-green-dark;
 }
 
 .green-button {
-    @apply bg-green-dark text-white p-1 rounded-[0.58rem]
+  @apply bg-green-dark text-white p-1 rounded-[0.58rem];
 }
 
 /*----------- SignUp Page ------------*/
