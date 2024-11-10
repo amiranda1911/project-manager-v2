@@ -117,7 +117,7 @@ const FormLogin: React.FC = () => {
                 />
                 {err.password && <p className="font-roboto font-normal text-12 leading-4 text-[#BD2323] md:text-13 md:w-[32.5rem]">{err.password}</p>}
             </div>
-            <div className="mt-[2.938rem] mb-[2.5rem] md:mt-[2rem] md:mb-[1.938rem]">
+            <div className="mt-6 mb-[2.5rem] md:mt-[2rem] md:mb-[1.938rem]">
             <FormButtons buttonText={loading ? 'Logging in...' : 'Logged'} loading={loading}/>
             </div>
             {error && <p>{error}</p>}
