@@ -14,4 +14,5 @@ export interface Task {
     start_datetime: number,
     end_datetime: number,
     estimated_time: number,
+    image:string
   }

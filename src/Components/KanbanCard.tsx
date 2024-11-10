@@ -11,59 +11,74 @@ interface KanbanCardProps{
 
 const KanBanCard = ({task} : KanbanCardProps) => {
   return (
-    <div className="
-        flex flex-col box-border justify-between
-		w-[6.116rem] h-[4.004rem] m-0 p-[0.26375rem]
-		md:w-[11.5rem] md:h-[7.53rem] md:p-[0.95rem]
-		lg:w-[17.38rem] lg:h-[11.38rem]
+	<div className="
+		w-[6.116rem]	
+		md:w-[11.5rem]
+		lg:w-[17.38rem]
 		bg-white
 		rounded-[0.528125rem]
 		mx-auto my-2
-		
-		">
-			<span className={`
-				flex
-				font-jakarta 
-				text-1 md:text-6 lg:text-12
-				px-[0.17625rem] py-[0.0125rem]
-				w-fit justify-start rounded-[1rem]
-				lg:p-2
-				card-priority-${Priority[task.priority].toLowerCase()}
-			`}>
-				{Priority[task.priority]}
-			</span>
-			<h2 className=" font-roboto font-bold 
-				text-3 md:text-10 lg:text-16"
-			>
-				{task.title}</h2>
-			
-			<div>
-				<div className=" w-full font-jakarta text-2 md:text-7 lg:text-14 flex flex-row justify-between">
-					<span>Progress</span>
-					<span>{task.progress}%</span>
-				</div>		
-				<ProgressBar progress={task.progress}/>
-			</div>
-			<footer className="flex flex-row
-					lg:h-[2rem] 
-					overflow-hidden
+		p-2
+		md:p-[0.95rem]
+	">
+		<div className="pb-2 overflow-hidden  rounded-sm md:rounded-2xl
+		w-[5]	
+		md:w-[9.5rem]
+		lg:w-[15.38rem]
+		h-auto"
+		>
+			{!(task.image === "") && (<img src={task.image} />) }
+		</div>
+		<div className="
+			flex flex-col box-border justify-between
+			 min-h-[4.004rem] m-0 
+			 md:min-h-[7.53rem] 
+			 lg:min-h-[11.38rem]
 			">
-				<div className="w-1/2 relative flex">
-					{Array(5).map((_, index) => (
-            <img key={index} className="flex w-[11px] h-[11px] bg-black rounded-full"/>
-          ))}
-					
+				<span className={`
+					flex
+					font-jakarta 
+					text-1 md:text-6 lg:text-12
+					px-[0.17625rem] py-[0.0125rem]
+					w-fit justify-start rounded-[1rem]
+					lg:p-2
+					card-priority-${Priority[task.priority].toLowerCase()}
+				`}>
+					{Priority[task.priority]}
+				</span>
+				<h2 className=" font-roboto font-bold 
+					text-3 md:text-10 lg:text-16"
+				>
+					{task.title}</h2>
+				
+				<div>
+					<div className=" w-full font-jakarta text-2 md:text-7 lg:text-14 flex flex-row justify-between">
+						<span>Progress</span>
+						<span>{task.progress}%</span>
+					</div>		
+					<ProgressBar progress={task.progress}/>
 				</div>
-				<div className="
-					w-1/2 
-					text-3 lg:text-16 font-semibold font-roboto
-					flex justify-between
-					">
-					<span className="flex items-center"><AiFillMessage color="#94A3B8" className="mr-[0.1rem]"/>{task.commentsCount}</span>
-					<span className="flex items-center"><FaCheckCircle color="#94A3B8" className="mr-[0.1rem]"/>{task.completedTasksCount}</span>
-				</div>
-			</footer>
-    </div>
+				<footer className="flex flex-row
+						lg:h-[2rem] 
+						overflow-hidden
+				">
+					<div className="w-1/2 relative flex">
+						{Array(5).map((_, index) => (
+				<img key={index} className="flex w-[11px] h-[11px] bg-black rounded-full"/>
+			))}
+						
+					</div>
+					<div className="
+						w-1/2 
+						text-3 lg:text-16 font-semibold font-roboto
+						flex justify-between
+						">
+						<span className="flex items-center"><AiFillMessage color="#94A3B8" className="mr-[0.1rem]"/>{task.commentsCount}</span>
+						<span className="flex items-center"><FaCheckCircle color="#94A3B8" className="mr-[0.1rem]"/>{task.completedTasksCount}</span>
+					</div>
+				</footer>
+		</div>
+	</div>
   )
 }
 
