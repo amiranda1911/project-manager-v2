@@ -9,6 +9,7 @@ import { UploadImage } from "../../Components/UploadImage";
 import { UpdateInfos } from "../../Components/UpdateInfos";
 import { useAuth } from "../../hooks/useAuth";
 import {  baseUrl } from "../../constants"
+import { Link } from "react-router-dom";
 
 
 import { UserData } from "./type";
@@ -169,9 +170,9 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
         <div className="text-center my-4">
           <p className="text-sm ">
             Never mind, take me{" "}
-            <a href="/kanban" className="text-indigo-600 underline">
+            <Link to="/kanban" className="text-indigo-600 underline">
               back to my project.
-            </a>
+            </Link>
           </p>
         </div>
       </main>
