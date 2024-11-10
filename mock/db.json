@@ -1,8 +1,48 @@
 {
   "users": [
-
+    {
+      "id": "0768",
+      "firstName": "Adson",
+      "lastName": "wadawdaw",
+      "email": "adson.tanajura@gmail.com",
+      "jobPosition": "dawdawdwa",
+      "password": "adwdaw",
+      "userName": "@adawdwadawdaw",
+      "creationDate": "2024-11-08T18:54:42.364Z",
+      "role": "dawdawdwa",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+      "socialMedia": {
+        "twitter": "",
+        "instagram": "",
+        "linkedin": ""
+      },
+      "notifications": {
+        "newTasks": false,
+        "newMembers": false,
+        "weeklyReports": false
+      }
+    },
+    {
+      "id": "45fa",
+      "firstName": "Adson",
+      "lastName": "wadawdaw",
+      "email": "anjo.gamer9091@gmail.com",
+      "jobPosition": "LUz",
+      "password": "123456",
+      "userName": "@Adsonwadawdaw",
+      "creationDate": "2024-11-10T00:02:54.219Z",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+      "socialMedia": {
+        "twitter": "",
+        "instagram": "",
+        "linkedin": ""
+      },
+      "notifications": {
+        "newTasks": false,
+        "newMembers": false,
+        "weeklyReports": false
+      }
+    }
   ],
-  "tasks": [
-
-  ]
+  "tasks": []
 }
