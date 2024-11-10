@@ -1,15 +1,26 @@
 import { IoIosClose } from "react-icons/io"
 import { Uploader } from "./Uploader"
+<<<<<<< Updated upstream
 import { useState } from "react";
 import { Status } from "../utils/EnumStatus";
 import { Priority } from "../utils/EnumPriority";
 import { useCreateTask } from "../hooks/useCreateTask";
 import { useAuth } from "../hooks/useAuth";
+=======
+import { Status } from './../utils/EnumStatus'
+import { useState } from "react"
+import { Task } from "../utils/Task"
+import { User } from "../utils/User"
+import { Priority } from "../utils/EnumPriority"
+>>>>>>> Stashed changes
 
 interface CreationModalProps {
-	closeDispatch: React.Dispatch<React.SetStateAction<boolean>>;
+	closeDispatch: React.Dispatch<React.SetStateAction<boolean>>
+	createDispatch: React.Dispatch<React.SetStateAction<boolean>>
+	status: Status
 }
 
+<<<<<<< Updated upstream
 const CreationModal = ({closeDispatch}: CreationModalProps) => {	
 	const {createTask} = useCreateTask()
 	const {getToken} = useAuth()
@@ -47,6 +58,27 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 		closeDispatch(false)
 	}
 
+=======
+const CreationModal = ({closeDispatch, createDispatch, status}: CreationModalProps) => {
+	
+	const [title, setTitle] = useState<string>("")
+	const [status, setStatus] = useState<Status>(Status.ToDo)
+	const [description, setDescription] = useState<string>("")
+	const [startDate, setStartDate] = useState<number>(0)
+	const [endDate, setEndtDate] = useState<number>(0)
+	const [cover, setCover] = useState<string>("")
+	const [users, setUsers] = useState<User[]>()
+	const [priority, setPriority] = useState<Priority>()
+
+
+	const createTask = () => {
+
+	}
+	
+	const closeModal = () => {
+		closeDispatch(false)
+	}
+>>>>>>> Stashed changes
   return (
     <>
     {/* back transparent screen */}
@@ -63,89 +95,92 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 				">
 				<header className="flex flex-row justify-between">
 					<h1 className="form-header">Create new task</h1> 
-					<button onClick={() => closeDispatch(false)}><IoIosClose className="text-23 text-[#BD2323]" /></button>
+					<button onClick={() => closeModal}><IoIosClose className="text-23 text-[#BD2323]" /></button>
 				</header>
 				
-				<form className="flex flex-col" onSubmit={handleSubmit}>
-					<div className="form-section">
-						<label className="form-label">Title</label>
-						<input type="text" className="form-input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter the title of the task"></input>
-					</div>
+				<form className="flex flex-col lg:flex-row" onSubmit={handleSubmit}>
+					<div className="lg:w-1/2 lg:p-3">
+						<div className="form-section">
+							<label className="form-label">Title</label>
+							<input type="text" className="form-input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter the title of the task"></input>
+						</div>
 
-					<div className="form-section">
-						<label className="form-label">Status</label>
-						<div className="flex flex-row">
-							<div className="form-radio">
-								<label>To do</label>
-								<input type="radio" onChange={() => setStatus(Status.ToDo)} className="radio-violet" name="status" />
-							</div>
+						<div className="form-section">
+							<label className="form-label">Status</label>
+							<div className="flex flex-row">
+								<div className="form-radio">
+									<label>To do</label>
+									<input type="radio" onChange={() => setStatus(Status.ToDo)} className="radio-violet" name="status" />
+								</div>
 
-							<div className="form-radio">
-								<label>In progress</label>
-								<input type="radio" onChange={() => setStatus(Status.InProgress)} className="radio-orange" name="status" />
-							</div>
+								<div className="form-radio">
+									<label>In progress</label>
+									<input type="radio" onChange={() => setStatus(Status.InProgress)} className="radio-orange" name="status" />
+								</div>
 
-							<div className="form-radio">
-								<label>Done</label>
-								<input type="radio" onChange={() => setStatus(Status.Done)} className="radio-green" name="status" />
+								<div className="form-radio">
+									<label>Done</label>
+									<input type="radio" onChange={() => setStatus(Status.Done)} className="radio-green" name="status" />
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div className="form-section">
-						<label className="form-label" htmlFor="">Description</label>
-						<textarea className="form-input" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Enter a description"></textarea>
-					</div>
-
-					<div className="form-section">
-						<label htmlFor="" className="form-label">Start Date</label>
-						<div className="flex flex-row">
-							<input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="form-input" /> 
-							<input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} className="form-input" />
+						
+						<div className="form-section">
+							<label className="form-label" htmlFor="">Description</label>
+							<textarea className="form-input" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Enter a description"></textarea>
 						</div>
-					</div>
 
-					<div className="form-section">
-						<label htmlFor="" className="form-label">End Date</label>
-						<div className="flex flex-row">
-							<input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="form-input" /> 
-							<input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} className="form-input" />
+						<div className="form-section">
+							<label htmlFor="" className="form-label">Start Date</label>
+							<div className="flex flex-row">
+								<input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="form-input" /> 
+								<input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} className="form-input" />
+							</div>
 						</div>
-					</div>
 
-					
-					<div className="form-section">
-						<label htmlFor="" className="form-label">Task cover</label>
-						<Uploader/>
-					</div>
-
-					<div className="form-section">
-							<label htmlFor="" className="form-label">Add People</label>
-							<input type="text" className="form-input" />
-					</div>
-
-					<div className="form-section">
-						<label className="form-label">Priority</label>
-						<div className="flex flex-row">
-							<div className="form-radio">
-								<label>Low</label>
-								<input type="radio" onChange={() => setPriority(Priority.Low)} className="radio-violet" name="priority" />
-							</div>
-
-							<div className="form-radio">
-								<label>Mid</label>
-								<input type="radio" onChange={() => setPriority(Priority.Mid)} className="radio-orange" name="priority" />
-							</div>
-
-							<div className="form-radio">
-								<label>High</label>
-								<input type="radio" onChange={() => setPriority(Priority.High)} className="radio-green" name="priority" />
+						<div className="form-section">
+							<label htmlFor="" className="form-label">End Date</label>
+							<div className="flex flex-row">
+								<input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="form-input" /> 
+								<input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} className="form-input" />
 							</div>
 						</div>
 					</div>
 
-					<div className="form-section">
-						<button className="green-button" type="submit">Create!</button>
+					<div className="lg:w-1/2 lg:p-3">
+						<div className="form-section">
+							<label htmlFor="" className="form-label">Task cover</label>
+							<Uploader/>
+						</div>
+
+						<div className="form-section">
+								<label htmlFor="" className="form-label">Add People</label>
+								<input type="text" className="form-input" />
+						</div>
+
+						<div className="form-section">
+							<label className="form-label">Priority</label>
+							<div className="flex flex-row">
+								<div className="form-radio">
+									<label>Low</label>
+									<input type="radio" onChange={() => setPriority(Priority.Low)} className="radio-violet" name="priority" />
+								</div>
+
+								<div className="form-radio">
+									<label>Mid</label>
+									<input type="radio" onChange={() => setPriority(Priority.Mid)} className="radio-orange" name="priority" />
+								</div>
+
+								<div className="form-radio">
+									<label>High</label>
+									<input type="radio" onChange={() => setPriority(Priority.High)} className="radio-green" name="priority" />
+								</div>
+							</div>
+						</div>
+
+						<div className="form-section">
+							<button className="green-button" type="submit">Create!</button>
+						</div>
 					</div>
 				</form>
 			</section>
