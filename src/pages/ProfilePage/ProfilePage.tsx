@@ -12,6 +12,7 @@ import WeeklyReport from './WeeklyReport';
 import MainHeader from '../../Components/MainHeader';
 import MainFooter from '../../Components/MainFooter';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 const ProfilePage = () => {
   const { id } = useParams<{ id: string }>();
@@ -35,7 +36,7 @@ const ProfilePage = () => {
     getUser();
   }, [id]);
 
-  if (loading) return <p>Carregando...</p>;
+  if (loading) return <LoadingSpinner />;
 
   if (!user || error) {
     return <PageNotFound />;
