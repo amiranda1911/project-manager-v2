@@ -23,17 +23,18 @@ const LoginPage = () => {
             </div> 
             
             {/*White Square */}    
-            <div className="flex items-center justify-center w-[22.063rem] h-[38rem] bg-white absolute inset-0 m-auto mt-32 md:mt-36 rounded-[1.875rem] 
+            <div className="flex items-center justify-center w-[22.063rem]h-[38rem] bg-white absolute inset-0 m-auto mt-32 md:mt-36 rounded-[1.875rem] 
             md:w-[41rem] md:h-[39rem] lg:hidden">            
             </div>   
 
             {/*All the info in white space */}
             <div className="flex items-center justify-center w-[22.063rem] h-[39rem] absolute inset-0 m-auto mt-20
-            md:w-[41rem] md:h-[39rem] lg:w-auto lg:static lg:mt-0 lg:order-1"> 
+            md:w-[41rem] md:h-[39rem] lg:w-auto lg:static lg:mt-auto lg:order-1"> 
 
                 <div>
                     <section className="leading-[1.5] pb-[1.5rem]">
-                        <h1 className="font-roboto font-bold text-center text-19 text-[#331436] pb-[1.5rem] mt-16 md:text-left md:mt-36 md:text-25 lg:mt-0">Login Information</h1>
+                        <h1 className="font-roboto font-bold text-center text-19 text-[#331436] pb-[1.5rem] mt-14
+                         md:text-left md:mt-36 md:text-25 lg:mt-0">Login Information</h1>
                         <p className="font-roboto font-normal text-center text-15 text-[#331436] md:text-left md:text-16">Enter your credentials</p>
                         <p className="font-roboto font-normal text-center text-15 text-[#331436] md:text-left md:text-16">New here? Let´s take you to 
                             <span><a href="/login" className="text-[#4f46e5] font-roboto font-bold text-15 md:text-16 cursor-pointer"> sign up.</a></span>
