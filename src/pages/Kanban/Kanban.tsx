@@ -75,7 +75,7 @@ const Kanban = () => {
         
         {/* Container principal do Kanban */}
         <div className={`
-          m-4 w-full
+          m-5 w-full
           rounded-[1.875rem]
           justify-center
           flex flex-grow flex-col
@@ -87,13 +87,16 @@ const Kanban = () => {
             justify-center
             flex flex-grow flex-row
             items-center
+            py-40
+            md:py-20
+            lg:py-16
           '>
             <KanbanColumn handleNewCard={setShowCreationModal} tasks={todoTasks} type='To do' /> {/* Coluna de tarefas a serem feitas */}
             <KanbanColumn handleNewCard={setShowCreationModal} tasks={inProgressTasks} type='In progress' /> {/* Coluna de tarefas em progresso */}
             <KanbanColumn handleNewCard={setShowCreationModal} tasks={doneTasks} type='Done' /> {/* Coluna de tarefas concluídas */}
           </div>
           
-          <div className='bg-black-opacity-50 rounded-[0.9rem] p-3  lg:hidden'>
+          <div className='bg-black-opacity-50 rounded-[0.9rem] p-3 absolute bottom-0 left-0 right-0 m-6 lg:hidden'>
             <header className='flex items-center'>
               <img src={logo} alt="Logo" className="h-8 w-8 md:h-[50px] md:w-[50px] mr-3 " />
               <h2 className='text-white text-16 font-medium font-roboto'>Trabalhar no aplicativo</h2>
