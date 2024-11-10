@@ -11,10 +11,10 @@ type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"] | "av
 interface UpdateInfosSettingsProps {
   updateInfosSettings: (section: Section | null, key: Key, value: string | number | boolean) => void;
   data: string;
-  isSumbit: boolean;
+  isSubmit: boolean;
 }
 
-export const UploadImage = ({ updateInfosSettings, data, isSumbit }: UpdateInfosSettingsProps) => {
+export const UploadImage = ({ updateInfosSettings, data, isSubmit }: UpdateInfosSettingsProps) => {
   const img = `https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`;
 
   const [file, setFile] = useState<string>(data);
@@ -87,7 +87,7 @@ export const UploadImage = ({ updateInfosSettings, data, isSumbit }: UpdateInfos
       <div className="sm:w-full md:w-100">
         <p className="font-medium text-purple-850">Add new profile picture</p>
 
-        {!isSumbit ? fileName ? (
+        {!isSubmit ? fileName ? (
           <div className="border border-blue-450 rounded-md p-1.5 flex items-center justify-between my-2 bg-blue-100 ">
             <span className="flex items-center">
               <FaPaperclip className="text-gray-400 h-[1.125rem] w-[1.125rem]" />
