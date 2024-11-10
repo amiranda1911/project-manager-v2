@@ -26,6 +26,10 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		
+		if(title === "" || description === "" || startDate === "" || endDate === ""){
+			return
+		}
 		const task = {
 			owner_id: getToken(),
 			priority: priority,
@@ -40,7 +44,7 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 			estimated_time: 3,
 			created_by:  Date.now()
 		}
-
+		
 		createTask(task)
 		closeDispatch(false)
 	}
