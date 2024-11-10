@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // Importa as bibliotecas e componentes necessários
 import { useEffect, useState } from 'react'
 import FixedMetrics from '../../Components/FixedMetrics' // Componente para métricas fixas no layout
@@ -13,12 +14,22 @@ import MainHeader from '../../Components/MainHeader'
 import logo from '../../img/logo 1.png';
 
 // Componente principal do Kanban
+=======
+import { useState } from 'react'
+import FixedMetrics from '../../Components/FixedMetrics'
+import KanbanColumn from '../../Components/KanbanColumn'
+import kanbanCanvasBgImage from '/public/kanban-bg.png' 
+import { BsPinFill } from 'react-icons/bs'
+import CreationModal from '../../Components/CreationModal'
+
+>>>>>>> Stashed changes
 const Kanban = () => {
 
   // Define o estado para controlar atualizações, visibilidade de métricas fixas e do modal de criação
   const [update, setUpdate] = useState<boolean>(true)
   const [showFixedMetric, setShowFixedMetric] = useState<boolean>(false)
   const [showCreationModal, setShowCreationModal] = useState<boolean>(false)
+<<<<<<< Updated upstream
   const [tasks, setTasks] = useState<Task[]>([]) // Estado que armazena as tarefas
 
   // Estados que armazenam as tarefas filtradas por status
@@ -64,10 +75,16 @@ const Kanban = () => {
   const handleCloseCreationModal = () => {
     setShowCreationModal(false)
     setUpdate(false) // Marca que uma atualização não é mais necessária
+=======
+
+  const createDispatch = () => {
+    
+>>>>>>> Stashed changes
   }
 
   return (
     <>
+<<<<<<< Updated upstream
       <MainHeader pageType={'page3'} />
       <div className={`flex flex-grow box-border w-full relative`}>
         {/* Renderiza o modal de criação se estiver habilitado */}
@@ -104,6 +121,24 @@ const Kanban = () => {
               <button className='bg-violet-dark text-white rounded-full px-4 py-2 text-43 font-medium font-roboto'>Usar o aplicativo</button>
             </div>
           </div>
+=======
+    <div className={`flex flex-grow box-border w-full relative`}>
+      {showCreationModal && <CreationModal createDispatch={() => {}} closeDispatch={setShowCreationModal}/>}
+      <div className={`
+        m-4 w-full
+        rounded-[1.875rem]
+        items-center
+        justify-center
+        flex flex-grow flex-row
+        ${showFixedMetric  ? 'lg:w-3/4': '' }
+      `}
+        style={{ backgroundImage: `url(${kanbanCanvasBgImage})` }}
+      >
+        <KanbanColumn type='To do'/>
+        <KanbanColumn type='In progress'/>
+        <KanbanColumn type='Done'/>
+      </div>
+>>>>>>> Stashed changes
 
         </div>
 

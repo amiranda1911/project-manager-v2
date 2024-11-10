@@ -1,15 +1,26 @@
 import { IoIosClose } from "react-icons/io"
 import { Uploader } from "./Uploader"
+<<<<<<< Updated upstream
 import { useState } from "react";
 import { Status } from "../utils/EnumStatus";
 import { Priority } from "../utils/EnumPriority";
 import { useCreateTask } from "../hooks/useCreateTask";
 import { useAuth } from "../hooks/useAuth";
+=======
+import { Status } from './../utils/EnumStatus'
+import { useState } from "react"
+import { Task } from "../utils/Task"
+import { User } from "../utils/User"
+import { Priority } from "../utils/EnumPriority"
+>>>>>>> Stashed changes
 
 interface CreationModalProps {
-	closeDispatch: React.Dispatch<React.SetStateAction<boolean>>;
+	closeDispatch: React.Dispatch<React.SetStateAction<boolean>>
+	createDispatch: React.Dispatch<React.SetStateAction<boolean>>
+	status: Status
 }
 
+<<<<<<< Updated upstream
 const CreationModal = ({closeDispatch}: CreationModalProps) => {	
 	const {createTask} = useCreateTask()
 	const {getToken} = useAuth()
@@ -47,6 +58,27 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 		closeDispatch(false)
 	}
 
+=======
+const CreationModal = ({closeDispatch, createDispatch, status}: CreationModalProps) => {
+	
+	const [title, setTitle] = useState<string>("")
+	const [status, setStatus] = useState<Status>(Status.ToDo)
+	const [description, setDescription] = useState<string>("")
+	const [startDate, setStartDate] = useState<number>(0)
+	const [endDate, setEndtDate] = useState<number>(0)
+	const [cover, setCover] = useState<string>("")
+	const [users, setUsers] = useState<User[]>()
+	const [priority, setPriority] = useState<Priority>()
+
+
+	const createTask = () => {
+
+	}
+	
+	const closeModal = () => {
+		closeDispatch(false)
+	}
+>>>>>>> Stashed changes
   return (
     <>
     {/* back transparent screen */}
@@ -63,7 +95,7 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 				">
 				<header className="flex flex-row justify-between">
 					<h1 className="form-header">Create new task</h1> 
-					<button onClick={() => closeDispatch(false)}><IoIosClose className="text-23 text-[#BD2323]" /></button>
+					<button onClick={() => closeModal}><IoIosClose className="text-23 text-[#BD2323]" /></button>
 				</header>
 				
 				<form className="flex flex-col lg:flex-row" onSubmit={handleSubmit}>
