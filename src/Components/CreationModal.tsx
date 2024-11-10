@@ -17,11 +17,10 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 	const [title, setTitle] = useState<string>("")
 	const [status, setStatus] = useState<Status>(Status.ToDo)
 	const [description, setDescription] = useState<string>("")
-	const [startDate, setStartDate] = useState<string>(`${now.getFullYear()}-${now.getMonth()}-${now.getDay()}`)
-	console.log(startDate)
-	const [startTime, setStartTime] = useState<string>("")
-	const [endDate, setEndDate] = useState<string>("")
-	const [endTime, setEndTime] = useState<string>("")
+	const [startDate, setStartDate] = useState<string>(`${now.getFullYear()}-${now.getMonth()}-${String(now.getDay()).padStart(2, '0')}`)
+	const [startTime, setStartTime] = useState<string>("00:00")
+	const [endDate, setEndDate] = useState<string>(`${now.getFullYear()}-${now.getMonth()}-${String(now.getDay() + 1).padStart(2, '0')}`)
+	const [endTime, setEndTime] = useState<string>("00:00")
 	const [priority, setPriority] = useState<Priority>(Priority.Low)
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
