@@ -55,7 +55,7 @@ const FixedMetrics = ({closeDispatch, owners, totalDone, totalTodo, totalinProgr
                 text-white
                 text-16'
             ><span>In This project</span> <button onClick={() => closeDispatch(false)}><BsPinFill /></button></h2>
-							{users.map((user) => (
+							{users.slice(0,3).map((user) => (
 								<FixedMetricUserCard key={user.id} user={user}/>
 							))}
             <h2 className='
