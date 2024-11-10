@@ -1,100 +1,122 @@
-import FormButtons from "./FormButtons"
-import React, { useState, useEffect } from 'react';
-import { UserInfo } from "../types/FormTypes"
+import FormButtons from "./FormButtons";
+import React, { useState } from 'react';
+import { UserInfo } from "../interface/FormTypes";
+import { useCreateAccount } from '../hooks/useCreateAccount';
+import { errorMessages } from '../constants/errorMessages'; 
 
 const validName = /^[a-zA-Z]{2,}$/;
-//lastName tem a mesma validação de name
+//lastName tem a mesma validação de firstName
 const validEmail = /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-const validProfession = /^[a-zA-Z]{5,}$/;
+const validjobPosition = /^[a-zA-Z]{5,}$/;
 const validPassword = /(?=(.*[0-9]))(?=.*[!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/ ;
 
 const FormSignUp: React.FC = () => {
- 
-    // verifica dados no localStorage
-    const [userInfo, setUserInfo] = useState<UserInfo>(() => {
-        const storedData = localStorage.getItem('userInfo');
-        return storedData ? JSON.parse(storedData) : { name:'', lastName:'', email:'', profession:'', password:''};
-    });  
+    const { createAccount, loading, error } = useCreateAccount();
 
-    const [err, setErr] = useState <{ name: string; lastName:string; email: string; profession: string; password: string;}>
-        ({
-            name: '',
+   // verifica dados
+    const [userInfo, setUserInfo] = useState<UserInfo>({
+            firstName: '',
             lastName: '',
             email: '',
-            profession: '',
-            password: '',        
-        });
+            jobPosition: '',
+            password: '',
+    });
 
-    // atualiza o localStorage
-    useEffect(() => {
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-    }, [userInfo]);
+    const [err, setErr] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        jobPosition: '',
+        password: '',
+        formStatus: '',  // Estado para a mensagem de status
+      });
 
     // validação
     const validate = (userInfo: UserInfo) => {
-        let nameErr = '';
+        let firstNameErr = '';
         let lastNameErr = '';
         let emailErr = '';
-        let professionErr = '';
+        let jobPositionErr = '';
         let passwordErr = '';
 
-        if (!validName.test(userInfo.name)) nameErr = 'Name must be at least 2 characters.';
-        if (!validName.test(userInfo.lastName)) lastNameErr = 'Last name must be at least 2 characters.'; //lastName tem a mesma validação do name
-        if (!validEmail.test(userInfo.email)) emailErr = 'Please enter a valid email address.';
-        if (!validProfession.test(userInfo.profession)) professionErr = 'Profession must be at least 5 characters.';
-        if (!validPassword.test(userInfo.password)) passwordErr = 'Password is too weak.';
+        if (!validName.test(userInfo.firstName)) firstNameErr = errorMessages.firstName;
+        if (!validName.test(userInfo.lastName)) lastNameErr = errorMessages.lastName;
+        if (!validEmail.test(userInfo.email)) emailErr = errorMessages.email;
+        if (!validjobPosition.test(userInfo.jobPosition)) jobPositionErr = errorMessages.jobPosition;
+        if (!validPassword.test(userInfo.password)) passwordErr = errorMessages.password;
 
-        setErr({ name: nameErr, lastName: lastNameErr, email: emailErr, profession: professionErr, password: passwordErr });
+        setErr({ firstName: firstNameErr, lastName: lastNameErr, email: emailErr, jobPosition: jobPositionErr, password: passwordErr, formStatus: '' });
 
-        return !nameErr && !lastNameErr && !emailErr && !professionErr && !passwordErr;
+        return !firstNameErr && !lastNameErr && !emailErr && !jobPositionErr && !passwordErr;
     };
 
-    // atualiza o estado
+    // atualiza os campos de entrada, o estado
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         console.log('Campo:', name, 'Valor:', value); // para verificar o valor capturado, remover do código depois
 
         setUserInfo((prev) => ({...prev, [name]: value }));
     };
-    
-    //limpa os inputs do formulário depois de enviado
-    //const clearForm = () => {
-    //    setUserInfo({name:'', lastName:'', email:'', profession:'', password:''});
-    //  };
 
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+      
+        if (name === "firstName" && !validName.test(value)) {
+          setErr((prevErr) => ({ ...prevErr, firstName: errorMessages.firstName }));
+        }      
+        if (name === "lastName" && !validName.test(value)) {
+          setErr((prevErr) => ({ ...prevErr, lastName: errorMessages.lastName }));
+        }      
+        if (name === "email" && !validEmail.test(value)) {
+          setErr((prevErr) => ({ ...prevErr, email: errorMessages.email }));
+        }      
+        if (name === "jobPosition" && !validjobPosition.test(value)) {
+          setErr((prevErr) => ({ ...prevErr, jobPosition: errorMessages.jobPosition }));
+        }      
+        if (name === "password" && !validPassword.test(value)) {
+          setErr((prevErr) => ({ ...prevErr, password: errorMessages.password }));
+        }
+    };
+    
     // função de envio
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        
         if (validate(userInfo)) {
-        alert('Formulário enviado!');    //mudar alert para mensagem em tela
-       // clearForm();
+            createAccount(userInfo);
+            //Atualiza a mensagem de sucesso
+            setErr((prevErr) => ({...prevErr, formStatus: errorMessages.formSuccess}));        
         } else {
-        alert('Corrija os erros antes de enviar.');   //mudar alert par amensagem em tela
+            // Atualiza a mensagem de erro
+            setErr((prevErr) => ({...prevErr, formStatus: errorMessages.formError}));
         }
     };
 
     return (
     <>
 
-    <form onSubmit={handleSubmit} className="flex flex-col gap-[1.5rem] md:mt-[1.938rem]">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-[1.9rem] md:mt-[1.938rem]">
        
         <section className="md:flex md:flex-row md:gap-[1.125rem] md:max-w-[32.5rem]">
             <div className="flex flex-col w-[20.563rem] h-[3.75rem]">
-                <label htmlFor="name" className="font-roboto font-medium text-left text-14 text-[#331436]">First Name</label>
+                <label htmlFor="firstName" className="font-roboto font-medium text-left text-14 text-[#331436]">First Name</label>
                 <input
                 type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your first name"
-                value={userInfo.name}
+                id="firstName"
+                name="firstName"
+                placeholder="Enter your first name"                 
+                value={userInfo.firstName}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                autoComplete="on"     //autocompletar campos
+                required
                 className="font-roboto font-normal text-14 text-[#00000080] p-[0.75rem]
                  w-auto h-[2.25rem] border border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080]"                    
                 />
-                {err.name && <p style={{ color: 'red' }}>{err.name}</p>}
+                {err.firstName && <p className="font-roboto font-normal text-12 leading-4 text-[#BD2323] md:text-13">{err.firstName}</p>}
             </div>
 
-            <div className="flex flex-col mt-[1.5rem] w-[20.563rem] h-[3.75rem]">
+            <div className="flex flex-col mt-[1.5rem] w-[20.563rem] h-[3.75rem] md:mt-0">
                 <label htmlFor="lastName" className="font-roboto font-medium text-left text-14 text-[#331436]">Last Name</label>                  
                 <input
                 type="text"
@@ -103,10 +125,13 @@ const FormSignUp: React.FC = () => {
                 placeholder="Enter your last name"
                 value={userInfo.lastName}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                autoComplete="on"     //autocompletar campos
+                required
                 className="font-roboto font-normal text-14 text-[#00000080] p-[0.75rem]
                 w-auto h-[2.25rem] border border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080]"
                 />
-                {err.lastName && <p style={{ color: 'red' }}>{err.lastName}</p>}
+                {err.lastName && <p className="font-roboto font-normal text-12 leading-4 text-[#BD2323] md:text-13">{err.lastName}</p>}
             </div>
         </section>
        
@@ -119,25 +144,31 @@ const FormSignUp: React.FC = () => {
             placeholder="Enter your email"
             value={userInfo.email}
             onChange={handleChange}
+            onBlur={handleBlur}
+            autoComplete="on"     //autocompletar campos
+            required
             className="font-roboto font-normal text-14 text-[#00000080] p-[0.75rem]
             w-auto h-[2.25rem] border border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080] md:w-[32.5rem]"
             />
-            {err.email && <p style={{ color: 'red' }}>{err.email}</p>}
+            {err.email && <p className="font-roboto font-normal text-12 leading-4 text-[#BD2323] md:text-13 md:w-[32.5rem]">{err.email}</p>}
         </div>
 
         <div className="flex flex-col w-[20.563rem] h-[3.75rem]">
-            <label htmlFor="profession" className="font-roboto font-medium text-left text-14 text-[#331436]">Job Position</label>                  
+            <label htmlFor="jobPosition" className="font-roboto font-medium text-left text-14 text-[#331436]">Job Position</label>                  
             <input
             type="text"
-            id="profession"
-            name="profession"
+            id="jobPosition"
+            name="jobPosition"
             placeholder="Enter your job position (example: Project Manager)"
-            value={userInfo.profession}
+            value={userInfo.jobPosition}
             onChange={handleChange}
+            onBlur={handleBlur}
+            autoComplete="on"     //autocompletar campos
+            required
             className="font-roboto font-normal text-14 text-[#00000080] p-[0.75rem]
             w-auto h-[2.25rem] truncate border border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080] md:w-[32.5rem]"
             />
-            {err.profession && <p style={{ color: 'red' }}>{err.profession}</p>}
+            {err.jobPosition && <p className="font-roboto font-normal text-12 leading-4 text-[#BD2323] md:text-13 md:w-[32.5rem]">{err.jobPosition}</p>}
         </div>
 
         <div className="flex flex-col w-[20.563rem] h-[3.75rem]">
@@ -149,16 +180,26 @@ const FormSignUp: React.FC = () => {
             placeholder="Enter your password"
             value={userInfo.password}
             onChange={handleChange}
+            onBlur={handleBlur}
+            autoComplete="on"     //autocompletar campos
+            required
             className="font-roboto font-normal text-14 text-[#00000080] p-[0.75rem]
             w-auto h-[2.25rem] border border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080] md:w-[32.5rem]"
             />
-            {err.password && <p style={{ color: 'red' }}>{err.password}</p>}
+            {err.password && <p className="font-roboto font-normal text-12 leading-4 text-[#BD2323] md:text-13 md:w-[32.5rem]">{err.password}</p>}
         </div>
+
+        {/* Exibe a mensagem de sucesso ou erro */}
+        {err.formStatus && (
+            <p style={{ color: err.formStatus === errorMessages.formSuccess ? '[#22C55E]' : '[#BD2323]' }}>
+            {err.formStatus}
+            </p>  
+        )}
 
         <div className=" mt-[1.413rem] mb-[1.313rem] md:mt-[2rem] md:mb-[1.938rem]">
-        <FormButtons buttonText="Create an account" />
+        <FormButtons buttonText={loading ? 'Creating...' : 'Create Account'} loading={loading}/>
         </div>
-
+        {error && <p>{error}</p>}
     </form>    
     </>
   )
