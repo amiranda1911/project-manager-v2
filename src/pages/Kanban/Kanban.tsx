@@ -8,6 +8,8 @@ import CreationModal from '../../Components/CreationModal' // Componente modal p
 import axios from 'axios' // Biblioteca para fazer requisições HTTP
 import { Task } from '../../utils/Task' // Definição do tipo de tarefa
 import { Status } from '../../utils/EnumStatus' // Enumeração para os status das tarefas
+import MainFooter from '../../Components/MainFooter'
+import MainHeader from '../../Components/MainHeader'
 
 // Componente principal do Kanban
 const Kanban = () => {
@@ -22,6 +24,9 @@ const Kanban = () => {
   const [inProgressTasks, setInprogressTasks] = useState<Task[]>([])
   const [todoTasks, setTodoTasks] = useState<Task[]>([])
   const [doneTasks, setDoneTasks] = useState<Task[]>([])
+
+  const [tasksOwners, setTaskOwners] = useState<number[]>([])
+  const [totalTime, setTotalTime] = useState<number>(0)
 
   // Hook useEffect para buscar tarefas do backend
   useEffect(() => {
@@ -44,9 +49,15 @@ const Kanban = () => {
       setDoneTasks(tasks.filter(task => task.status == Status.Done)) // Filtra tarefas concluídas
       setInprogressTasks(tasks.filter(task => task.status == Status.InProgress)) // Filtra tarefas em progresso
       setTodoTasks(tasks.filter(task => task.status == Status.ToDo)) // Filtra tarefas a serem feitas
+      setTotalTime(tasks.reduce((acc, task)=> acc + task.estimated_time, 0))
     } 
     updateData()
   }, [tasks]) // Executa sempre que `tasks` for alterado
+
+  //useEffect para listar usuarios no projeto
+  useEffect(() => {
+    setTaskOwners(tasks.map(task => task.owner_id).filter((owner, index, array)=> array.indexOf(owner) === index))
+  },[tasks])
 
   // Função para fechar o modal de criação de tarefa e atualizar o estado
   const handleCloseCreationModal = () => {
@@ -56,6 +67,7 @@ const Kanban = () => {
 
   return (
     <>
+      <MainHeader pageType={'page3'} />
       <div className={`flex flex-grow box-border w-full relative`}>
         {/* Renderiza o modal de criação se estiver habilitado */}
         {showCreationModal && <CreationModal closeDispatch={handleCloseCreationModal} />}
@@ -63,6 +75,7 @@ const Kanban = () => {
         {/* Container principal do Kanban */}
         <div className={`
           m-4 w-full
+
           rounded-[1.875rem]
           items-center
           justify-center
@@ -83,8 +96,10 @@ const Kanban = () => {
           lg:static
           absolute
           right-0
+          flex flex-col
+          items-center
         `}>
-          {showFixedMetric && <FixedMetrics closeDispatch={setShowFixedMetric} />}
+          {showFixedMetric && <FixedMetrics closeDispatch={setShowFixedMetric} owners={tasksOwners} totalDone={doneTasks.length} totalTodo={todoTasks.length} totalinProgress={inProgressTasks.length} totaltime={totalTime} />}
         </div>
 
         {/* Botão para exibir métricas fixas quando ocultas */}
@@ -97,6 +112,7 @@ const Kanban = () => {
           </button>
         }
       </div>
+      <MainFooter/>
     </>
   )
 }
