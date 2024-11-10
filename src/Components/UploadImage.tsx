@@ -5,13 +5,13 @@ import { FiUpload } from 'react-icons/fi';
 import axios from 'axios';
 import { UserData } from "../pages/SettingsProfile/type";
 
-type Section = "notifications" | "socialMedia"; // Tipo restrito para seções
+type Section = "notifications" | "socialMedia";
 type Key = keyof UserData["notifications"] | keyof UserData["socialMedia"] | "avatar";
 
 interface UpdateInfosSettingsProps {
   updateInfosSettings: (section: Section | null, key: Key, value: string | number | boolean) => void;
   data: string;
-  isSumbit: boolean
+  isSumbit: boolean;
 }
 
 export const UploadImage = ({ updateInfosSettings, data, isSumbit }: UpdateInfosSettingsProps) => {
@@ -20,7 +20,7 @@ export const UploadImage = ({ updateInfosSettings, data, isSumbit }: UpdateInfos
   const [file, setFile] = useState<string>(data);
   const [fileName, setFileName] = useState<string>('');
   const [isUploading, setIsUploading] = useState<boolean>(false);
-  const [clear] = useState(data)
+  const [clear] = useState(data);
 
   const uploadToCloudinary = useCallback(async (selectedFile: File) => {
     setIsUploading(true);
@@ -37,7 +37,7 @@ export const UploadImage = ({ updateInfosSettings, data, isSumbit }: UpdateInfos
       setFileName(selectedFile.name);
 
       // Chama updateInfosSettings somente após o arquivo ser carregado
-      updateInfosSettings(null,  "avatar", response.data.secure_url);
+      updateInfosSettings(null, "avatar", response.data.secure_url);
     } catch (error) {
       console.error('Erro ao fazer upload para o Cloudinary:', error);
     } finally {
@@ -46,26 +46,34 @@ export const UploadImage = ({ updateInfosSettings, data, isSumbit }: UpdateInfos
   }, [updateInfosSettings]);
 
   const clearImg = () => {
-    setFile(clear)
-    setFileName('')
-    console.log(data)
-
-  }
+    setFile(clear);
+    setFileName('');
+    console.log(data);
+  };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
-      uploadToCloudinary(selectedFile);
+      if (selectedFile.size <= 5 * 1024 * 1024) { // Verifica se o tamanho do arquivo é menor ou igual a 5 MB
+        uploadToCloudinary(selectedFile);
+      } else {
+        console.log("O arquivo deve ter no máximo 5 MB.");
+      }
     }
   };
-
+  
   const handleImageDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const selectedFile = e.dataTransfer.files[0];
     if (selectedFile) {
-      uploadToCloudinary(selectedFile);
+      if (selectedFile.size <= 5 * 1024 * 1024) { // Verifica se o tamanho do arquivo é menor ou igual a 5 MB
+        uploadToCloudinary(selectedFile);
+      } else {
+        console.log("O arquivo deve ter no máximo 5 MB.");
+      }
     }
   };
+  
 
   return (
     <div className="flex flex-col my-6 md:w-3/6 md:flex-row md:mx-11">
@@ -114,7 +122,7 @@ export const UploadImage = ({ updateInfosSettings, data, isSumbit }: UpdateInfos
                 Drop here to attach or{' '}
                 <span className="text-violet-dark">upload</span>
               </p>
-              <span className="text-xs md:text-sm">Max size: 5GB</span>
+              <span className="text-xs md:text-sm">Max size: 5MB</span>
             </>
           )}
         </div>
