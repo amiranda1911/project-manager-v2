@@ -8,6 +8,7 @@ import MainHeader from './MainHeader';
 import MainFooter from './MainFooter';
 import Modal from './Modal';
 
+
 const HomePage = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -50,18 +51,19 @@ const HomePage = () => {
       <main>
       <section className=" bg-[url('https://images.unsplash.com/photo-1546984575-757f4f7c13cf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center h-[700px] lg:h-[644px] ">
   {/* Div com o título, parágrafo e botão à esquerda */}
-  <div className="lg:flex  justify-center lg:m-auto  font-roboto lg:w-[1064px] lg:h-[272px] lg:justify-between p-10">
-    <div className="bg-black-opacity-50 text-center p-10 rounded-[30px] mx-4 mb-7 mt-14 md:mx-10 md:text-left lg:w-[660px] lg:h-[285px] lg:translate-x-[-220px] ">
-      <h1 className="mb-4 whitespace-nowrap font-bold text-19 w-full md:text-25">
+  <div className="lg:flex  justify-center lg:m-auto  font-roboto lg:w-[1064px] lg:h-[272px] lg:justify-between md:p-10 p-1 ">
+    <div className="bg-black-opacity-50 text-center p-10 rounded-[30px] mx-4 mb-7 mt-10 md:mx-10 md:text-left lg:w-[660px] lg:h-[285px] lg:translate-x-[-220px] ">
+      <h1 className="mb-4 whitespace-nowrap font-bold text-19  flex justify-center lg:justify-start md:text-25">
         <span className="text-white mr-2">Welcome to</span>
         <span className="text-blue-lightBlue">Project Manager</span>
       </h1>
       <p className="mb-4 text-white text-14 md:text-16 md:text-justify leading-loose lg:leading-[24px]  ">
         Get your projects and ideas in order, all in one place! Sign up now and <br/> discover a smarter way to manage your work with efficiency and <br/> teamwork.
       </p>
-      <a href="/register"><button  className="border border-white rounded-[30px] px-10 py-1 text-white md:self-start md:w-[240px] md:h-[48px]">
+      <a href="/register"><button  className="border border-white rounded-[30px] px-10 py-1 text-white md:self-start md:w-[240px] md:h-[48px] hover:border-blue-hoverloguin">
         Get Started
-      </button></a>
+      </button>
+      </a>
     </div>
 
     <img src={retrato} alt="Retrato" className="hidden lg:block absolute top-6  bg-cover " />
@@ -93,7 +95,7 @@ const HomePage = () => {
                 <p className="text-justify mb-4 text-14 md:text-16">
                   Project Manager is a tool designed to make organizing and tracking your daily tasks easier than ever. With a clean, intuitive interface and powerful features, you can plan, prioritize, and keep tabs on your projects - whether you’re working solo or with a team.
                 </p>
-                <button className="text-purple-purpleabyss bg-white rounded w-[205px] py-3 md:self-start text-15 font-bold md:text-16 md:[240px] md:h-[48px] md:text-center">
+                <button className="text-purple-purpleabyss bg-white rounded w-[205px] py-3 md:self-start text-15 font-bold md:text-16 md:[240px] md:h-[48px] md:text-center hover:bg-purple-lavander hover:text-white">
                   Learn More
                 </button>
               </div>
@@ -124,7 +126,7 @@ const HomePage = () => {
             <div className="m-12 space-y-6">
               <h2 className="text-20 font-bold md:text-25 text-primary-yellow ">Featured Tools</h2>
               <p className="mb-4 whitespace-nowrap text-14 md:text-16">Tools to enhance your project management</p>
-              <button className="px-3 py-3 bg-white rounded-md text-purple-purpleabyss font-bold text-15 md:text-16 md:w-[240px] md:h[48px] ">View All</button>
+              <button className="px-3 py-3 bg-white rounded-md text-purple-purpleabyss font-bold text-15 md:text-16 md:w-[240px] md:h[48px] hover:bg-primary-color-dark hover:text-white ">View All</button>
             </div>
             <div>
               <ul className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 lg:flex lg:flex-row md:gap-24 p-10 ">
@@ -161,7 +163,7 @@ const HomePage = () => {
           </div>
         </section> 
 
-        <section className="flex flex-col lg:flex-row lg:justify-center items-center bg-white2 text-purple-purpleabyss font-roboto p-8 lg:p-16">
+        <section className="flex flex-col lg:flex-row lg:justify-center items-center bg-white2 text-purple-purpleabyss font-robotoa md:pb-8 lg:p-16">
           <div className="text-center m-14 lg:translate-x-[-155px] lg:text-left">
             <h1 className="w-full text-20 font-bold mb-6 md:text-25">Subscribe to Updates</h1>
             <p className='text-14 md:text-16'>Stay informed with our latest updates</p>
@@ -195,7 +197,7 @@ const HomePage = () => {
               />
               {nameError && <p className="text-red-500 text-sm">{nameError}</p>}
             </div>
-            <button type="submit" className="h-9 w-[142px] p-2 bg-primary-color-dark text-white rounded-md text-15 md:text-16">
+            <button type="submit" className="h-9 w-[142px] p-2 bg-primary-color-dark text-white rounded-md text-15 md:text-16 hover:bg-hoversubscribe">
               Subscribe
             </button>
           </form>
