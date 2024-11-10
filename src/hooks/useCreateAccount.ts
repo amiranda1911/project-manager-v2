@@ -29,7 +29,7 @@ export const useCreateAccount = () => {
         ...data,
         userName: `@${data.firstName}${data.lastName}`,
         creationDate: new Date().toISOString(),
-        role: data.jobPosition,
+        jobPosition: data.jobPosition,
         avatar: 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
         socialMedia: { twitter: '', instagram: '', linkedin: '' },
         notifications: {

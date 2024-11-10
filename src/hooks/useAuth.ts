@@ -8,7 +8,8 @@ export const useAuth = () => {
   };
 
   const getToken = () => {
-    return localStorage.getItem('token');
+    const id = localStorage.getItem('token');
+    return JSON.parse(id!);
   };
 
   const verifyIsAuthenticated = () => {

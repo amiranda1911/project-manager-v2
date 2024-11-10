@@ -1,31 +1,34 @@
 import { useState } from "react";
 
-export const UpdateSocialnformation = () => {
+// Definindo as chaves possíveis de social media
+type SocialMediaKey = "twitter" | "instagram" | "linkedin";
 
-const [socialMedia, setSocialMedia] = useState({
-    socialMedia: {
-        x: 'sabrina',
-        instagram: 'souza',
-        linkedin: 'nada'
-    }
-})
+interface UpdateInfosSettingsProps {
+  updateInfosSettings: (section: "socialMedia" | null, key: SocialMediaKey, value: string) => void;
+  data: {
+    twitter: string;
+    instagram: string;
+    linkedin: string;
+  }
+}
 
-const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+ const UpdateSocialInformation = ({ updateInfosSettings, data }: UpdateInfosSettingsProps) => {
+  const [socialMedia, setSocialMedia] = useState(data);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-  
+
     setSocialMedia({
       ...socialMedia,
-      socialMedia: {
-        ...socialMedia.socialMedia,
         [name]: value,
-      },
     });
+
+    // Garantindo que a chave name seja uma das chaves do tipo SocialMediaKey
+    updateInfosSettings("socialMedia", name as SocialMediaKey, value);
   };
 
-console.log(socialMedia)
-
   return (
-    <div className="w-3/6 my-6 lg:mx-10 lg:3/6">
+    <div className="w-3/6 my-6 lg:mx-10 lg:w-3/6">
       <span>Twitter/X</span>
       <div className="flex">
         <input
@@ -36,8 +39,9 @@ console.log(socialMedia)
         />
         <input
           type="text"
-          name="x"
-          className="border border-gray-300 rounded-md px-4  ml-1.5 w-36 h-12"
+          name="twitter"
+          className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
+          placeholder={socialMedia.twitter}
           onChange={(e) => handleInputChange(e)}
         />
       </div>
@@ -53,6 +57,7 @@ console.log(socialMedia)
           type="text"
           name="instagram"
           className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
+          placeholder={socialMedia.instagram}
           onChange={(e) => handleInputChange(e)}
         />
       </div>
@@ -60,18 +65,20 @@ console.log(socialMedia)
       <div className="flex">
         <input
           type="text"
-          name="linkedin"
           placeholder="linkedin.com/in/"
           className="w-52 h-12 border border-gray-300 rounded-md px-4"
           disabled={true}
-          
         />
         <input
           type="text"
+          name="linkedin"
           className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
+          placeholder={socialMedia.linkedin}
           onChange={(e) => handleInputChange(e)}
         />
       </div>
     </div>
   );
 };
+
+export default UpdateSocialInformation
