@@ -13,7 +13,7 @@ const SignUpPage = () => {
 
   useEffect(() => {
     const isAuthenticated = verifyIsAuthenticated();
-    console.log(isAuthenticated);
+
     if (isAuthenticated) {
       navigate('/kanban');
     }
