@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../img/logo 1.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaBars } from 'react-icons/fa';  // Importando os ícones
 import { useAuth } from '../hooks/useAuth'; 
 import useLogout from '../hooks/useLogout'; 
 
@@ -13,16 +13,16 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
   const { verifyIsAuthenticated } = useAuth();
   const logout = useLogout();
   const navigate = useNavigate();
-  
-  
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Controle do menu hambúrguer
+  const [isSearchOpen, setIsSearchOpen] = useState(false); // Controle da barra de pesquisa
+
   const handleHomeClick = () => {
     logout(); 
   };
 
-
   const handleSettingsClick = () => {
     if (verifyIsAuthenticated()) {
-      navigate('/settings'); 
+      navigate('/settings-profile'); 
     }
   };
 
@@ -40,7 +40,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
           <img
             src={logo}
             alt="Logo"
-            className="h-10 w-10 md:h-[50px] md:w-[50px] mr-3 cursor-pointer z-10 relative "
+            className="h-10 w-10 md:h-[50px] md:w-[50px] mr-3 cursor-pointer z-10 relative"
           />
         </Link>
         <span className="font-roboto text-14 md:text-17 ">Project Manager</span>
@@ -56,19 +56,61 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
       )}
 
       {pageType === 'page3' && (
-        <nav className="flex items-center space-x-4">
-          <a onClick={handleHomeClick} className="hover:border-b-2 hover:border-white cursor-pointer">Home</a>
-          <a href="#" className="hover:border-b-2 hover:border-white cursor-pointer">About</a>
-          <a onClick={handleSettingsClick} className="hover:border-b-2 hover:border-white cursor-pointer">Settings</a>
-          <a onClick={handleProfileClick} className="hover:border-b-2 hover:border-white cursor-pointer">Profile</a>
+        <>
+          {/* Container que vai alinhar o menu hambúrguer e a lupa à direita */}
+          <div className="md:hidden flex items-center ml-auto z-20">
+            {/* Ícone de menu hambúrguer */}
+            <FaBars 
+              className="text-white text-2xl cursor-pointer mr-4"
+              onClick={() => setIsMenuOpen(!isMenuOpen)} // Alterna o estado do menu
+            />
+            
+            {/* Ícone da lupa */}
+            <FaSearch 
+              className="text-white text-2xl cursor-pointer border border-gray-700  rounded-md "
+              onClick={() => setIsSearchOpen(!isSearchOpen)} 
+            />
+          </div>
 
+          {/* Menu de navegação para mobile */}
+          <div className={`md:hidden absolute top-16 left-0 w-full bg-primary-color-dark transition-all duration-300 ease-in-out ${isMenuOpen ? 'block' : 'hidden'} z-30`}>
+            <nav className="flex flex-col items-center space-y-4 py-4">
+              <a onClick={handleHomeClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer w-full text-center">Home</a>
+              <a href="#" className="text-white hover:border-b-2 hover:border-white cursor-pointer w-full text-center">About</a>
+              <a onClick={handleSettingsClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer w-full text-center">Settings</a>
+              <a onClick={handleProfileClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer w-full text-center">Profile</a>
+            </nav>
+          </div>
+
+          {/* Barra de pesquisa (fora do menu hambúrguer) */}
+          {isSearchOpen && (
+            <div className="absolute top-16 left-0 w-full bg-primary-color-dark p-4 md:hidden z-40">
+              <input
+                type="text"
+                placeholder="Search in site"
+                className="px-3 py-1 pr-10 rounded-lg bg-primary-color-dark text-white border border-gray-700 focus:outline-none hover:border-blue-hoverloguin w-full"
+              />
+            </div>
+          )}
+        </>
+      )}
+
+      {/* Navbar para versões md e lg */}
+      {pageType === 'page3' && (
+        <nav className="hidden md:flex items-center space-x-6">
+          <a onClick={handleHomeClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer">Home</a>
+          <a href="#" className="text-white hover:border-b-2 hover:border-white cursor-pointer">About</a>
+          <a onClick={handleSettingsClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer">Settings</a>
+          <a onClick={handleProfileClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer">Profile</a>
+
+          {/* Barra de pesquisa */}
           <div className="relative">
             <input
               type="text"
               placeholder="Search in site"
               className="px-3 py-1 pr-10 rounded-lg bg-primary-color-dark text-white border border-gray-700 focus:outline-none hover:border-blue-hoverloguin"
             />
-            <FaSearch className="absolute opacity-70 right-3 top-1/2 transform -translate-y-1/2 text-2x1" />
+            <FaSearch className="absolute opacity-70 right-3 top-1/2 transform -translate-y-1/2 text-2xl" />
           </div>
         </nav>
       )}
