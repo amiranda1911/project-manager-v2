@@ -5,7 +5,7 @@ const useFindTaskByUserId = (tasks: TasksProps[], id: string) => {
   const [filteredTasks, setFilteredTasks] = useState<TasksProps[]>([]);
 
   useEffect(() => {
-    const result = tasks.filter((task) => task.members.includes(id));
+    const result = tasks.filter((task) => task.owner_id.includes(id));
     setFilteredTasks(result);
   }, [tasks, id]);
 
