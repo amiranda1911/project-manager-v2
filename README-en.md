@@ -9,7 +9,7 @@
 
    
 
-## 📌| Description
+## Description
 
 The application simulates a project management tool that helps with task organization and planning, inspired by the Kanban methodology. It allows users to create, manage, and organize tasks into different stages of progress such as "To Do", "In Progress", and "Completed". Built with **React**, **Tailwind CSS**, and **TypeScript**, the app provides a user-friendly and efficient interface for handling tasks.
 
@@ -22,7 +22,7 @@ The application simulates a project management tool that helps with task organiz
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-## 📌| Features
+## Features
 
 * **Login Page:** Allows users to log into the application.
 * **User Registration:** Users can create an account to access the system.
@@ -32,7 +32,7 @@ The application simulates a project management tool that helps with task organiz
 * **Drag and Drop:** Easily reorder tasks between columns using drag-and-drop functionality.
 
 
-## 📌| Technical Considerations
+## Technical Considerations
 
 ### 1. Project Architecture
 - **Component Separation**: The project is structured with modular React components, organized by functionality, such as the Kanban layout, authentication, and task management. This approach simplifies maintenance and code reuse.
@@ -54,7 +54,7 @@ The application simulates a project management tool that helps with task organiz
 - **Simple Authentication Flow**: Implements authentication with basic credential storage, simplifying access for registered users.
 - **Session Persistence**: The session is maintained for the logged-in user, managed via localStorage to ensure a continuous user experience.
 
-## 📌| Authors
+## Authors
 
 <table>
   <tr>
