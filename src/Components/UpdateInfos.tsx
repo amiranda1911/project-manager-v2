@@ -96,7 +96,7 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
   return (
     <form className="flex flex-col flex-wrap mt-6 mb-10 leading-5 text-sm md:w-10/12 md:flex-row lg:mx-11 lg:w-3/6">
       <div className="flex flex-col w-full md:w-1/2">
-        {msgErroName? <span className="text-red-500 text-xs lg:text-nowrap"> {msgErroName} </span> : <span className="invisible">...</span>}
+        {msgErroName? <span className="text-red-500 text-xs leading-5 lg:text-nowrap"> {msgErroName} </span> : <span className="invisible">...</span>}
         <label htmlFor="update-first-name" className="font-medium text-purple-850">
           First name
         </label>
@@ -111,7 +111,7 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
         />
       </div>
       <div className="flex flex-col w-full md:w-1/2">
-      {msgErroLast? <span className="text-red-500 text-xs lg:text-nowrap">{ msgErroLast} </span>: <span className="invisible">...</span>}
+      {msgErroLast? <span className="text-red-500 text-xs leading-5 lg:text-nowrap">{ msgErroLast} </span>: <span className="invisible">...</span>}
         <label htmlFor="update-last-name" className="font-medium text-purple-850">
           Last name
         </label>
@@ -126,7 +126,7 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
         />
       </div>
       <div className="flex flex-col w-full mt-2">
-        {msgErroEmail? <span className="text-red-500 text-xs">{msgErroEmail}</span> : <span className="invisible">...</span>}
+        {msgErroEmail? <span className="text-red-500 leading-5 text-xs">{msgErroEmail}</span> : <span className="invisible">...</span>}
         <label htmlFor="update-email" className="font-medium text-purple-850">
           E-mail
         </label>
