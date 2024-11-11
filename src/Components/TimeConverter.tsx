@@ -4,19 +4,19 @@ interface TimeConverterProps {
 
 const TimeConverter: React.FC<TimeConverterProps> = ({ seconds }) => {
     const formatTime = (totalSeconds: number): string => {
-        const minutes = Math.floor(totalSeconds / 60);
-        const secs = totalSeconds % 60;
-        
-        // Formata minutos e segundos para ficarem no formato 00:00
-        const formattedMinutes = String(minutes).padStart(2, '0');
-        const formattedSeconds = String(secs).padStart(2, '0');
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
 
-        return `${formattedMinutes}:${formattedSeconds}`;
+        // Formata horas, minutos e segundos para ficarem no formato 00:00:00
+        const formattedHours = String(hours).padStart(2, '0');
+        const formattedMinutes = String(minutes).padStart(2, '0');
+
+        return `${formattedHours}:${formattedMinutes}`;
     };
 
     return (
         <div>
-            <p>{formatTime(seconds)}</p>
+            <p>{formatTime((seconds/1000))}</p>
         </div>
     );
 };
