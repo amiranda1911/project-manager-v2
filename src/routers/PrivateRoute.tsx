@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-// import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../hooks/useAuth';
 
 const PrivateRoute: React.FC = () => {
-  // const { verifyIsAuthenticated } = useAuth();
-  const isAuthenticated = true;
+  const { verifyIsAuthenticated } = useAuth();
+  const isAuthenticated = verifyIsAuthenticated();
   return isAuthenticated ? <Outlet /> : <Navigate to="/notauthorization" />;
 };
 
