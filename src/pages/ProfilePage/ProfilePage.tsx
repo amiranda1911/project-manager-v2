@@ -95,7 +95,7 @@ const ProfilePage = () => {
           />
         </div>
         <div className="lg:flex lg:flex-col lg:pt-32 lg:pl-4 lg:border-l-2 max-h-[68.75rem]">
-          <LastesActivitySection />
+          <LastesActivitySection avata={avatar} />
           <WeeklyReport averageWorkTime={taskTotalTime} userTasks={userTasks} />
         </div>
       </main>

@@ -85,6 +85,48 @@
         "newMembers": false,
         "weeklyReports": false
       }
+    },
+    {
+      "id": "1435",
+      "firstName": "Adson",
+      "lastName": "Nunes",
+      "email": "adson.tanajura@gmail.com",
+      "jobPosition": "Desenvolvedor",
+      "password": "Maiana123456@a",
+      "userName": "@AdsonNunes",
+      "creationDate": "2024-11-11T20:02:57.441Z",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+      "socialMedia": {
+        "twitter": "",
+        "instagram": "",
+        "linkedin": ""
+      },
+      "notifications": {
+        "newTasks": false,
+        "newMembers": false,
+        "weeklyReports": false
+      }
+    },
+    {
+      "id": "555b",
+      "firstName": "Adson",
+      "lastName": "Nunes",
+      "email": "adson.tanajura@gmail.com",
+      "jobPosition": "Desenvolvedor",
+      "password": "Adson 1234@",
+      "userName": "@AdsonNunes",
+      "creationDate": "2024-11-11T20:29:22.789Z",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+      "socialMedia": {
+        "twitter": "",
+        "instagram": "",
+        "linkedin": ""
+      },
+      "notifications": {
+        "newTasks": false,
+        "newMembers": false,
+        "weeklyReports": false
+      }
     }
   ],
   "tasks": []
