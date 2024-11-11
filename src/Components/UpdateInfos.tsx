@@ -24,7 +24,7 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
   const nameIsValid = (value: string, name: string) => {
     console.log(value.length <= 2)
       if( value.length <= 2) {
-        const errorMsg = `Please, enter a ${name} with more than 2 characters.`
+        const errorMsg = `Enter a ${name} with more than 2 characters.`
 
         if (name === 'name') {
           setMsgErroName(errorMsg);
@@ -34,7 +34,7 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
         return false
 
       } else if ( !/^[A-Za-z]+$/.test(value)) {
-        const errorMsg = `Please, enter a ${name} that contains only letters.`
+        const errorMsg = `Enter a ${name} that contains only letters.`
        
         if (name === 'name') {
           setMsgErroName(errorMsg);
@@ -96,7 +96,7 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
   return (
     <form className="flex flex-col flex-wrap mt-6 mb-10 leading-5 text-sm md:w-10/12 md:flex-row lg:mx-11 lg:w-3/6">
       <div className="flex flex-col w-full md:w-1/2">
-        {msgErroName? <span className="text-red-500"> {msgErroName} </span> : <span className="invisible">...</span>}
+        {msgErroName? <span className="text-red-500 text-xs lg:text-nowrap"> {msgErroName} </span> : <span className="invisible">...</span>}
         <label htmlFor="update-first-name" className="font-medium text-purple-850">
           First name
         </label>
@@ -111,7 +111,7 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
         />
       </div>
       <div className="flex flex-col w-full md:w-1/2">
-      {msgErroLast? <span className="text-red-500">{ msgErroLast} </span>: <span className="invisible">...</span>}
+      {msgErroLast? <span className="text-red-500 text-xs lg:text-nowrap">{ msgErroLast} </span>: <span className="invisible">...</span>}
         <label htmlFor="update-last-name" className="font-medium text-purple-850">
           Last name
         </label>
@@ -126,7 +126,7 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
         />
       </div>
       <div className="flex flex-col w-full mt-2">
-        {msgErroEmail? <span className="text-red-500">{msgErroEmail}</span> : <span className="invisible">...</span>}
+        {msgErroEmail? <span className="text-red-500 text-xs">{msgErroEmail}</span> : <span className="invisible">...</span>}
         <label htmlFor="update-email" className="font-medium text-purple-850">
           E-mail
         </label>
