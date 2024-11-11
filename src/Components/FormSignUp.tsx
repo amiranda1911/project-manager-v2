@@ -190,15 +190,16 @@ const FormSignUp: React.FC = () => {
         </div>
 
         {/* Exibe a mensagem de sucesso ou erro */}
-        {err.formStatus && (
-            <p style={{ color: err.formStatus === errorMessages.formSuccess ? '[#22C55E]' : '[#BD2323]' }}>
-            {err.formStatus}
-            </p>  
-        )}
-
+        
         <div className="mx-auto mt-[0.2rem] mb-[1.4rem] md:mt-[0.5rem] md:mb-[2rem]">
-        <FormButtons buttonText={loading ? 'Creating...' : 'Create Account'} loading={loading}/>
+            <FormButtons buttonText={loading ? 'Creating...' : 'Create Account'} loading={loading}/>
+            {err.formStatus && (
+                    <p style={{ color: err.formStatus === errorMessages.formSuccess ? '[#22C55E]' : '[#BD2323]' }}>
+                    {err.formStatus}
+                    </p>  
+            )}
         </div>
+               
         {error && <p>{error}</p>}
     </form>    
     </>
