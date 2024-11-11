@@ -10,11 +10,13 @@ interface MainHeaderProps {
 }
 
 const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
-  const { verifyIsAuthenticated } = useAuth();
+  const { verifyIsAuthenticated,getToken } = useAuth();
   const logout = useLogout();
   const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Controle do menu hambúrguer
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // Controle da barra de pesquisa
+  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);  
+
+  const id = getToken()
 
   const handleHomeClick = () => {
     logout(); 
@@ -22,19 +24,19 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
 
   const handleSettingsClick = () => {
     if (verifyIsAuthenticated()) {
-      navigate('/settings-profile'); 
+      navigate('/settings'); 
     }
   };
 
   const handleProfileClick = () => {
     if (verifyIsAuthenticated()) {
-      navigate('/profile'); 
+      navigate(`/profile/${id}`);
     }
   };
 
   return (
     <header className="bg-primary-color-dark text-white py-4 px-8 flex items-center justify-between font-roboto">
-      {/* Esquerda: Logo e Texto */}
+     
       <div className="flex items-center">
         <Link to="/">
           <img
@@ -46,7 +48,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
         <span className="font-roboto text-14 md:text-17 ">Project Manager</span>
       </div>
 
-      {/* Conteúdo direito baseado na página */}
+      
       {pageType === 'page1' && (
         <Link to="/login">
           <button className="w-[105px] h-[36px] lg:w-[240px] border border-white text-white px-4 py-2 rounded-[30px] font-roboto text-15 md:text-16 cursor-pointer hover:border-blue-hoverloguin flex items-center justify-center z-10 relative">
@@ -57,22 +59,22 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
 
       {pageType === 'page3' && (
         <>
-          {/* Container que vai alinhar o menu hambúrguer e a lupa à direita */}
+          
           <div className="md:hidden flex items-center ml-auto z-20">
-            {/* Ícone de menu hambúrguer */}
+            
             <FaBars 
               className="text-white text-2xl cursor-pointer mr-4"
-              onClick={() => setIsMenuOpen(!isMenuOpen)} // Alterna o estado do menu
+              onClick={() => setIsMenuOpen(!isMenuOpen)} // 
             />
             
-            {/* Ícone da lupa */}
+            
             <FaSearch 
               className="text-white text-2xl cursor-pointer border border-gray-700  rounded-md "
               onClick={() => setIsSearchOpen(!isSearchOpen)} 
             />
           </div>
 
-          {/* Menu de navegação para mobile */}
+          
           <div className={`md:hidden absolute top-16 left-0 w-full bg-primary-color-dark transition-all duration-300 ease-in-out ${isMenuOpen ? 'block' : 'hidden'} z-30`}>
             <nav className="flex flex-col items-center space-y-4 py-4">
               <a onClick={handleHomeClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer w-full text-center">Home</a>
@@ -82,7 +84,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
             </nav>
           </div>
 
-          {/* Barra de pesquisa (fora do menu hambúrguer) */}
+         
           {isSearchOpen && (
             <div className="absolute top-16 left-0 w-full bg-primary-color-dark p-4 md:hidden z-40">
               <input
@@ -95,7 +97,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
         </>
       )}
 
-      {/* Navbar para versões md e lg */}
+      
       {pageType === 'page3' && (
         <nav className="hidden md:flex items-center space-x-6">
           <a onClick={handleHomeClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer">Home</a>
@@ -103,7 +105,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ pageType }) => {
           <a onClick={handleSettingsClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer">Settings</a>
           <a onClick={handleProfileClick} className="text-white hover:border-b-2 hover:border-white cursor-pointer">Profile</a>
 
-          {/* Barra de pesquisa */}
+          
           <div className="relative">
             <input
               type="text"
