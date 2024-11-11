@@ -5,6 +5,7 @@ import { User } from '../utils/User';
 import axios from 'axios';
 import { baseUrl } from '../constants';
 import TimeConverter from './TimeConverter';
+import { Link } from 'react-router-dom';
 
 interface FixedMetricsProps {
   closeDispatch: React.Dispatch<React.SetStateAction<boolean>>
@@ -46,6 +47,7 @@ const FixedMetrics = ({closeDispatch, owners, totalDone, totalTodo, totalinProgr
             rounded-[1.56rem]
             mx-auto
             my-auto
+            box-content
         '>
             <h2 className='
                 flex justify-between items-center
@@ -58,6 +60,7 @@ const FixedMetrics = ({closeDispatch, owners, totalDone, totalTodo, totalinProgr
                 {users.slice(0,3).map((user) => (
                     <FixedMetricUserCard key={user.id} user={user}/>
                 ))}
+                <div className='w-full flex flex-row-reverse text-7 text-[#C7C3FF]'> <p className='m-1'><Link to={"#"}>(10) View All</Link></p></div>
             <h2 className='
                 font-roboto font-bold
                 text-white
@@ -104,6 +107,30 @@ const FixedMetrics = ({closeDispatch, owners, totalDone, totalTodo, totalinProgr
                         p-3 ml-2 my-2'>
                     <h3 className='text-8 font roboto font-bold text-[#160A60] '>Most active</h3>
                     <p className='text-9 font-bold font-roboto text-[#4F46E5]'>last 30 days</p>
+                    {users.slice(0,3).map((user) => (
+                        <div key={user.id} >
+                            <Link to={`/profile/${user.id}`}>
+                                <div  className="flex 
+                                                w-full
+                                                flex-row
+                                                bg-white
+                                                rounded-[0.78rem]
+                                                my-1
+                                                p-1
+                                                font-roboto
+                                                ">
+                                    <img className="p-1 
+                                        w-[1.49rem] lg:w-[1.75rem]
+                                        h-[1.49rem] lg:h-[1.75rem]
+                                        rounded-full" src={"https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}/>
+                                    <div>
+                                        <h2 className="text-7 font-bold">{user.firstName} {user.lastName}</h2>
+                                        <h3 className="text-4 font-bold">{user.jobPosition}</h3>
+                                    </div>
+                                </div>
+                                </Link>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
