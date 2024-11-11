@@ -30,6 +30,7 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 		if(title === "" || description === "" || startDate === "" || endDate === ""){
 			return
 		}
+		const estimatedTime = new Date(`${endDate}T${endTime}`).getTime() - new Date(`${startDate}T${startTime}`).getTime()
 		const task = {
 			owner_id: getToken(),
 			priority: priority,
@@ -41,7 +42,7 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 			progress: Math.floor(Math.random() * (100 - 1 + 1)) + 1,
 			start_datetime: new Date(`${startDate}T${startTime}`).getTime(),
 			end_datetime: new Date(`${endDate}T${endTime}`).getTime(),
-			estimated_time: 3,
+			estimated_time: estimatedTime,
 			image: image
 		}
 		
