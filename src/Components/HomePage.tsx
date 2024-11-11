@@ -173,7 +173,7 @@ const HomePage = () => {
             onSubmit={handleSubmit}
             className="w-96 h-80 p-4 bg-white rounded-lg shadow-md flex flex-col justify-between items-center lg:items-start"
           >
-            <div className="w-full mb-4 lg:w-[520px]">
+            <div className="w-full mb-4">
               <label htmlFor="email" className="block text-14 md:text-16 font-bold mb-2">Email</label>
               <input
                 type="email"
@@ -186,7 +186,7 @@ const HomePage = () => {
               {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
               <p className="mb-4 text-black-opacity-50">We promise not to spam</p>
             </div>
-            <div className="w-full mb-4 lg:w-[520px]">
+            <div className="w-full mb-4">
               <label htmlFor="name" className="block text-14 md:text-16 font-bold mb-2">Name</label>
               <input
                 type="text"
