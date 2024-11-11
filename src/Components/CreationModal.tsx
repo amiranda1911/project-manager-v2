@@ -5,6 +5,8 @@ import { Status } from "../utils/EnumStatus";
 import { Priority } from "../utils/EnumPriority";
 import { useCreateTask } from "../hooks/useCreateTask";
 import { useAuth } from "../hooks/useAuth";
+import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
+import Modal from "./Modal";
 
 interface CreationModalProps {
 	closeDispatch: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,12 +26,18 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 	const [priority, setPriority] = useState<Priority>(Priority.Low)
 	const [image, setImage] = useState<string>('')
 
+	const [isLoading, setIsLoading] = useState<boolean>(false)
+
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		
+		setIsLoading(true)
+
+
 		if(title === "" || description === "" || startDate === "" || endDate === ""){
+			setIsLoading(false)
 			return
 		}
+
 		const estimatedTime = new Date(`${endDate}T${endTime}`).getTime() - new Date(`${startDate}T${startTime}`).getTime()
 		const task = {
 			owner_id: getToken(),
@@ -45,13 +53,22 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 			estimated_time: estimatedTime,
 			image: image
 		}
+
+
 		
 		createTask(task)
-		closeDispatch(false)
+		setTimeout(() => {
+			setIsLoading(false)
+			closeDispatch(false)
+
+		}, 1000)
+		
 	}
 
   return (
     <>
+	
+	
     {/* back transparent screen */}
     <div className="absolute bg-black-black opacity-50 w-full h-full z-40"></div>
     <div className="absolute top-0 left-0  w-full h-full z-50 box-border p-4 md:px-36">
@@ -157,6 +174,12 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 				</form>
 			</section>
     </div>
+	{isLoading && (
+		<div className="bg-white opacity-85 absolute top-0 left-0 w-full h-screen z-[99]">
+			<LoadingSpinner/>
+		</div>
+	)}
+	
     </>
   )
 }
