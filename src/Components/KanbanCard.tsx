@@ -40,11 +40,13 @@ const KanBanCard = ({task} : KanbanCardProps) => {
 			">
 				<span className={`
 					flex
-					font-jakarta 
+					font-jakarta
+					items-center 
 					text-1 md:text-6 lg:text-12
 					px-[0.17625rem] py-[0.0125rem]
 					w-fit justify-start rounded-[1rem]
 					lg:p-2
+					lg:h-6
 					card-priority-${Priority[task.priority].toLowerCase()}
 				`}>
 					{Priority[task.priority]}
