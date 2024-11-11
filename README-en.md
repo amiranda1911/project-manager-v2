@@ -29,8 +29,6 @@ The application simulates a project management tool that helps with task organiz
 * **Task Creation:** Users can add new tasks to the board.
 * **Kanban Board:** View tasks organized in columns according to their status (To Do, In Progress, Completed).
 * **Task Priorities:** Users can assign priorities (e.g., Low, Medium, High) to tasks, helping to manage their importance.
-* **Drag and Drop:** Easily reorder tasks between columns using drag-and-drop functionality.
-
 
 ## 📌| Technical Considerations
 
@@ -48,7 +46,7 @@ The application simulates a project management tool that helps with task organiz
 
 ### 4. JSON Server as a Mock Back-End
 - **Mock for Local Development**: JSON Server is used to simulate a REST API, allowing for testing and development of full CRUD functionality without requiring a real server.
-- **Ease of Configuration**: Chosen for its simplicity, JSON Server enables data storage for users and tasks without complex setup, ideal for prototypes or early project stages.
+- **Ease of Configuration**: Chosen for its simplicity, JSON Server enables data storage for users and tasks without complex setup.
 
 ### 5. User Authentication
 - **Simple Authentication Flow**: Implements authentication with basic credential storage, simplifying access for registered users.
