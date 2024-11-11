@@ -167,7 +167,7 @@ const CreationModal = ({closeDispatch}: CreationModalProps) => {
 						</div>
 
 						<div className="form-section">
-							<button className="green-button h-12" type="submit">Create!</button>
+							<button className="green-button hover:bg-[#5CB77D] h-12" type="submit">Create!</button>
 						</div>
 					</div>
 					

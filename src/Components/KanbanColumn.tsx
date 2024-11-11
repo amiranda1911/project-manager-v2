@@ -36,7 +36,7 @@ const KanbanColumn = ({type, tasks, handleNewCard} : KanbanColumnProps) => {
 										font-roboto font-bold
 								">{type}</p>
 						</div>
-						<button onClick={() => handleNewCard(true)} ><IoAdd className={`${type.replace(/\s+/g, '').toLowerCase()}-add text-20`}/></button>
+						<button onClick={() => handleNewCard(true)} ><IoAdd className={`${type.replace(/\s+/g, '').toLowerCase()}-add text-12 md:text-20 `}/></button>
 				</header>
 				<div className=" w-full max-h-full 
 						overflow-hidden overflow-y-scroll 
