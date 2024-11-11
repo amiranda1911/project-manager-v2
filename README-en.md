@@ -3,17 +3,16 @@
 ## Table of Contents
 1. [Description](#description)
 2. [Technologies](#technologies)
-3. [Features](features)
-4. [Technical Considerations](technical-considerations)
-5. [authors](authors)
+3. [Features](#features)
+4. [Technical Considerations](#technical-considerations)
+5. [Authors](#authors)
 
    
-
 ## 📌| Description
 
 The application simulates a project management tool that helps with task organization and planning, inspired by the Kanban methodology. It allows users to create, manage, and organize tasks into different stages of progress such as "To Do", "In Progress", and "Completed". Built with **React**, **Tailwind CSS**, and **TypeScript**, the app provides a user-friendly and efficient interface for handling tasks.
 
-## Technologies
+## 📌| Technologies
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
@@ -111,8 +110,6 @@ The application simulates a project management tool that helps with task organiz
     </td>
   </tr>
 </table>
-
-## References
 
 
 
