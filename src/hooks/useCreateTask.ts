@@ -3,6 +3,7 @@ import { baseUrl } from '../constants';
 import axios from "axios";
 import { Priority } from "../utils/EnumPriority";
 import { Status } from "../utils/EnumStatus";
+import { Bounce, toast } from "react-toastify";
 
 interface TaskProps {
 	owner_id: number,
@@ -29,9 +30,31 @@ export const useCreateTask = () => {
 
 		try{
 			const response = await axios.post(`${baseUrl}/tasks`, data)
+			toast.success('Card added successfully!', {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+				transition: Bounce,
+				});
 			return response.data
 		} catch (err) {
 			setError(`Create task error: ${err}`)
+			toast.error(error, {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+				transition: Bounce,
+				});
 		} finally {
 			setLoading(false)
 		}
