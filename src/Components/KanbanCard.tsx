@@ -18,22 +18,25 @@ const KanBanCard = ({task} : KanbanCardProps) => {
 		bg-white
 		rounded-[0.528125rem]
 		mx-auto my-2
-		p-2
+		p-1
 		md:p-[0.95rem]
 	">
-		<div className="pb-2 overflow-hidden  rounded-sm md:rounded-2xl
-		w-[5]	
-		md:w-[9.5rem]
-		lg:w-[15.38rem]
-		h-auto"
-		>
-			{!(task.image === "") && (<img src={task.image} />) }
-		</div>
+			{!(task.image === "") && (
+				<div className="mb-2 overflow-hidden  rounded-sm md:rounded-2xl
+				w-[5]	
+				md:w-[9.5rem]
+				lg:w-[15.38rem]
+				h-auto"
+				>
+					<img src={task.image} />
+					</div>
+			) }
+		
 		<div className="
 			flex flex-col box-border justify-between
 			 min-h-[4.004rem] m-0 
 			 md:min-h-[7.53rem] 
-			 lg:min-h-[11.38rem]
+			 lg:min-h-[10.38rem]
 			">
 				<span className={`
 					flex
@@ -62,22 +65,28 @@ const KanBanCard = ({task} : KanbanCardProps) => {
 						lg:h-[2rem] 
 						overflow-hidden
 				">
-					<div className="w-1/2 relative flex">
-						{Array(5).map((_, index) => (
-				<img key={index} className="flex w-[11px] h-[11px] bg-black rounded-full"/>
-			))}
-						
-					</div>
-					<div className="
-						w-1/2 
-						text-3 lg:text-16 font-semibold font-roboto
-						flex justify-between
-						">
-						<span className="flex items-center"><AiFillMessage color="#94A3B8" className="mr-[0.1rem]"/>{task.commentsCount}</span>
-						<span className="flex items-center"><FaCheckCircle color="#94A3B8" className="mr-[0.1rem]"/>{task.completedTasksCount}</span>
+					<div className="flex flex-row justify-between w-full">
+						<div className="flex content-start space-x-[-12px] overflow-hidden">
+						{Array.from({ length: Math.floor(Math.random() * (5 - 1 + 1)) + 1 }).map((_, index) => (
+							<div key={index} className="w-8 h-8 rounded-full overflow-hidden border-2 border-white">
+							<img src={"https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} 
+							alt={`Imagem ${index + 1}`} 
+							className="rounded-full object-coverw-full h-full object-cover" />
+							</div>
+						))}
+						</div>
+						<div className="
+							w-1/2 
+							text-3 lg:text-16 font-semibold font-roboto
+							flex justify-between
+							">
+							<span className="flex items-center"><AiFillMessage color="#94A3B8" className="mr-[0.1rem]"/>{task.commentsCount}</span>
+							<span className="flex items-center"><FaCheckCircle color="#94A3B8" className="mr-[0.1rem]"/>{task.completedTasksCount}</span>
+						</div>
 					</div>
 				</footer>
 		</div>
+		
 	</div>
   )
 }
