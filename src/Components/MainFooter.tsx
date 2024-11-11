@@ -15,7 +15,7 @@ const MainFooter = () => {
           </a>
           <a href="https://www.instagram.com/" target="blank">
             <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-              <FaInstagram className="text-[#000]" />
+              <FaInstagram className="text-[#000] hover:text-colorInstagram" />
             </div>
           </a>
           <a href="https://br.linkedin.com/" target="blank">

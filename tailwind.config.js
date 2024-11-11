@@ -67,6 +67,7 @@ export default {
         'primary-yellow': '#FCF4B6',
         colorLinkedin: '#0A66C2',
         colorFacebook: '#0866FF',
+        colorInstagram: '#FC04BA',
         hoversubscribe: '#3B5174',
       },
       fontFamily: {
