@@ -27,7 +27,7 @@ const KanbanColumn = ({type, tasks, handleNewCard} : KanbanColumnProps) => {
 								md:w-[1.68rem] md:h-[1.37rem]
 								lg:w-[2.5rem] lg:h-[2rem]
 							">
-									25
+									{tasks.length}
 								</div>
 								<p className="
 										column-header-desc
