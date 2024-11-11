@@ -23,25 +23,25 @@ const LoginPage = () => {
         <MainHeader pageType="page2" />
       </header>
 
-    <main className=" min-h-[39rem] lg:h-[39rem]">
+    <main className=" min-h-[49rem] lg:h-[39.063rem]">
         <div className=" min-h-screen lg:flex " >
 
             {/* Background image */}
-            <div className="relative bg-cover bg-center h-screen min-h-[49rem] lg:w-[39.125rem] lg:h-auto lg:order-2" style={{ backgroundImage: `url('LoginImg.svg')` }}>
+            <div className="relative bg-cover bg-center h-screen min-h-[49rem] lg:w-[39.125rem] lg:h-[39.063rem] lg:order-2" style={{ backgroundImage: `url('LoginImg.svg')` }}>
             </div>
 
             {/* Translucent background */}
-            <div className="absolute inset-0 bg-white opacity-70 h-screen min-h-[51rem] mt-16 lg:hidden">
+            <div className="absolute inset-0 bg-white opacity-70 h-screen min-h-[49.5rem] md:min-h-[50.2rem] mt-16 lg:hidden">
             </div> 
             
             {/*White Square */}    
-            <div className="flex items-center justify-center w-[22.063rem]h-[38rem] bg-white absolute inset-0 m-auto mt-32 md:mt-36 rounded-[1.875rem] 
+            <div className="flex items-center justify-center w-[22.063rem] h-[38rem] bg-white absolute inset-0 m-auto mt-32 md:mt-36 rounded-[1.875rem] 
             md:w-[41rem] md:h-[39rem] lg:hidden">            
             </div>   
 
             {/*All the info in white space */}
             <div className="flex items-center justify-center w-[22.063rem] h-[39rem] absolute inset-0 m-auto mt-20
-            md:w-[41rem] md:h-[39rem] lg:w-auto lg:static lg:mt-auto lg:order-1"> 
+            md:w-[41rem] md:h-[39rem] lg:w-auto lg:static lg:mt-20 lg:order-1"> 
 
                 <div>
                     <section className="leading-[1.5] pb-[1.5rem]">
@@ -62,7 +62,7 @@ const LoginPage = () => {
         </div>    
     </div>
     </main>
-    <footer className="z-10">
+    <footer className="z-10 ">
         <MainFooter />
       </footer>
     </>
