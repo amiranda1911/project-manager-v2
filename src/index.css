@@ -73,7 +73,7 @@
 }
 
 .form-input {
-  @apply font-roboto p-2 border border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080];
+  @apply font-roboto p-2 border h-12 border-[#0000001A] rounded-md focus:outline-none focus:ring-1 focus:ring-[#00000080];
 }
 
 .form-section {
@@ -85,7 +85,7 @@
 }
 
 .form-radio input {
-  @apply m-auto mr-1 w-4  h-4 rounded-[5px] appearance-none border-solid border-2;
+  @apply m-auto mr-1 w-6  h-6 rounded-[5px] appearance-none border-solid border-2;
 }
 
 .radio-violet:checked {
