@@ -48,7 +48,7 @@ const HomePage = () => {
   };
   return (
     <div>
-      <MainHeader pageType="page3" />
+      <MainHeader pageType="page1" />
       <main>
       <section className=" bg-[url('https://images.unsplash.com/photo-1546984575-757f4f7c13cf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center h-[700px] lg:h-[644px] ">
   {/* Div com o título, parágrafo e botão à esquerda */}
