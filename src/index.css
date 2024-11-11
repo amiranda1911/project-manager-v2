@@ -20,6 +20,10 @@
   @apply text-violet-dark;
 }
 
+.todo-add{
+  @apply text-violet-dark
+}
+
 .inprogress-column .column-header {
   @apply bg-orange-light;
 }
@@ -32,6 +36,10 @@
   @apply text-orange-dark;
 }
 
+.inprogress-add{
+  @apply text-orange-dark
+}
+
 .done-column .column-header {
   @apply bg-green-light;
 }
@@ -42,6 +50,10 @@
 
 .done-column .column-header-desc {
   @apply text-green-dark;
+}
+
+.done-add{
+  @apply text-green-dark
 }
 
 .card-priority-mid {
