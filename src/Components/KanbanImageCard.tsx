@@ -19,7 +19,7 @@ const KanBanImageCard = ({priority} : KanbanCardProps) => {
 		mx-auto my-2
 		
 		">
-			<img src={cardimage} className="mb-[0.45rem] lg:mb-4"/>
+			
 			<span className={`
 				flex
 				font-jakarta 
@@ -35,7 +35,7 @@ const KanBanImageCard = ({priority} : KanbanCardProps) => {
 				text-3 md:text-10 lg:text-16"
 			>
 				Task 3</h2>
-			<div className=" w-full font-jakarta	
+			<div className=" min-h w-full font-jakarta	
 					text-2 md:text-7 lg:text-14
 			 		flex flex-row	justify-between "
 			>
