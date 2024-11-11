@@ -1,201 +1,115 @@
 # project-manager-v2
 
-# Desafio 2 - Semana 08 ### Programa de Bolsas React Set/24
+## Table of Contents
+1. [Description](#description)
+2. [Technologies](#technologies)
+3. [Features](#features)
+4. [Technical Considerations](#technical-considerations)
+5. [authors](#authors)
 
-## Overview
+   
+## Description
 
-This documentation provides details on the API endpoints for managing users and tasks using JSON Server. The API allows for basic CRUD operations: Create, Read, Update, and Delete.
+The application simulates a project management tool that helps with task organization and planning, inspired by the Kanban methodology. It allows users to create, manage, and organize tasks into different stages of progress such as "To Do", "In Progress", and "Completed". Built with **React**, **Tailwind CSS**, and **TypeScript**, the app provides a user-friendly and efficient interface for handling tasks.
 
-## Run DataBase:
+## Technologies
 
-npm run db
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-## API Endpoints
+## Features
 
-### Users
+* **Login Page:** Allows users to log into the application.
+* **User Registration:** Users can create an account to access the system.
+* **Task Creation:** Users can add new tasks to the board.
+* **Kanban Board:** View tasks organized in columns according to their status (To Do, In Progress, Completed).
+* **Task Priorities:** Users can assign priorities (e.g., Low, Medium, High) to tasks, helping to manage their importance.
 
-The following endpoints are available for managing users:
+## Technical Considerations
 
-| Method | Endpoint   | Description              |
-| ------ | ---------- | ------------------------ |
-| GET    | /users     | Retrieve all users       |
-| GET    | /users/:id | Retrieve a specific user |
-| POST   | /users     | Create a new user        |
-| PUT    | /users/:id | Update an existing user  |
-| PATCH  | /users/:id | Update part of a user    |
-| DELETE | /users/:id | Delete a user            |
+### 1. Project Architecture
+- **Component Separation**: The project is structured with modular React components, organized by functionality, such as the Kanban layout, authentication, and task management. This approach simplifies maintenance and code reuse.
+- **State Management**: Since the project involves multiple CRUD operations and session management, using local state and/or global contexts is essential to ensure that user and task data are updated efficiently.
 
-#### User Model
+### 2. TypeScript for Type Safety
+- **Code Security**: TypeScript typing helps prevent common runtime errors, making the code safer by detecting inconsistencies during development.
+- **Standardization and Maintenance**: TypeScript facilitates internal documentation and allows the team to easily understand what types of data each function and component expects, improving readability and collaboration.
 
-```json
-{
-  "id": "0768",
-  "firstName": "adawd",
-  "lastName": "wadawdaw",
-  "email": "adson.tanajura@gmail.com",
-  "jobPosition": "dawdawdwa",
-  "password": "adwdaw",
-  "userName": "@adawdwadawdaw",
-  "creationDate": "2024-11-08T18:54:42.364Z",
-  "role": "dawdawdwa",
-  "avatar": "https://cdn-icons-png.flaticon.com/512/149/149071.png",
-  "socialMedia": {
-    "twitter": "",
-    "instagram": "",
-    "linkedin": ""
-  },
-  "notifications": {
-    "newTasks": false,
-    "newMembers": false,
-    "weeklyReports": false
-  }
-}
-```
+### 3. Styling with Tailwind CSS
+- **Productivity**: Tailwind enables responsive styling without the need to create custom classes for each component, speeding up development.
+- **Visual Consistency**: Tailwind styling ensures a consistent appearance throughout the interface, aligning with a "utility-first" design approach where styling classes are applied directly in JSX.
 
-### Tasks
+### 4. JSON Server as a Mock Back-End
+- **Mock for Local Development**: JSON Server is used to simulate a REST API, allowing for testing and development of full CRUD functionality without requiring a real server.
+- **Ease of Configuration**: Chosen for its simplicity, JSON Server enables data storage for users and tasks without complex setup.
 
-The following endpoints are available for managing tasks:
+### 5. User Authentication
+- **Simple Authentication Flow**: Implements authentication with basic credential storage, simplifying access for registered users.
+- **Session Persistence**: The session is maintained for the logged-in user, managed via localStorage to ensure a continuous user experience.
 
-| Method | Endpoint   | Description              |
-| ------ | ---------- | ------------------------ |
-| GET    | /tasks     | Retrieve all tasks       |
-| GET    | /tasks/:id | Retrieve a specific task |
-| POST   | /tasks     | Create a new task        |
-| PUT    | /tasks/:id | Update an existing task  |
-| PATCH  | /tasks/:id | Update part of a task    |
-| DELETE | /tasks/:id | Delete a task            |
+## Authors
 
-#### Task Model
+<table>
+  <tr>
+    <td>
+      <img width="80px" align="center" src="https://avatars.githubusercontent.com/AdsonTanajura"/>
+    </td>
+    <td align="left">
+      <a href="https://github.com/AdsonTanajura">
+         <span><b>Adson Tanajura</b></span>
+      </a>
+      <br>
+    </td>
+  </tr>
+   <tr>
+    <td>
+      <img width="80px" align="center" src="https://avatars.githubusercontent.com/Alair-Filho"/>
+    </td>
+    <td align="left">
+      <a href="https://github.com/Alair-Filho">
+         <span><b>Alair Filho</b></span>
+      </a>
+      <br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img width="80px" align="center" src="https://avatars.githubusercontent.com/amiranda1911"/>
+    </td>
+    <td align="left">
+      <a href="https://github.com/amiranda1911">
+         <span><b>Anderson Miranda</b></span>
+      </a>
+      <br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img width="80px" align="center" src="https://avatars.githubusercontent.com/SabrinaZ8"/>
+    </td>
+    <td align="left">
+      <a href="https://github.com/SabrinaZ8">
+         <span><b>Sabrina Souza</b></span>
+      </a>
+      <br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img width="80px" align="center" src="https://avatars.githubusercontent.com/ThaisRes"/>
+    </td>
+    <td align="left">
+      <a href="https://github.com/ThaisRes">
+         <span><b>Thais Sanches</b></span>
+      </a>
+      <br>
+    </td>
+  </tr>
+</table>
 
-```json
-{
-  "id": 1,
-  "owner_id": "e30a",
-  "priority": "Alta",
-  "title": "Finalizar o relatório",
-  "members": ["Alice", "Bob", "Charlie"],
-  "comments_count": 5,
-  "completed_tasks_count": 2,
-  "progress": 40,
-  "start_datetime": "2024-11-05T09:00:00Z",
-  "end_datetime": "2024-11-05T12:00:00Z",
-  "estimated_time": "3 horas",
-  "created_by": 1
-}
-```
 
-## Example Usage
 
-### User Endpoints Example
-
-1. **Get All Users**
-
-   **Request:**
-
-   ```http
-   GET /users
-   ```
-
-   **Response:**
-
-   ```json
-   [
-     {
-       "id": 1,
-       "first_name": "Alice",
-       "last_name": "Smith",
-       "username": "@aliceSmith",
-       "creation_date": "2024-11-05T08:30:00Z",
-       "email": "alice.smith@example.com",
-       "password": "senhaSegura123",
-       "role": "Gerente",
-       "social_media": {
-         "twitter": "@aliceSmith",
-         "instagram": "@alice_smith",
-         "linkedin": "linkedin.com/in/alice-smith"
-       }
-     }
-   ]
-   ```
-
-2. **Create a New User**
-
-   **Request:**
-
-   ```http
-   POST /users
-   ```
-
-   **Request Body:**
-
-   ```json
-   {
-     "first_name": "Charlie",
-     "last_name": "Brown",
-     "username": "@charlieBrown",
-     "creation_date": "2024-11-05T09:00:00Z",
-     "email": "charlie.brown@example.com",
-     "password": "senhaSegura789",
-     "role": "Analista",
-     "social_media": {
-       "twitter": "@charlieBrown",
-       "instagram": "@charlie_brown",
-       "linkedin": "linkedin.com/in/charlie-brown"
-     }
-   }
-   ```
-
-### Task Endpoints Example
-
-1. **Get All Tasks**
-
-   **Request:**
-
-   ```http
-   GET /tasks
-   ```
-
-   **Response:**
-
-   ```json
-   [
-     {
-       "id": 1,
-       "priority": "Alta",
-       "title": "Finalizar o relatório",
-       "members": ["Alice", "Bob", "Charlie"],
-       "comments_count": 5,
-       "completed_tasks_count": 2,
-       "progress": 40,
-       "start_datetime": "2024-11-05T09:00:00Z",
-       "end_datetime": "2024-11-05T12:00:00Z",
-       "estimated_time": "3 horas",
-       "created_by": 1
-     }
-   ]
-   ```
-
-2. **Create a New Task**
-
-   **Request:**
-
-   ```http
-   POST /tasks
-   ```
-
-   **Request Body:**
-
-   ```json
-   {
-     "priority": "Baixa",
-     "title": "Revisar o documento de especificações",
-     "members": ["David", "Eve"],
-     "comments_count": 0,
-     "completed_tasks_count": 0,
-     "progress": 0,
-     "start_datetime": "2024-11-06T08:00:00Z",
-     "end_datetime": "2024-11-06T10:00:00Z",
-     "estimated_time": "2 horas",
-     "created_by": 1
-   }
-   ```
