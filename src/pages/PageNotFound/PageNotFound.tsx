@@ -30,7 +30,7 @@ const PageNotFound = () => {
               Oops! Nothing to see here, just a lost kanban task.
             </p>
             <Link
-              to="/login"
+              to="/"
               className="pt-3 text-[#4f46e5] underline font-roboto font-bold text-15 hover:text-[#268FE4] md:text-18 lg:w-[24.813rem] lg:text-right lg:pr-6"
             >
               Go back to home

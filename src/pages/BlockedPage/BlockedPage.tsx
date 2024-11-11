@@ -30,7 +30,7 @@ const BlockedPage = () => {
               Nothing to see here... yet! To see this content, you need to
               <span>
                 <Link
-                  to="/LoginPage"
+                  to="/login"
                   className="text-[#4f46e5] underline font-roboto font-bold text-15 hover:text-[#268FE4] md:text-19"
                 >
                   {' '}
