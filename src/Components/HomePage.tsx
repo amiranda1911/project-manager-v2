@@ -7,6 +7,7 @@ import frame4 from '../img/frame4.png';
 import MainHeader from './MainHeader';
 import MainFooter from './MainFooter';
 import Modal from './Modal';
+import { Link } from 'react-router-dom';
 
 
 const HomePage = () => {
@@ -47,7 +48,7 @@ const HomePage = () => {
   };
   return (
     <div>
-      <MainHeader pageType="page1" />
+      <MainHeader pageType="page3" />
       <main>
       <section className=" bg-[url('https://images.unsplash.com/photo-1546984575-757f4f7c13cf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center h-[700px] lg:h-[644px] ">
   {/* Div com o título, parágrafo e botão à esquerda */}
@@ -60,10 +61,10 @@ const HomePage = () => {
       <p className="mb-4 text-white text-14 md:text-16 md:text-justify leading-loose lg:leading-[24px]  ">
         Get your projects and ideas in order, all in one place! Sign up now and <br/> discover a smarter way to manage your work with efficiency and <br/> teamwork.
       </p>
-      <a href="/register"><button  className="border border-white rounded-[30px] px-10 py-1 text-white md:self-start md:w-[240px] md:h-[48px] hover:border-blue-hoverloguin">
+      <Link to="/register"><button  className="border border-white rounded-[30px] px-10 py-1 text-white md:self-start md:w-[240px] md:h-[48px] hover:border-blue-hoverloguin">
         Get Started
       </button>
-      </a>
+      </Link>
     </div>
 
     <img src={retrato} alt="Retrato" className="hidden lg:block absolute top-6  bg-cover " />

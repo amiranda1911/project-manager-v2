@@ -8,15 +8,21 @@ const MainFooter = () => {
         
         {/* Ícones de Rede Social */}
         <div className="flex space-x-4 lg:space-x-8 cursor-pointer lg:order-1">
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FaFacebookF className="text-[#000] hover:text-colorFacebook" />
-          </div>
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FaInstagram className="text-[#000]" />
-          </div>
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
-            <FaLinkedinIn className="text-[#000] hover:text-colorLinkedin" />
-          </div>
+          <a href="https://www.facebook.com/login/?locale=pt_BR" target="blank">
+            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+              <FaFacebookF className="text-[#000] hover:text-colorFacebook" />
+            </div>
+          </a>
+          <a href="https://www.instagram.com/" target="blank">
+            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+              <FaInstagram className="text-[#000]" />
+            </div>
+          </a>
+          <a href="https://br.linkedin.com/" target="blank">
+            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white">
+              <FaLinkedinIn className="text-[#000] hover:text-colorLinkedin" />
+            </div>
+          </a>
         </div>
 
         {/* Texto de Direitos e Links */}
