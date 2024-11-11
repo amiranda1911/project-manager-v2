@@ -9,7 +9,6 @@ const Home = () => {
 
   useEffect(() => {
     const isAuthenticated = verifyIsAuthenticated();
-    console.log(isAuthenticated);
     if (isAuthenticated) {
       navigate('/kanban');
     }

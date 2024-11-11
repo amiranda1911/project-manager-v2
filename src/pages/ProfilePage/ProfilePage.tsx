@@ -33,8 +33,6 @@ const ProfilePage = () => {
       } catch (error) {
         setError('Erro ao buscar dados');
         console.error(error);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -56,9 +54,8 @@ const ProfilePage = () => {
   }, [id]);
 
   const userTasks = useFindTaskByUserId(tasks, user?.id ?? '');
-  console.log(userTasks);
+
   const taskTotalTime = calculeTotalTaskDuration(userTasks);
-  console.log(taskTotalTime);
 
   if (loading) return <LoadingSpinner />;
   if (!user || error) {
