@@ -1,17 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TasksProps } from '../interface/Tasks';
 
 const useFindTaskByUserId = (tasks: TasksProps[], id: string) => {
-  const [filterTasks, setFilterTasks] = useState<TasksProps[]>([]);
+  const [filteredTasks, setFilteredTasks] = useState<TasksProps[]>([]);
 
-  tasks.forEach((task) => {
-    const isMember = task.members.includes(id);
-    if (isMember) {
-      setFilterTasks((prevTasks) => [...prevTasks, task]);
-    }
-  });
+  useEffect(() => {
+    const result = tasks.filter((task) => task.members.includes(id));
+    setFilteredTasks(result);
+  }, [tasks, id]);
 
-  return filterTasks;
+  return filteredTasks;
 };
 
 export default useFindTaskByUserId;

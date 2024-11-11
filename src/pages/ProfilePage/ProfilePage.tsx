@@ -15,7 +15,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 import { TasksProps } from '../../interface/Tasks';
 import useFindTaskByUserId from '../../hooks/useFindTaskByUserId';
-import useAverageWorkTime from '../../hooks/useAverageWorkTime';
+import { calculeTotalTaskDuration } from '../../utils/calculeTotalTaskDuration';
 
 const ProfilePage = () => {
   const { id } = useParams<{ id: string }>();
@@ -29,7 +29,7 @@ const ProfilePage = () => {
       setLoading(true);
       try {
         const response = await axios.get<UserProps>(`${baseUrl}/users/${id}`);
-        setUser(response.data);
+        await setUser(response.data);
       } catch (error) {
         setError('Erro ao buscar dados');
         console.error(error);
@@ -42,7 +42,7 @@ const ProfilePage = () => {
       setLoading(true);
       try {
         const response = await axios.get<TasksProps[]>(`${baseUrl}/tasks`);
-        setTasks(response.data);
+        await setTasks(response.data);
       } catch (error) {
         setError('Erro ao buscar dados');
         console.error(error);
@@ -56,7 +56,9 @@ const ProfilePage = () => {
   }, [id]);
 
   const userTasks = useFindTaskByUserId(tasks, user?.id ?? '');
-  const averageWorkTime = useAverageWorkTime(userTasks);
+  console.log(userTasks);
+  const taskTotalTime = calculeTotalTaskDuration(userTasks);
+  console.log(taskTotalTime);
 
   if (loading) return <LoadingSpinner />;
   if (!user || error) {
@@ -97,7 +99,7 @@ const ProfilePage = () => {
         </div>
         <div className="lg:flex lg:flex-col lg:pt-32 lg:pl-4 lg:border-l-2 max-h-[68.75rem]">
           <LastesActivitySection />
-          <WeeklyReport averageWorkTime={averageWorkTime} />
+          <WeeklyReport averageWorkTime={taskTotalTime} userTasks={userTasks} />
         </div>
       </main>
       <MainFooter />

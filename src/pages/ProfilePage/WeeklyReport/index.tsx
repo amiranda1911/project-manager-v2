@@ -1,8 +1,11 @@
+import { TasksProps } from '../../../interface/Tasks';
+
 interface WeeklyReportProps {
-  averageWorkTime: number;
+  averageWorkTime: string;
+  userTasks: TasksProps[];
 }
 
-const WeeklyReport = ({ averageWorkTime }: WeeklyReportProps) => {
+const WeeklyReport = ({ averageWorkTime, userTasks }: WeeklyReportProps) => {
   return (
     <section>
       <h2 className="font-medium text-2xl">Weekly report</h2>
@@ -10,7 +13,9 @@ const WeeklyReport = ({ averageWorkTime }: WeeklyReportProps) => {
       <div className="flex flex-col mt-9">
         <div className="flex flex-row gap-14">
           <h2 className="font-medium text-base">Total tasks assigned</h2>
-          <span className="font-bold text-base text-[#4F46E5]">30</span>
+          <span className="font-bold text-base text-[#4F46E5]">
+            {userTasks.length}
+          </span>
         </div>
         <div className="flex flex-row gap-14">
           <h2 className="font-medium text-base">Average work time</h2>
