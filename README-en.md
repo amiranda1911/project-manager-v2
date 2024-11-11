@@ -5,7 +5,7 @@
 2. [Technologies](#technologies)
 3. [Features](features)
 4. [Contributors](contributors)
-5. [References](references)
+5. [authors](authors)
    
 
 ## Description
@@ -30,7 +30,7 @@ The application simulates a project management tool that helps with task organiz
 * **Task Priorities:** Users can assign priorities (e.g., Low, Medium, High) to tasks, helping to manage their importance.
 * **Drag and Drop:** Easily reorder tasks between columns using drag-and-drop functionality.
 
-## Contributors
+## Authors
 
 <table>
   <tr>
