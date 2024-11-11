@@ -13,12 +13,16 @@ import MainHeader from '../../Components/MainHeader';
 import MainFooter from '../../Components/MainFooter';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
+import { TasksProps } from '../../interface/Tasks';
+import useFindTaskByUserId from '../../hooks/useFindTaskByUserId';
+import useAverageWorkTime from '../../hooks/useAverageWorkTime';
 
 const ProfilePage = () => {
   const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<UserProps>();
+  const [tasks, setTasks] = useState<TasksProps[]>([]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -33,11 +37,28 @@ const ProfilePage = () => {
         setLoading(false);
       }
     };
+
+    const getTasks = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get<TasksProps[]>(`${baseUrl}/tasks`);
+        setTasks(response.data);
+      } catch (error) {
+        setError('Erro ao buscar dados');
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     getUser();
+    getTasks();
   }, [id]);
 
-  if (loading) return <LoadingSpinner />;
+  const userTasks = useFindTaskByUserId(tasks, user?.id ?? '');
+  const averageWorkTime = useAverageWorkTime(userTasks);
 
+  if (loading) return <LoadingSpinner />;
   if (!user || error) {
     return <PageNotFound />;
   }
@@ -59,7 +80,7 @@ const ProfilePage = () => {
       <main className="my-12 mx-4 mx-w-[22.6875rem] rounded-3xl bg-[#F6F6F6] opacity-90 py-14 px-8 lg:flex lg:flex-row lg:content-center lg:py-14 lg:px-24 2xl:justify-center">
         <div className="lg:max-w-[38.75rem] lg:pr-6 lg:w-[31.25rem]">
           <UserFace
-            avata={avatar} // Correção: use "avatar" em vez de "avata"
+            avata={avatar}
             firstName={firstName}
             lastName={lastName}
             userName={userName}
@@ -76,7 +97,7 @@ const ProfilePage = () => {
         </div>
         <div className="lg:flex lg:flex-col lg:pt-32 lg:pl-4 lg:border-l-2 max-h-[68.75rem]">
           <LastesActivitySection />
-          <WeeklyReport />
+          <WeeklyReport averageWorkTime={averageWorkTime} />
         </div>
       </main>
       <MainFooter />

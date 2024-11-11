@@ -1,10 +1,7 @@
+@import './Components/LoadingSpinner/custom-utilities.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/*----------- LoadingSpinnerStyles------------*/
-
-@import './Components/LoadingSpinner/custom-utilities.css';
 
 /*----------- Kanban page styles ------------*/
 
