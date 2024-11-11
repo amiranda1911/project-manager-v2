@@ -26,7 +26,7 @@ const BlockedPage = () => {
                 <p className="font-roboto font-normal text-black text-[1.125rem] leading-[2] md:text-19 md:text-left lg:w-[27.5rem]">
                     Nothing to see here... yet! To see this content, you need to 
                     <span> 
-                        <a href="/LoginPage" className="text-[#4f46e5] underline font-roboto font-bold text-15 md:text-19"> log in</a>
+                        <a href="/LoginPage" className="text-[#4f46e5] underline font-roboto font-bold text-15 hover:text-[#268FE4] md:text-19"> log in</a>
                     </span>
                 </p>                      
             </div>

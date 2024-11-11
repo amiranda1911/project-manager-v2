@@ -26,7 +26,7 @@ const PageNotFound = () => {
                 <p className="font-roboto font-normal text-black-black text-[1.125rem] leading-[2] md:text-19 md:text-left lg:w-[27.5rem]">
                 Oops! Nothing to see here, just a lost kanban task.
                 </p>
-                <a href="/login" className="pt-3 text-[#4f46e5] underline font-roboto font-bold text-15 md:text-18 lg:w-[24.813rem] lg:text-right lg:pr-6" >
+                <a href="/login" className="pt-3 text-[#4f46e5] underline font-roboto font-bold text-15 hover:text-[#268FE4] md:text-18 lg:w-[24.813rem] lg:text-right lg:pr-6" >
                     Go back to home
                 </a>            
             </div>
