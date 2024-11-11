@@ -3,9 +3,9 @@
 ## Table of Contents
 1. [Description](#description)
 2. [Technologies](#technologies)
-3. [Features](features)
-4. [Technical Considerations](technical-considerations)
-5. [authors](authors)
+3. [Features](#features)
+4. [Technical Considerations](#technical-considerations)
+5. [authors](#authors)
 
    
 
@@ -113,8 +113,6 @@ The application simulates a project management tool that helps with task organiz
     </td>
   </tr>
 </table>
-
-## References
 
 
 
