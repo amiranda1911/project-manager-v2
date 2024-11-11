@@ -12,6 +12,8 @@ import {  baseUrl } from "../../constants"
 import { Link } from "react-router-dom";
 
 
+import { toast } from 'react-toastify';
+
 import { UserData } from "./type";
 
 const SettingsProfile = () => {
@@ -30,7 +32,8 @@ const SettingsProfile = () => {
         setData(response.data);
         setFixedData(response.data)
       } catch (error) {
-        console.error("Erro ao buscar dados:", error);
+        toast.error('Error fetching data')
+        console.log(error)
       }
     };
 
@@ -75,12 +78,13 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
     try {
       const response = await axios.patch(`${baseUrl}/users/${userId}`, data);
       console.log("Dados atualizados com sucesso:", response.data);
+      toast.success('Data updated successfully!')
       setIsSubmit(!isSubmit)
     } catch (error) {
       console.error("Erro ao atualizar dados:", error);
+      toast.error('Error updating data')
     }
   };
-
 
   return (
     <div className=" text-sm/9 md:text-base/9  font-roboto">
@@ -99,7 +103,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
             </picture>
             <div>
               <h1 className="text-21 font-medium md:text-5xl">{dataFixed?.firstName}</h1>
-              <p className="text-xl opacity-70 md:text-19">
+              <p className="text-sm sm:text-xl opacity-70 md:text-19">
               {dataFixed?.email}
               </p>
             </div>
@@ -122,7 +126,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
             </p>
           </div>
           {/*Update name, last name, email*/}
-          <UpdateInfos updateInfosSettings={updateInfosSettings} isSubmit={isSubmit}/>
+          <UpdateInfos updateInfosSettings={updateInfosSettings} isSubmit={isSubmit} />
         </div>
         <hr className="my-4 lg:my-0" />
         <div className="flex flex-col justify-between lg:flex-row">

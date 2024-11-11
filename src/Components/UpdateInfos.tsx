@@ -11,19 +11,37 @@ interface UpdateInfosSettingsProps {
 }
 
 export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettingsProps) => {
-  const [name, setName] = useState('')
-  const [lastName, setLastName] = useState('')
+  const [name, setName] = useState(``)
+  const [lastName, setLastName] = useState(``)
   const [email, setEmail] = useState('')
+
+  const [msgErroName, setMsgErroName] = useState('')
+  const [msgErroLast, setMsgErroLast] = useState('')
+  const [msgErroEmail, setMsgErroEmail] = useState('')
 
   const emailIsValid = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
   const nameIsValid = (value: string, name: string) => {
     console.log(value.length <= 2)
       if( value.length <= 2) {
-        console.log(`Please, enter a ${name} with more than 2 characters.`)
+        const errorMsg = `Please, enter a ${name} with more than 2 characters.`
+
+        if (name === 'name') {
+          setMsgErroName(errorMsg);
+        } else {
+          setMsgErroLast(errorMsg);
+        }
         return false
+
       } else if ( !/^[A-Za-z]+$/.test(value)) {
-        console.log(`Please, enter a ${name} that contains only letters.`)
+        const errorMsg = `Please, enter a ${name} that contains only letters.`
+       
+        if (name === 'name') {
+          setMsgErroName(errorMsg);
+        } else {
+          setMsgErroLast(errorMsg);
+        }
+
         return false
       }else {
         return true
@@ -44,20 +62,23 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
 
           if (nameIsValid(value, "name")) {
             updateInfosSettings(null, key, value)
+            setMsgErroName('')
           } 
           break;
         case "lastName":
           setLastName(value)
           if (nameIsValid(value, "last name")) {
             updateInfosSettings(null, key, value);
+            setMsgErroLast("")
           }
           break;
         case "email":
           setEmail(value)
           if (!emailIsValid(value)) {
-            console.log("Enter a valid email!");
+            setMsgErroEmail("Enter a valid email!");
           } else {
             updateInfosSettings(null, key, value); // Passando 'key' do tipo 'Key'
+            setMsgErroEmail("")
           }
           break;
       }
@@ -75,7 +96,8 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
   return (
     <form className="flex flex-col flex-wrap mt-6 mb-10 leading-5 text-sm md:w-10/12 md:flex-row lg:mx-11 lg:w-3/6">
       <div className="flex flex-col w-full md:w-1/2">
-        <label htmlFor="update-first-name" className="font-medium my-1.5 text-purple-850">
+        {msgErroName? <span className="text-red-500"> {msgErroName} </span> : <span className="invisible">...</span>}
+        <label htmlFor="update-first-name" className="font-medium text-purple-850">
           First name
         </label>
         <input
@@ -89,7 +111,8 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
         />
       </div>
       <div className="flex flex-col w-full md:w-1/2">
-        <label htmlFor="update-last-name" className="font-medium my-1.5 text-purple-850">
+      {msgErroLast? <span className="text-red-500">{ msgErroLast} </span>: <span className="invisible">...</span>}
+        <label htmlFor="update-last-name" className="font-medium text-purple-850">
           Last name
         </label>
         <input
@@ -102,8 +125,9 @@ export const UpdateInfos = ({ updateInfosSettings, isSubmit }: UpdateInfosSettin
           onChange={handleChange}
         />
       </div>
-      <div className="flex flex-col w-full mt-3.5">
-        <label htmlFor="update-email" className="font-medium my-1.5 text-purple-850">
+      <div className="flex flex-col w-full mt-2">
+        {msgErroEmail? <span className="text-red-500">{msgErroEmail}</span> : <span className="invisible">...</span>}
+        <label htmlFor="update-email" className="font-medium text-purple-850">
           E-mail
         </label>
         <input
