@@ -1,5 +1,6 @@
 import FormSignUp from "../../Components/FormSignUp";
-import BottomButtons from "../../Components/BottomButtons";
+//import BottomButtons from "../../Components/BottomButtons";
+import LoginButtons from "../../Components/BottomButtons";
 import MainHeader from "../../Components/MainHeader";
 import MainFooter from "../../Components/MainFooter";
 
@@ -42,7 +43,8 @@ const SignUpPage = () => {
                     <section className="flex flex-col">
                         <FormSignUp />
 
-                        <BottomButtons />
+                        <LoginButtons/>
+                        {/*<BottomButtons />*/}
 
                     </section>   
                 </div>
