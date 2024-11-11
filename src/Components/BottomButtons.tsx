@@ -1,58 +1,5 @@
 import { FaFacebook } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import React from "react";
-import { useSignIn } from "@clerk/clerk-react";
-
-// Botões de login para Google e Facebook
-const LoginButtons: React.FC = () => {
-  
-  const { signIn, isLoaded } = useSignIn();
-  // Certifica que o signIn foi carregado antes de usar
-  if (!isLoaded) {
-    console.log("loading...");
-    return null
-  }
-
-  // Função para autenticação com o Google
-  const signInWithGoogle = () => {
-    signIn.authenticateWithRedirect({
-      strategy: "oauth_google",  // Estratégia de login com Google
-      redirectUrl: "/sso-callback",  // A URL para onde o usuário será redirecionado após o login (configurada no Clerk)
-      redirectUrlComplete: "/kanban"  // A URL para onde o usuário será redirecionado após o sucesso da autenticação
-    });
-  };
-
-  // Função para autenticação com o Facebook
-  const signInWithFacebook = () => {
-    signIn.authenticateWithRedirect({
-      strategy: "oauth_facebook",  // Estratégia de login com Facebook
-      redirectUrl: "/sso-callback",  // A URL para onde o usuário será redirecionado após o login (configurada no Clerk)
-      redirectUrlComplete: "/kanban"  // A URL para onde o usuário será redirecionado após o sucesso da autenticação
-    });
-  };
-
-  return (
-    <div className="flex flex-row items-center justify-center gap-[0.813rem]">
-      {/* Botão de login com Google */}
-      <button className="googleBtn" onClick={signInWithGoogle}>
-      <FcGoogle />
-      </button>
-
-      {/* Botão de login com Facebook */}
-      <button className="facebookBtn" onClick={signInWithFacebook}>
-        <FaFacebook />
-      </button>
-    </div>
-  );
-};
-
-export default LoginButtons; 
-
-
-
-{/*
-  import { FaFacebook } from "react-icons/fa6";
-import { FcGoogle } from "react-icons/fc";
 import React, { useEffect } from "react";
 import { useSignIn, useUser } from "@clerk/clerk-react";
 import axios from "axios";
@@ -134,7 +81,60 @@ const LoginButtons: React.FC = () => {
 
 export default LoginButtons;
 
-*/}
+
+
+{/* import { FaFacebook } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
+import React from "react";
+import { useSignIn } from "@clerk/clerk-react";
+
+// Botões de login para Google e Facebook
+const LoginButtons: React.FC = () => {
+  
+  const { signIn, isLoaded } = useSignIn();
+  // Certifica que o signIn foi carregado antes de usar
+  if (!isLoaded) {
+    console.log("loading...");
+    return null
+  }
+
+  // Função para autenticação com o Google
+  const signInWithGoogle = () => {
+    signIn.authenticateWithRedirect({
+      strategy: "oauth_google",  // Estratégia de login com Google
+      redirectUrl: "/sso-callback",  // A URL para onde o usuário será redirecionado após o login (configurada no Clerk)
+      redirectUrlComplete: "/kanban"  // A URL para onde o usuário será redirecionado após o sucesso da autenticação
+    });
+  };
+
+  // Função para autenticação com o Facebook
+  const signInWithFacebook = () => {
+    signIn.authenticateWithRedirect({
+      strategy: "oauth_facebook",  // Estratégia de login com Facebook
+      redirectUrl: "/sso-callback",  // A URL para onde o usuário será redirecionado após o login (configurada no Clerk)
+      redirectUrlComplete: "/kanban"  // A URL para onde o usuário será redirecionado após o sucesso da autenticação
+    });
+  };
+
+  return (
+    <div className="flex flex-row items-center justify-center gap-[0.813rem]">
+      {/* Botão de login com Google 
+      <button className="googleBtn" onClick={signInWithGoogle}>
+      <FcGoogle />
+      </button>
+
+      {/* Botão de login com Facebook 
+      <button className="facebookBtn" onClick={signInWithFacebook}>
+        <FaFacebook />
+      </button>
+    </div>
+  );
+};
+
+export default LoginButtons;  */}
+
+
+
 {/*import { FaFacebook } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import React, { useEffect } from "react";
