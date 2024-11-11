@@ -66,9 +66,9 @@ const KanBanCard = ({task} : KanbanCardProps) => {
 						overflow-hidden
 				">
 					<div className="flex flex-row justify-between w-full">
-						<div className="flex content-start space-x-[-12px] overflow-hidden">
+						<div className="flex content-start space-x-[-8px] md:space-x-[-12px] overflow-hidden">
 						{Array.from({ length: Math.floor(Math.random() * (5 - 1 + 1)) + 1 }).map((_, index) => (
-							<div key={index} className="w-8 h-8 rounded-full overflow-hidden border-2 border-white">
+							<div key={index} className="w-4 h-4 md:w-6 md:h-6 lg:w-8 lg:h-8 rounded-full overflow-hidden border-2 border-white">
 							<img src={"https://images.unsplash.com/photo-1728887823143-d92d2ebbb53a?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} 
 							alt={`Imagem ${index + 1}`} 
 							className="rounded-full object-coverw-full h-full object-cover" />
