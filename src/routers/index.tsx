@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 
-import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react";
+import { AuthenticateWithRedirectCallback } from '@clerk/clerk-react';
 
 import Home from '../pages/Home/Home';
 import LoginPage from '../pages/LoginPage/LoginPage';
@@ -25,12 +25,15 @@ const Routers = () => {
         <Route path="/test/login" element={<LoginTest />} />
 
         {/* Rota de callback do OAuth */}
-        <Route path="/sso-callback" element={<AuthenticateWithRedirectCallback />} />
+        <Route
+          path="/sso-callback"
+          element={<AuthenticateWithRedirectCallback />}
+        />
 
         <Route element={<PrivateRoute />}>
           <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="/kanban" element={<Kanban />} />
-          <Route path="/setting" element={<SettingsProfile />} />
+          <Route path="/settings" element={<SettingsProfile />} />
         </Route>
 
         <Route path="/notauthorization" element={<BlockedPage />} />
