@@ -10,6 +10,7 @@ import { UpdateInfos } from "../../Components/UpdateInfos";
 import { useAuth } from "../../hooks/useAuth";
 import {  baseUrl } from "../../constants"
 import { Link } from "react-router-dom";
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 
 import { toast } from 'react-toastify';
@@ -22,6 +23,9 @@ const SettingsProfile = () => {
   const [data, setData] = useState<UserData | null>(null);
   const [dataFixed, setFixedData] = useState<UserData | null>(null);
   const [isSubmit, setIsSubmit] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+
   const { getToken } = useAuth();
   const userId = getToken();
   
@@ -75,6 +79,7 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
 };
 
   const handleSubmit = async () => {
+    setLoading(true)
     try {
       const response = await axios.patch(`${baseUrl}/users/${userId}`, data);
       console.log("Dados atualizados com sucesso:", response.data);
@@ -83,8 +88,14 @@ const updateInfosSettings = ( section: Section | null, key: Key, value: string |
     } catch (error) {
       console.error("Erro ao atualizar dados:", error);
       toast.error('Error updating data')
+    } finally {
+      setLoading(false)
     }
   };
+
+  if (loading) {
+    return <LoadingSpinner />
+  }
 
   return (
     <div className=" text-sm/9 md:text-base/9  font-roboto">
