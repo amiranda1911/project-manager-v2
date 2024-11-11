@@ -42,9 +42,7 @@ const FixedMetrics = ({closeDispatch, owners, totalDone, totalTodo, totalinProgr
             bg-[#6C7D96]
             lg:w-[18.63rem] xl:w-[18.63rem] 2xl:w-[18.63rem]
             lg:h-[33.63rem] xl:h-[33.63rem] 2xl:h-[33.63rem]
-            
             p-4
-						lg:pt-8
             rounded-[1.56rem]
             mx-auto
             my-auto
@@ -53,16 +51,19 @@ const FixedMetrics = ({closeDispatch, owners, totalDone, totalTodo, totalinProgr
                 flex justify-between items-center
                 font-roboto font-bold
                 text-white
-                text-16'
+                text-16
+                lg:pt-2
+                lg:pb-2'
             ><span>In This project</span> <button onClick={() => closeDispatch(false)}><BsPinFill /></button></h2>
-							{users.slice(0,3).map((user) => (
-								<FixedMetricUserCard key={user.id} user={user}/>
-							))}
+                {users.slice(0,3).map((user) => (
+                    <FixedMetricUserCard key={user.id} user={user}/>
+                ))}
             <h2 className='
                 font-roboto font-bold
                 text-white
                 text-16
-								lg:pt-8'
+				lg:pt-6
+                lg:pb-1'
             >Metrics</h2>
             <div className='flex '>
                 <div className='w-3/5'>
@@ -86,12 +87,14 @@ const FixedMetrics = ({closeDispatch, owners, totalDone, totalTodo, totalinProgr
                         <p className='text-12 text-[#160A60] font-bold font-roboto'><span className='text-17 font-bold text-green-dark'>{totalDone}</span> Done</p>
                     </div>
                     <div className='flex 
-                        flex-col 
+                        flex-col
+												items-center
                         bg-[#F6F6F6]
                         rounded-[0.78rem]
-                        p-1 my-2'>
+                        p-1 my-2
+												text-[#160A60]'>
                         <h3 className='text-12 font-roboto font-bold'>Total time estimated</h3>
-                        <time className='text-21 flex justify-center font-roboto font-bold'><TimeConverter seconds={totaltime}/></time>
+                        <time className='text-21 flex justify-center font-roboto font-bold text-[#4F46E5]'><TimeConverter seconds={totaltime}/></time>
                     </div>
                     
                 </div>
