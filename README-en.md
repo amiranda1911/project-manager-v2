@@ -4,7 +4,6 @@
 1. [Description](#description)
 2. [Technologies](#technologies)
 3. [Features](features)
-4. [Contributing](#contributing)
    
 
 ## Description
