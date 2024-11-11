@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { baseUrl } from '../../constants';
 
 import { UserProps } from '../../interface/User';
-import { useAuth } from '../../hooks/useAuth';
 
 import UserFace from './UserFace';
 import ProfileData from './ProfileData';
@@ -11,22 +11,25 @@ import LastesActivitySection from './LastesActivitySection';
 import WeeklyReport from './WeeklyReport';
 import MainHeader from '../../Components/MainHeader';
 import MainFooter from '../../Components/MainFooter';
+import PageNotFound from '../PageNotFound/PageNotFound';
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
+import { TasksProps } from '../../interface/Tasks';
+import useFindTaskByUserId from '../../hooks/useFindTaskByUserId';
+import { calculeTotalTaskDuration } from '../../utils/calculeTotalTaskDuration';
 
 const ProfilePage = () => {
+  const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<UserProps>();
-  const { getToken } = useAuth();
-  const userId = getToken();
+  const [tasks, setTasks] = useState<TasksProps[]>([]);
 
   useEffect(() => {
     const getUser = async () => {
       setLoading(true);
       try {
-        const response = await axios.get<UserProps>(
-          `${baseUrl}/users/${userId}`
-        );
-        setUser(response.data);
+        const response = await axios.get<UserProps>(`${baseUrl}/users/${id}`);
+        await setUser(response.data);
       } catch (error) {
         setError('Erro ao buscar dados');
         console.error(error);
@@ -34,14 +37,34 @@ const ProfilePage = () => {
         setLoading(false);
       }
     };
+
+    const getTasks = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get<TasksProps[]>(`${baseUrl}/tasks`);
+        await setTasks(response.data);
+      } catch (error) {
+        setError('Erro ao buscar dados');
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     getUser();
-  }, [userId]);
+    getTasks();
+  }, [id]);
 
-  if (loading) return <p>Carregando...</p>;
+  const userTasks = useFindTaskByUserId(tasks, user?.id ?? '');
+  console.log(userTasks);
+  const taskTotalTime = calculeTotalTaskDuration(userTasks);
+  console.log(taskTotalTime);
 
+  if (loading) return <LoadingSpinner />;
   if (!user || error) {
-    return <h1>Desculpa ocorreu um erro</h1>;
+    return <PageNotFound />;
   }
+
   const {
     firstName,
     lastName,
@@ -50,7 +73,6 @@ const ProfilePage = () => {
     socialMedia,
     creationDate,
     jobPosition,
-    id,
     avatar,
   }: UserProps = user;
 
@@ -61,23 +83,23 @@ const ProfilePage = () => {
         <div className="lg:max-w-[38.75rem] lg:pr-6 lg:w-[31.25rem]">
           <UserFace
             avata={avatar}
-            fristName={firstName}
+            firstName={firstName}
             lastName={lastName}
             userName={userName}
           />
           <ProfileData
-            fristName={firstName}
+            firstName={firstName}
             lastName={lastName}
             email={email}
             socialMedia={socialMedia}
             creationDate={creationDate}
             jobPosition={jobPosition}
-            id={id}
+            id={id!}
           />
         </div>
         <div className="lg:flex lg:flex-col lg:pt-32 lg:pl-4 lg:border-l-2 max-h-[68.75rem]">
           <LastesActivitySection />
-          <WeeklyReport />
+          <WeeklyReport averageWorkTime={taskTotalTime} userTasks={userTasks} />
         </div>
       </main>
       <MainFooter />

@@ -34,14 +34,15 @@ interface UpdateInfosSettingsProps {
         <input
           type="text"
           placeholder="x.com/"
-          className="w-52 h-12 border border-gray-300 rounded-md px-4"
+          className="w-52 h-12 border border-gray-300 hover:border-gray-400 rounded-md px-4 cursor-not-allowed"
           disabled={true}
         />
         <input
           type="text"
           name="twitter"
-          className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
-          placeholder={socialMedia.twitter}
+          className="border border-gray-300 hover:border-gray-400 rounded-md px-4 ml-1.5 w-36 h-12"
+          placeholder= "Enter the user"
+          value={socialMedia.twitter? socialMedia.twitter : ""}
           onChange={(e) => handleInputChange(e)}
         />
       </div>
@@ -50,14 +51,15 @@ interface UpdateInfosSettingsProps {
         <input
           type="text"
           placeholder="instagram.com/"
-          className="w-52 h-12 border border-gray-300 rounded-md px-4"
+          className="w-52 h-12 border border-gray-300 hover:border-gray-400 rounded-md px-4 cursor-not-allowed"
           disabled={true}
         />
         <input
           type="text"
           name="instagram"
-          className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
-          placeholder={socialMedia.instagram}
+          className="border border-gray-300 hover:border-gray-400 rounded-md px-4 ml-1.5 w-36 h-12"
+          placeholder='Enter the user'
+          value={socialMedia.instagram ? socialMedia.instagram : ""}
           onChange={(e) => handleInputChange(e)}
         />
       </div>
@@ -66,14 +68,16 @@ interface UpdateInfosSettingsProps {
         <input
           type="text"
           placeholder="linkedin.com/in/"
-          className="w-52 h-12 border border-gray-300 rounded-md px-4"
+          className="w-52 h-12 border border-gray-300 hover:border-gray-400 rounded-md px-4 cursor-not-allowed"
           disabled={true}
+          
         />
         <input
           type="text"
           name="linkedin"
-          className="border border-gray-300 rounded-md px-4 ml-1.5 w-36 h-12"
-          placeholder={socialMedia.linkedin}
+          className="border border-gray-300 hover:border-gray-400 rounded-md px-4 ml-1.5 w-36 h-12"
+          placeholder="Enter the user"
+          value={socialMedia.linkedin ? socialMedia.linkedin: ""}
           onChange={(e) => handleInputChange(e)}
         />
       </div>
