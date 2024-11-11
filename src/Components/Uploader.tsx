@@ -1,29 +1,66 @@
-import { useState } from "react";
+import axios from "axios";
+import { useState, useCallback } from "react";
 import { FaPaperclip } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { FiUpload } from 'react-icons/fi';
 
+interface ComponentProps {
+  setImage: React.Dispatch<React.SetStateAction<string>>;
+}
 
-export const Uploader = () => {
-  const [file, setFile] = useState("");
-  const [fileName, setFileName] = useState("");
+export const Uploader: React.FC<ComponentProps> = ({ setImage }) => {
+  const [fileName, setFileName] = useState<string>('');
+  const [isUploading, setIsUploading] = useState<boolean>(false);
 
-  const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
+  const uploadToCloudinary = useCallback(async (selectedFile: File) => {
+    setIsUploading(true);
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('upload_preset', 'ml_unsigned'); // Substitua pelo nome do seu upload preset
 
-    if (selectedFile) {
-      setFile(URL.createObjectURL(selectedFile));
+    try {
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/djrr5vtxd/image/upload',
+        formData
+      ); 
+      // URL da imagem armazenada no Cloudinary
       setFileName(selectedFile.name);
+      setImage( response.data.secure_url)
+
+    } catch (error) {
+      console.error('Erro ao fazer upload para o Cloudinary:', error);
+    } finally {
+      setIsUploading(false);
+    }
+  }, [setImage]);
+
+  const clearImg = () => {
+    setFileName('');
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      if (selectedFile.size <= 5 * 1024 * 1024) { // Verifica se o tamanho do arquivo é menor ou igual a 5 MB
+        uploadToCloudinary(selectedFile);
+      } else {
+        console.log("O arquivo deve ter no máximo 5 MB.");
+      }
     }
   };
-  const dropImage = (e: React.DragEvent<HTMLDivElement>) => {
+  
+  const handleImageDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const selectedFile = e.dataTransfer.files[0];
-
     if (selectedFile) {
-      setFile(URL.createObjectURL(selectedFile));
-      setFileName(selectedFile.name);
+      if (selectedFile.size <= 5 * 1024 * 1024) { // Verifica se o tamanho do arquivo é menor ou igual a 5 MB
+        uploadToCloudinary(selectedFile);
+      } else {
+        console.log("O arquivo deve ter no máximo 5 MB.");
+      }
     }
   };
+
   return (
       <div className=" w-full">
         { fileName ? 
@@ -32,14 +69,14 @@ export const Uploader = () => {
                 <FaPaperclip className="text-gray-400 h-[1.125rem] w-[1.125rem]"/>
                 <p className="mx-3">{fileName}</p>
               </span>
-              <RiDeleteBin5Line className="text-slate-900 h-[1.125rem] w-[1.125rem]" />
+              <RiDeleteBin5Line className="text-slate-900 h-[1.125rem] w-[1.125rem]" onClick={clearImg} />
             </div> : null}
 
         <div
           className="border border-blue-450 border-dashed rounded-md h-38 text-center
-                      text-base text-gray-600 flex flex-col justify-center w-full"
+                      text-base text-gray-600 flex flex-col justify-center w-full items-center"
           onDragOver={(e) => e.preventDefault()}
-          onDrop={(e) => dropImage(e)}
+          onDrop={(e) => handleImageDrop(e)}
           onClick={() => document.getElementById("file-input")?.click()}
         >
           <input
@@ -47,13 +84,20 @@ export const Uploader = () => {
             accept="image/*"
             hidden
             id="file-input"
-            onChange={(e) => uploadImage(e)}
+            onChange={ handleImageUpload}
           />
-          <p className="my-5">
-            Drop here to attach or{" "}
-            <span className="text-violet-dark">upload</span>
-          </p>
-          <span className="text-xs md:text-sm">Max size: 5GB</span>
+         {isUploading ? (
+            <p>Carregando...</p>
+          ) : (
+            <>
+              <FiUpload className="h-6 w-6 text-gray-500" />
+              <p className="my-5">
+                Drop here to attach or{' '}
+                <span className="text-violet-dark">upload</span>
+              </p>
+              <span className="text-xs md:text-sm">Max size: 5MB</span>
+            </>
+          )}
         </div>
       </div>
     
